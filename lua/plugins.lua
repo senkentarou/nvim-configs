@@ -71,12 +71,13 @@ vim.cmd([[
   Plug 'RRethy/nvim-treesitter-endwise'
   " Copilot
   Plug 'github/copilot.vim'
+  " rspec
+  Plug 'mogulla3/rspec.nvim'
 
   " My plugin
   Plug 'senkentarou/gopr.nvim'
   Plug 'senkentarou/goacf.nvim'
   Plug 'senkentarou/gobf.nvim'
-  Plug 'senkentarou/ruby_spec.nvim'
   Plug 'senkentarou/telescope-gh-pr.nvim'
   Plug 'senkentarou/telescope-git-log.nvim'
 
