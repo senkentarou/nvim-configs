@@ -54,8 +54,7 @@ vim.cmd([[
   " <Space> Leaders
   let mapleader="\<Space>"
   nnoremap <silent> <Leader><Leader> :<C-u>lua require('global_functions').toggle_lsp_lines_text()<CR>
-  nnoremap <silent> <Leader>a :<C-u>lua require('actions-preview').code_actions()<CR>
-  nnoremap <silent> <Leader>A :<C-u>lua require('neogen').generate()<CR>
+  nnoremap <silent> <Leader>A :<C-u>lua require('actions-preview').code_actions()<CR>
   " github integrations
   nnoremap <silent> <Leader>o :<C-u>Gobf<CR>
   vnoremap <silent> <Leader>o :Gobf<CR>
@@ -76,9 +75,10 @@ vim.cmd([[
   nmap <Leader>c <Plug>(comment_toggle_linewise_current)
   vmap <Leader>c <Plug>(comment_toggle_linewise_visual)
   " rspecs
-  nnoremap <silent> <Leader>x :<C-u>ToggleRspecFile<CR>
-  nnoremap <silent> <Leader>z :<C-u>CopyRspecCommand<CR>
-  nnoremap <silent> <Leader>Z :<C-u>CopyRspecAtLineCommand<CR>
+  nnoremap <silent> <Leader>a :<C-u>RSpecShowLastResult<CR>
+  nnoremap <silent> <Leader>x :<C-u>RSpecJump<CR>
+  nnoremap <silent> <Leader>z :<C-u>RSpecCurrentFile<CR>
+  nnoremap <silent> <Leader>Z :<C-u>RSpecNearest<CR>
 
   " <C-f> Find files
   nmap <C-f> <Nop>
