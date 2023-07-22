@@ -20,7 +20,7 @@ vim.cmd([[
   Plug 'williamboman/mason.nvim'
   Plug 'williamboman/mason-lspconfig.nvim'
   Plug 'WhoIsSethDaniel/mason-tool-installer.nvim'
-  Plug 'j-hui/fidget.nvim'
+  Plug 'j-hui/fidget.nvim', { 'tag': 'legacy' }
   Plug 'neovim/nvim-lspconfig'
   Plug 'folke/lsp-colors.nvim'
   Plug 'Maan2003/lsp_lines.nvim'

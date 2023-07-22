@@ -222,25 +222,7 @@ require('actions-preview').setup {
 
 require('mason').setup {}
 require('mason-lspconfig').setup {}
-require('mason-tool-installer').setup {
-  ensure_installed = {
-    'jq',
-    'bash-language-server',
-    'eslint-lsp',
-    'eslint_d',
-    'json-lsp',
-    'lua-language-server',
-    'luaformatter',
-    'luacheck',
-    'shellcheck',
-    'shfmt',
-    'solargraph',
-    'typescript-language-server',
-    'yaml-language-server',
-    'yamllint',
-    'terraform-ls',
-  },
-}
+require('mason-tool-installer').setup {}
 
 require('lsp-colors').setup {
   Error = '#db4b4b',
