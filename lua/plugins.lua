@@ -50,7 +50,6 @@ vim.cmd([[
   Plug 'machakann/vim-sandwich'
   Plug 'numToStr/Comment.nvim'
   " Annotation
-  Plug 'danymat/neogen'
   Plug 'folke/todo-comments.nvim'
   " Line comparison
   Plug 'AndrewRadev/linediff.vim'

@@ -16,10 +16,6 @@ require('todo-comments').setup {
   },
 }
 
-require('neogen').setup {
-  snippet_engine = 'luasnip',
-}
-
 require('rspec').setup({
   -- File format to allow rspec to run
   allowed_file_format = function(filename)
