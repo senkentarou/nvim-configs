@@ -151,9 +151,6 @@ vim.cmd([[
   " imap <silent> <C-l> <Plug>(copilot-suggest) " maybe useless for me
   imap <silent><script><expr> <C-l> copilot#Accept("\<CR>")
 
-  " Search web browser
-  nmap <C-_> <Plug>(openbrowser-smart-search)
-  vmap <C-_> <Plug>(openbrowser-smart-search)
   " Apply ESC
   inoremap <silent> jj <ESC>
   " No highlight

@@ -53,8 +53,6 @@ vim.cmd([[
   Plug 'folke/todo-comments.nvim'
   " Line comparison
   Plug 'AndrewRadev/linediff.vim'
-  " Open browser window
-  Plug 'tyru/open-browser.vim'
   " Parsing
   Plug 'sheerun/vim-polyglot'
   Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
