@@ -71,18 +71,18 @@ telescope.setup {
     "--smart-case",
     "--with-filename",
     "--trim",
+    "--glob=!**/.git/*",
+    "--glob=!**/node_modules/*",
   },
   pickers = {
     find_files = {
       cwd = vim.fn.systemlist("git rev-parse --show-toplevel")[1],
       find_command = {
-        'rg',
-        '--files',
-        '--hidden',
-      },
-      file_ignore_patterns = {
-        'node_modules',
-        '.git/',
+        "rg",
+        "--files",
+        "--hidden",
+        "--glob=!**/.git/*",
+        "--glob=!**/node_modules/*",
       },
     },
     live_grep = {
@@ -119,7 +119,7 @@ telescope.setup {
           ["<C-q>"] = actions.close,
           ["w"] = actions.which_key,
           ["r"] = file_browser_actions.rename,
-          ["m"] = file_browser_actions.move,
+          ["m"] = file_browser_actions.move, -- select file by tab and move target dir.
           ["c"] = file_browser_actions.copy,
           ["d"] = file_browser_actions.remove,
           ["n"] = file_browser_actions.create,
