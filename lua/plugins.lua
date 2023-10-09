@@ -58,7 +58,7 @@ vim.cmd([[
   Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
   Plug 'simrat39/symbols-outline.nvim'
   " Indent highlight
-  Plug 'lukas-reineke/indent-blankline.nvim'
+  Plug 'lukas-reineke/indent-blankline.nvim', { 'tag': 'v2.20.8' }
   " Search word
   Plug 'phaazon/hop.nvim'
   Plug 'mfussenegger/nvim-treehopper'
