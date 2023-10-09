@@ -40,8 +40,6 @@ vim.cmd([[
   " Finder
   Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
   " Git
-  Plug 'kdheepak/lazygit.nvim'
-  Plug 'sindrets/diffview.nvim'
   Plug 'lewis6991/gitsigns.nvim'
   " Accelerate up/down
   Plug 'rhysd/accelerated-jk'

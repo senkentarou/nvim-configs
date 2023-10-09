@@ -87,21 +87,18 @@ vim.cmd([[
 
   " <C-g> Git
   nmap <C-g> <Nop>
-  nnoremap <silent> <C-g><C-g> :<C-u>LazyGit<CR>
+  nnoremap <silent> <C-g><C-g> :<C-u>Gitsigns toggle_deleted<CR>
   nnoremap <silent> <C-g><C-o> :<C-u>Goacf<CR>
-  nnoremap <silent> <C-g><C-l> :<C-u>DiffviewFileHistory %<CR>
-  vnoremap <silent> <C-g><C-l> :DiffviewFileHistory %<CR>
+  nnoremap <silent> <C-g><C-l> :<C-u>lua require('telescope').extensions.git_log.list_commits_on_file()<CR>
   nnoremap <silent> <C-g><C-p> :<C-u>Gitsigns prev_hunk<CR>
   nnoremap <silent> <C-g><C-n> :<C-u>Gitsigns next_hunk<CR>
-  nnoremap <silent> <C-g><C-h> :<C-u>Gitsigns preview_hunk<CR>
-  nnoremap <silent> <C-g><C-j> :<C-u>Gitsigns stage_hunk<CR>
-  vnoremap <silent> <C-g><C-j> :Gitsigns stage_hunk<CR>
+  nnoremap <silent> <C-g><C-k> :<C-u>Gitsigns stage_hunk<CR>
+  vnoremap <silent> <C-g><C-k> :Gitsigns stage_hunk<CR>
+  nnoremap <silent> <C-g><C-h> :<C-u>Gitsigns reset_hunk<CR>
+  vnoremap <silent> <C-g><C-h> :Gitsigns reset_hunk<CR>
   nnoremap <silent> <C-g>j :<C-u>Gitsigns undo_stage_hunk<CR>
-  nnoremap <silent> <C-g>J :<C-u>Gitsigns stage_buffer<CR>
-  nnoremap <silent> <C-g><C-r> :<C-u>Gitsigns reset_hunk<CR>
-  vnoremap <silent> <C-g><C-r> :Gitsigns reset_hunk<CR>
-  nnoremap <silent> <C-g>r :<C-u>Gitsigns reset_buffer<CR>
-  nnoremap <silent> <C-g><C-d> :<C-u>Gitsigns toggle_deleted<CR>
+  nnoremap <silent> <C-g>k :<C-u>Gitsigns stage_buffer<CR>
+  nnoremap <silent> <C-g>h :<C-u>Gitsigns reset_buffer<CR>
   nnoremap <silent> + :<C-u>lua require('telescope').extensions.gh_pr.list({ remote = 'upstream', search = 'is:pr is:open user-review-requested:@me' })<CR>
   nnoremap <silent> _ :<C-u>lua require('telescope').extensions.gh_pr.list({ remote = 'upstream' })<CR>
 

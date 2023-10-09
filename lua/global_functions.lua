@@ -18,11 +18,6 @@ G.close_buffer = function()
     -- no action
     command = ':'
   elseif vim.fn.index({
-    'DiffviewFileHistory',
-  }, filetype) >= 0 then
-    -- close tab
-    command = 'tabclose'
-  elseif vim.fn.index({
     'help',
     'vim-plug',
     'lspinfo',
