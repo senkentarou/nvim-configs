@@ -39,8 +39,6 @@ vim.cmd([[
   Plug 'jose-elias-alvarez/typescript.nvim'
   " Finder
   Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
-  " Git
-  Plug 'lewis6991/gitsigns.nvim'
   " Accelerate up/down
   Plug 'rhysd/accelerated-jk'
   Plug 'haya14busa/vim-edgemotion'
@@ -75,6 +73,9 @@ vim.cmd([[
   Plug 'senkentarou/gobf.nvim'
   Plug 'senkentarou/telescope-gh-pr.nvim'
   Plug 'senkentarou/telescope-git-log.nvim'
+
+  " Plug 'lewis6991/gitsigns.nvim' " disable until https://github.com/lewis6991/gitsigns.nvim/issues/791 is as fixed
+  Plug 'senkentarou/gitsigns.nvim' " Use instead of lewis6991/gitsigns.nvim
 
   " Plug 'nvim-telescope/telescope-file-browser.nvim' " disable until https://github.com/nvim-telescope/telescope-file-browser.nvim/issues/104 is as fixed
   Plug 'senkentarou/telescope-file-browser.nvim' " Use instead of nvim-telescope/telescope-file-browser.nvim

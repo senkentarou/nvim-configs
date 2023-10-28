@@ -87,7 +87,8 @@ vim.cmd([[
 
   " <C-g> Git
   nmap <C-g> <Nop>
-  nnoremap <silent> <C-g><C-g> :<C-u>Gitsigns toggle_deleted<CR>
+  nnoremap <silent> <C-g><C-g> :<C-u>lua require('gitsigns').setqflist('all')<CR>
+  nnoremap <silent> <C-g><C-f> :<C-u>Gitsigns toggle_deleted<CR>
   nnoremap <silent> <C-g><C-o> :<C-u>Goacf<CR>
   nnoremap <silent> <C-g><C-l> :<C-u>lua require('telescope').extensions.git_log.list_commits_on_file()<CR>
   nnoremap <silent> <C-g><C-p> :<C-u>Gitsigns prev_hunk<CR>
