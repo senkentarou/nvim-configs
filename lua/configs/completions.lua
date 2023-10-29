@@ -111,6 +111,15 @@ nvim_lsp.bashls.setup {
 }
 nvim_lsp.yamlls.setup {
   capabilities = capabilities,
+  filetypes = {
+    'yml',
+    'yaml',
+  },
+  settings = {
+    yaml = {
+      keyOrdering = false,
+    },
+  },
 }
 nvim_lsp.jsonls.setup {
   capabilities = capabilities,
@@ -128,15 +137,7 @@ null_ls.setup {
   root_dir = require('lspconfig.util').root_pattern('package.json', '.git'),
   sources = {
     null_ls.builtins.diagnostics.terraform_validate,
-    null_ls.builtins.diagnostics.yamllint.with {
-      args = {
-        '-d',
-        '{extends: relaxed, rules: {line-length: {max: 180}, indentation: {indent-sequences: whatever}}}',
-        '-f',
-        'parsable',
-        '-',
-      },
-    },
+    null_ls.builtins.diagnostics.yamllint, -- see .yamllint
     null_ls.builtins.diagnostics.eslint_d.with {
       filetypes = {
         'javascript',
@@ -152,27 +153,14 @@ null_ls.setup {
         'javascriptreact',
         'typescript',
         'typescriptreact',
-        'yaml',
       },
       prefer_local = 'node_modules/.bin',
     },
-    null_ls.builtins.formatting.lua_format.with {
-      args = {
-        '--column-limit=180',
-        '--column-table-limit=20',
-        '--indent-width=2',
-        '--continuation-indent-width=2',
-        '--no-keep-simple-control-block-one-line',
-        '--no-keep-simple-function-one-line',
-        '--spaces-inside-table-braces',
-        '--chop-down-table',
-        '--chop-down-kv-table',
-        '--extra-sep-at-table-end',
-      },
-    },
+    null_ls.builtins.formatting.lua_format, -- see .lua-format
     null_ls.builtins.formatting.shfmt,
     null_ls.builtins.formatting.jq,
     null_ls.builtins.formatting.terraform_fmt,
+    null_ls.builtins.formatting.yamlfmt,
     null_ls.builtins.code_actions.shellcheck,
     require('typescript.extensions.null-ls.code-actions'),
   },
