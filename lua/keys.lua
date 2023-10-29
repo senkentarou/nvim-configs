@@ -54,7 +54,7 @@ vim.cmd([[
   " <Space> Leaders
   let mapleader="\<Space>"
   nnoremap <silent> <Leader><Leader> :<C-u>lua require('global_functions').toggle_lsp_lines_text()<CR>
-  nnoremap <silent> <Leader>A :<C-u>lua require('actions-preview').code_actions()<CR>
+  nnoremap <silent> <Leader>a :<C-u>lua require('actions-preview').code_actions()<CR>
   " github integrations
   nnoremap <silent> <Leader>o :<C-u>Gobf<CR>
   vnoremap <silent> <Leader>o :Gobf<CR>
@@ -75,10 +75,10 @@ vim.cmd([[
   nmap <Leader>c <Plug>(comment_toggle_linewise_current)
   vmap <Leader>c <Plug>(comment_toggle_linewise_visual)
   " rspecs
-  nnoremap <silent> <Leader>a :<C-u>RSpecShowLastResult<CR>
-  nnoremap <silent> <Leader>x :<C-u>RSpecJump<CR>
+  nnoremap <silent> <Leader>x :<C-u>RSpecJump!<CR>
   nnoremap <silent> <Leader>z :<C-u>RSpecCurrentFile<CR>
   nnoremap <silent> <Leader>Z :<C-u>RSpecNearest<CR>
+  nnoremap <silent> <C-z> :<C-u>RSpecShowLastResult<CR>
 
   " <C-f> Find files
   nmap <C-f> <Nop>
@@ -88,16 +88,16 @@ vim.cmd([[
   " <C-g> Git
   nmap <C-g> <Nop>
   nnoremap <silent> <C-g><C-g> :<C-u>lua require('gitsigns').setqflist('all')<CR>
-  nnoremap <silent> <C-g><C-f> :<C-u>Gitsigns toggle_deleted<CR>
   nnoremap <silent> <C-g><C-o> :<C-u>Goacf<CR>
   nnoremap <silent> <C-g><C-l> :<C-u>lua require('telescope').extensions.git_log.list_commits_on_file()<CR>
   nnoremap <silent> <C-g><C-p> :<C-u>Gitsigns prev_hunk<CR>
   nnoremap <silent> <C-g><C-n> :<C-u>Gitsigns next_hunk<CR>
+  nnoremap <silent> <C-g><C-j> :<C-u>Gitsigns undo_stage_hunk<CR>
   nnoremap <silent> <C-g><C-k> :<C-u>Gitsigns stage_hunk<CR>
   vnoremap <silent> <C-g><C-k> :Gitsigns stage_hunk<CR>
   nnoremap <silent> <C-g><C-h> :<C-u>Gitsigns reset_hunk<CR>
   vnoremap <silent> <C-g><C-h> :Gitsigns reset_hunk<CR>
-  nnoremap <silent> <C-g>j :<C-u>Gitsigns undo_stage_hunk<CR>
+  nnoremap <silent> <C-g>j :<C-u>Gitsigns toggle_deleted<CR>
   nnoremap <silent> <C-g>k :<C-u>Gitsigns stage_buffer<CR>
   nnoremap <silent> <C-g>h :<C-u>Gitsigns reset_buffer<CR>
   nnoremap <silent> + :<C-u>lua require('telescope').extensions.gh_pr.list({ remote = 'upstream', search = 'is:pr is:open user-review-requested:@me' })<CR>
@@ -121,8 +121,6 @@ vim.cmd([[
   " Moving cursor
   nmap j <Plug>(accelerated_jk_gj)
   nmap k <Plug>(accelerated_jk_gk)
-  nnoremap H ^
-  nnoremap L $
   " Moving panes
   nnoremap <C-j> <C-w><C-j>
   nnoremap <C-k> <C-w><C-k>
@@ -134,12 +132,14 @@ vim.cmd([[
   vnoremap sj <Plug>(edgemotion-j)
   nnoremap sk <Plug>(edgemotion-k)
   vnoremap sk <Plug>(edgemotion-k)
-  nnoremap <silent> sl :<C-u>lua require('tsht').move({ side = "end" })<CR>
-  nnoremap <silent> sh :<C-u>lua require('tsht').move({ side = "start" })<CR>
+  nnoremap sh ^
+  nnoremap sl $
   nnoremap f :<C-u>HopChar1CurrentLineAC<CR>
   vnoremap f <cmd>HopChar1CurrentLineAC<CR>
   nnoremap F :<C-u>HopChar1CurrentLineBC<CR>
   vnoremap F <cmd>HopChar1CurrentLineBC<CR>
+  nnoremap H :<C-u>lua require('tsht').move({ side = "start" })<CR>
+  nnoremap L :<C-u>lua require('tsht').move({ side = "end" })<CR>
 
   " github copilot
   " see https://github.com/github/copilot.vim/blob/release/doc/copilot.txt
