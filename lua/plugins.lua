@@ -35,7 +35,7 @@ vim.cmd([[
   Plug 'hrsh7th/cmp-cmdline'
   Plug 'hrsh7th/nvim-cmp'
   Plug 'aznhe21/actions-preview.nvim'
-  Plug 'jose-elias-alvarez/null-ls.nvim'
+  Plug 'nvimtools/none-ls.nvim'
   Plug 'jose-elias-alvarez/typescript.nvim'
   " Finder
   Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
