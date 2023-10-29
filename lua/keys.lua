@@ -125,18 +125,28 @@ vim.cmd([[
   nnoremap <C-k> <C-w><C-k>
   nnoremap <C-l> <C-w><C-l>
   nnoremap <C-h> <C-w><C-h>
+
   " Moving hop keyword
   nnoremap s <Nop>
+  " sa: surround add
+  "  `saiw(` pattern: foo => (foo)
+  " sd: surround delete
+  "  `sd(` pattern: (foo) => foo
+  " sr: surround replace
+  "  `sr("` pattern: (foo) => "foo"
+  nnoremap ss :<C-u>TextCaseOpenTelescope<CR>
   nnoremap sj <Plug>(edgemotion-j)
   vnoremap sj <Plug>(edgemotion-j)
   nnoremap sk <Plug>(edgemotion-k)
   vnoremap sk <Plug>(edgemotion-k)
   nnoremap sh ^
+  vnoremap sh ^
   nnoremap sl $
+  vnoremap sl $
   nnoremap f :<C-u>HopChar1CurrentLineAC<CR>
-  vnoremap f <cmd>HopChar1CurrentLineAC<CR>
+  vnoremap f <CMD>HopChar1CurrentLineAC<CR>
   nnoremap F :<C-u>HopChar1CurrentLineBC<CR>
-  vnoremap F <cmd>HopChar1CurrentLineBC<CR>
+  vnoremap F <CMD>HopChar1CurrentLineBC<CR>
   nnoremap H :<C-u>lua require('tsht').move({ side = "start" })<CR>
   nnoremap L :<C-u>lua require('tsht').move({ side = "end" })<CR>
   nnoremap K :<C-u>SymbolsOutline<CR>

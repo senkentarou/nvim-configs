@@ -156,6 +156,6 @@ cmp.event:on('confirm_done', require('nvim-autopairs.completion.cmp').on_confirm
 -- https://github.com/L3MON4D3/LuaSnip
 require('luasnip.loaders.from_vscode').lazy_load()
 
-require("nvim-autopairs").setup {}
+require('nvim-autopairs').setup {}
 
-require("symbols-outline").setup {}
+require('symbols-outline').setup {}

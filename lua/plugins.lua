@@ -43,6 +43,7 @@ vim.cmd([[
   Plug 'rhysd/accelerated-jk'
   Plug 'haya14busa/vim-edgemotion'
   " Replacer
+  Plug 'johmsalas/text-case.nvim'
   Plug 'machakann/vim-sandwich'
   Plug 'numToStr/Comment.nvim'
   " Annotation
@@ -53,6 +54,7 @@ vim.cmd([[
   Plug 'sheerun/vim-polyglot'
   Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
   Plug 'simrat39/symbols-outline.nvim'
+  Plug 'andersevenrud/nvim_context_vt'
   " Indent highlight
   Plug 'lukas-reineke/indent-blankline.nvim', { 'tag': 'v2.20.8' }
   " Search word
@@ -66,6 +68,8 @@ vim.cmd([[
   Plug 'github/copilot.vim'
   " rspec
   Plug 'mogulla3/rspec.nvim'
+  " Quit
+  Plug 'yutkat/confirm-quit.nvim'
 
   " My plugin
   Plug 'senkentarou/gopr.nvim'

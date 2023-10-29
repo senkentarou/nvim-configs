@@ -16,7 +16,7 @@ require('todo-comments').setup {
   },
 }
 
-require('rspec').setup({
+require('rspec').setup {
   -- File format to allow rspec to run
   allowed_file_format = function(filename)
     return vim.endswith(filename, "_spec.rb")
@@ -41,4 +41,8 @@ require('rspec').setup({
   -- Command to open the file to jump to.
   -- Examples of other alternatives: vsplit, split, tabedit
   jump_command = "edit",
-})
+}
+
+require('confirm-quit').setup {}
+
+require('textcase').setup {}
