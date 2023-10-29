@@ -64,26 +64,40 @@ telescope.setup {
   vimgrep_arguments = {
     "rg",
     "--column",
-    "--hidden",
     "--line-number",
     "--no-heading",
     "--color=always",
     "--smart-case",
     "--with-filename",
     "--trim",
-    "--glob='!.git/'",
-    "--glob='!node_modules/'",
-    "--glob='!vendor/bundle/'",
   },
   pickers = {
     find_files = {
       cwd = vim.fn.systemlist("git rev-parse --show-toplevel")[1],
+      find_command = {
+        "rg",
+        "--files",
+        "--hidden",
+        "--glob=!.git/",
+      },
     },
     live_grep = {
       cwd = vim.fn.systemlist("git rev-parse --show-toplevel")[1],
+      glob_pattern = '!.git/',
+      additional_args = function()
+        return {
+          '--hidden',
+        }
+      end,
     },
     grep_string = {
       cwd = vim.fn.systemlist("git rev-parse --show-toplevel")[1],
+      additional_args = function()
+        return {
+          '--hidden',
+          "--glob=!.git/",
+        }
+      end,
     },
   },
   extensions = {
