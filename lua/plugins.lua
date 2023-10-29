@@ -38,7 +38,7 @@ vim.cmd([[
   Plug 'nvimtools/none-ls.nvim'
   Plug 'jose-elias-alvarez/typescript.nvim'
   " Finder
-  Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
+  Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.3' }
   " Accelerate up/down
   Plug 'rhysd/accelerated-jk'
   Plug 'haya14busa/vim-edgemotion'
