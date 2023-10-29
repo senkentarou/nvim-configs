@@ -116,7 +116,6 @@ vim.cmd([[
   nnoremap <silent> <C-e><C-e> :<C-u>lua vim.lsp.buf.definition()<CR>
   nnoremap <silent> <C-e><C-r> :<C-u>lua vim.lsp.buf.references()<CR>
   nnoremap <silent> <C-e><C-d> :<C-u>lua vim.lsp.buf.rename()<CR>
-  nnoremap <silent> K :<C-u>lua vim.lsp.buf.hover()<CR>
 
   " Moving cursor
   nmap j <Plug>(accelerated_jk_gj)
@@ -140,6 +139,7 @@ vim.cmd([[
   vnoremap F <cmd>HopChar1CurrentLineBC<CR>
   nnoremap H :<C-u>lua require('tsht').move({ side = "start" })<CR>
   nnoremap L :<C-u>lua require('tsht').move({ side = "end" })<CR>
+  nnoremap K :<C-u>SymbolsOutline<CR>
 
   " github copilot
   " see https://github.com/github/copilot.vim/blob/release/doc/copilot.txt
