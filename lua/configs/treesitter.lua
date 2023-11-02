@@ -162,9 +162,8 @@ require('symbols-outline').setup {}
 
 require('nvim_context_vt').setup {
   -- see https://github.com/andersevenrud/nvim_context_vt
+  prefix = '',
   custom_parser = function(node, _, opts)
-    local utils = require('nvim_context_vt.utils')
-
     -- If you return `nil`, no virtual text will be displayed.
     if node:type() == 'function' then
       return nil
@@ -174,6 +173,6 @@ require('nvim_context_vt').setup {
     local start_row, _, _, _ = vim.treesitter.get_node_range(node)
 
     -- This is the standard text
-    return opts.prefix .. ' ' .. (start_row + 1) .. ': ' .. utils.get_node_text(node)[1]
+    return opts.prefix .. ' :' .. (start_row + 1)
   end,
 }
