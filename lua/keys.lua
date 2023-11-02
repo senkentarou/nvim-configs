@@ -122,6 +122,10 @@ vim.cmd([[
   nnoremap <silent> <C-e><C-r> :<C-u>lua vim.lsp.buf.references()<CR>
   nnoremap <silent> <C-e><C-d> :<C-u>lua vim.lsp.buf.rename()<CR>
 
+  " <C-s> Motion
+  nmap <C-s> <Nop>
+  nnoremap <silent> <C-s><C-s> %
+
   " Moving cursor
   nmap j <Plug>(accelerated_jk_gj)
   nmap k <Plug>(accelerated_jk_gk)
