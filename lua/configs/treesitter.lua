@@ -159,3 +159,21 @@ require('luasnip.loaders.from_vscode').lazy_load()
 require('nvim-autopairs').setup {}
 
 require('symbols-outline').setup {}
+
+require('nvim_context_vt').setup {
+  -- see https://github.com/andersevenrud/nvim_context_vt
+  custom_parser = function(node, _, opts)
+    local utils = require('nvim_context_vt.utils')
+
+    -- If you return `nil`, no virtual text will be displayed.
+    if node:type() == 'function' then
+      return nil
+    end
+
+    -- see https://neovim.io/doc/user/treesitter.html#vim.treesitter.get_node_range()
+    local start_row, _, _, _ = vim.treesitter.get_node_range(node)
+
+    -- This is the standard text
+    return opts.prefix .. ' ' .. (start_row + 1) .. ': ' .. utils.get_node_text(node)[1]
+  end,
+}
