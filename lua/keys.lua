@@ -129,6 +129,10 @@ vim.cmd([[
   " Moving cursor
   nmap j <Plug>(accelerated_jk_gj)
   nmap k <Plug>(accelerated_jk_gk)
+  nmap w <Plug>(smartword-w)
+  nmap b <Plug>(smartword-b)
+  nmap e <Plug>(smartword-e)
+  nmap ge <Plug>(smartword-ge)
   " Moving panes
   nnoremap <C-j> <C-w><C-j>
   nnoremap <C-k> <C-w><C-k>

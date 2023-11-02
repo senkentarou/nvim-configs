@@ -60,6 +60,7 @@ vim.cmd([[
   " Search word
   Plug 'phaazon/hop.nvim'
   Plug 'mfussenegger/nvim-treehopper'
+  Plug 'kana/vim-smartword'
   " Auto complete for bracket pairs
   Plug 'windwp/nvim-autopairs'
   Plug 'andymass/vim-matchup'
