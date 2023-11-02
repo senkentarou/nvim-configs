@@ -79,6 +79,14 @@ vim.cmd([[
   nnoremap <silent> <Leader>z :<C-u>RSpecCurrentFile<CR>
   nnoremap <silent> <Leader>Z :<C-u>RSpecNearest<CR>
   nnoremap <silent> <C-z> :<C-u>RSpecShowLastResult<CR>
+  " diff lines
+  vnoremap <silent> <C-y> :Linediff<CR>
+  nnoremap <silent> <C-y> :<C-u>LinediffReset<CR>
+  " utilities
+  inoremap <silent> jj <ESC>
+  nnoremap <silent> <Esc><Esc> :noh<CR>
+  nnoremap <silent> ; :<C-u>lua require('telescope.builtin').buffers({ sort_lastused = true, ignore_current_buffer = true })<CR>
+  nnoremap <silent> <C-q> :<C-u>lua require('global_functions').close_buffer()<CR>
 
   " <C-f> Find files
   nmap <C-f> <Nop>
@@ -102,9 +110,6 @@ vim.cmd([[
   nnoremap <silent> <C-g>h :<C-u>Gitsigns reset_buffer<CR>
   nnoremap <silent> + :<C-u>lua require('telescope').extensions.gh_pr.list({ remote = 'upstream', search = 'is:pr is:open user-review-requested:@me' })<CR>
   nnoremap <silent> _ :<C-u>lua require('telescope').extensions.gh_pr.list({ remote = 'upstream' })<CR>
-
-  " <C-s> Status
-  nnoremap <silent> <C-s><C-s> :<C-u>SymbolsOutline<CR>
 
   " <C-w> Filer
   nmap <C-w> <Nop>
@@ -157,16 +162,4 @@ vim.cmd([[
   imap <silent> <C-k> <Plug>(copilot-previous)
   imap <silent> <C-h> <Plug>(copilot-dismiss)
   imap <silent><script><expr> <C-l> copilot#Accept("\<CR>")
-
-  " Apply ESC
-  inoremap <silent> jj <ESC>
-  " No highlight
-  nnoremap <silent> <Esc><Esc> :noh<CR>
-  " Show buffers
-  nnoremap <silent> ; :<C-u>lua require('telescope.builtin').buffers({ sort_lastused = true, ignore_current_buffer = true })<CR>
-  " Close buffer
-  nnoremap <silent> <C-q> :<C-u>lua require('global_functions').close_buffer()<CR>
-  " Diff line
-  vnoremap <silent> <C-y> :Linediff<CR>
-  nnoremap <silent> <C-y> :<C-u>LinediffReset<CR>
 ]])
