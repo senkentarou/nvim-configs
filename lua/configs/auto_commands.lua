@@ -17,6 +17,12 @@ vim.cmd([[
     autocmd BufNewfile,BufRead *_spec.rb set filetype=rspec
   augroup END
 
+  augroup ReloadSettings
+    autocmd!
+    " Reload neovim settings under MYVIMRC directory lua file.
+    execute 'autocmd BufWritePost ' . fnamemodify($MYVIMRC, ':h') . '/**/*.lua silent source %'
+  augroup END
+
   augroup ColorSchemeSettings
     autocmd!
     " General
