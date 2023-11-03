@@ -1,7 +1,7 @@
 require('nvim-treesitter.configs').setup {
   autoload = {
     enable = true,
-    require('nvim-ts-autotag').setup({
+    require('nvim-ts-autotag').setup {
       enable_rename = false,
       filetypes = {
         'html',
@@ -10,7 +10,7 @@ require('nvim-treesitter.configs').setup {
         'typescript',
         'typescriptreact',
       },
-    }),
+    },
   },
   ensure_installed = {
     'ruby',

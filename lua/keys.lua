@@ -108,9 +108,7 @@ vim.cmd([[
   vnoremap <silent> <C-g><C-k> :Gitsigns stage_hunk<CR>
   nnoremap <silent> <C-g><C-h> :<C-u>Gitsigns reset_hunk<CR>
   vnoremap <silent> <C-g><C-h> :Gitsigns reset_hunk<CR>
-  nnoremap <silent> <C-g>j :<C-u>Gitsigns toggle_deleted<CR>
-  nnoremap <silent> <C-g>k :<C-u>Gitsigns stage_buffer<CR>
-  nnoremap <silent> <C-g>h :<C-u>Gitsigns reset_buffer<CR>
+  nnoremap <silent> - :<C-u>Gitsigns toggle_deleted<CR>
   nnoremap <silent> + :<C-u>lua require('telescope').extensions.gh_pr.list({ remote = 'upstream', search = 'is:pr is:open user-review-requested:@me' })<CR>
   nnoremap <silent> _ :<C-u>lua require('telescope').extensions.gh_pr.list({ remote = 'upstream' })<CR>
 

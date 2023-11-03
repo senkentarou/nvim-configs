@@ -167,7 +167,7 @@ null_ls.setup {
 }
 
 -- null-ls typescript integration
-require('typescript').setup({
+require('typescript').setup {
   disable_commands = false, -- prevent the plugin from creating Vim commands
   debug = false, -- enable debug logging for commands
   go_to_source_definition = {
@@ -183,7 +183,7 @@ require('typescript').setup({
       client.server_capabilities.documentFormattingProvider = false
     end,
   },
-})
+}
 -- Disable virtual_text since it's redundant due to lsp_lines.
 vim.diagnostic.config({
   update_in_insert = false,
