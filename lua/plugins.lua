@@ -8,13 +8,6 @@
 vim.cmd([[
   call plug#begin(stdpath('data') . '/plugged')
 
-  " Color Scheme
-  Plug 'w0ng/vim-hybrid'
-  " Start window
-  Plug 'goolord/alpha-nvim'
-  " Statusline
-  Plug 'nvim-lualine/lualine.nvim'
-  Plug 'nvim-tree/nvim-web-devicons'
   " LSP
   Plug 'nvim-lua/plenary.nvim'
   Plug 'williamboman/mason.nvim'
@@ -37,48 +30,48 @@ vim.cmd([[
   Plug 'aznhe21/actions-preview.nvim'
   Plug 'nvimtools/none-ls.nvim'
   Plug 'jose-elias-alvarez/typescript.nvim'
-  " Finder
+  " Telescope
   Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.3' }
-  " Accelerate up/down
-  Plug 'rhysd/accelerated-jk'
-  Plug 'haya14busa/vim-edgemotion'
-  " Replacer
+  " Treesitter
+  Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+  Plug 'sheerun/vim-polyglot'
+  Plug 'simrat39/symbols-outline.nvim'
+  Plug 'lukas-reineke/indent-blankline.nvim', { 'tag': 'v2.20.8' }
   Plug 'johmsalas/text-case.nvim'
   Plug 'machakann/vim-sandwich'
   Plug 'numToStr/Comment.nvim'
-  " Annotation
-  Plug 'folke/todo-comments.nvim'
-  " Line comparison
-  Plug 'AndrewRadev/linediff.vim'
-  " Parsing
-  Plug 'sheerun/vim-polyglot'
-  Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
-  Plug 'simrat39/symbols-outline.nvim'
   Plug 'andersevenrud/nvim_context_vt'
-  " Indent highlight
-  Plug 'lukas-reineke/indent-blankline.nvim', { 'tag': 'v2.20.8' }
-  " Search word
   Plug 'phaazon/hop.nvim'
   Plug 'mfussenegger/nvim-treehopper'
   Plug 'kana/vim-smartword'
-  " Auto complete for bracket pairs
   Plug 'windwp/nvim-autopairs'
   Plug 'andymass/vim-matchup'
   Plug 'RRethy/nvim-treesitter-endwise'
-  " Copilot
+  " Utilities
+  Plug 'w0ng/vim-hybrid'
+  Plug 'goolord/alpha-nvim'
+  Plug 'nvim-lualine/lualine.nvim'
+  Plug 'nvim-tree/nvim-web-devicons'
+  Plug 'rhysd/accelerated-jk'
+  Plug 'haya14busa/vim-edgemotion'
+  Plug 'folke/todo-comments.nvim'
+  Plug 'AndrewRadev/linediff.vim'
   Plug 'github/copilot.vim'
-  " rspec
-  Plug 'mogulla3/rspec.nvim'
-  " Quit
   Plug 'yutkat/confirm-quit.nvim'
+  Plug 'mogulla3/rspec.nvim'
 
+  "
   " My plugin
+  "
   Plug 'senkentarou/gopr.nvim'
   Plug 'senkentarou/goacf.nvim'
   Plug 'senkentarou/gobf.nvim'
   Plug 'senkentarou/telescope-gh-pr.nvim'
   Plug 'senkentarou/telescope-git-log.nvim'
 
+  "
+  " Switch to original plugin!
+  "
   " Plug 'lewis6991/gitsigns.nvim' " disable until https://github.com/lewis6991/gitsigns.nvim/issues/791 is as fixed
   Plug 'senkentarou/gitsigns.nvim' " Use instead of lewis6991/gitsigns.nvim
 
