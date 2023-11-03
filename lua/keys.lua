@@ -41,11 +41,16 @@
 -- * If you cannot apply your key mappings, you can see like ':verbose imap <C-h>' and can trace whole settings about it.
 vim.cmd([[
   " Do NOT quit on command mode.
-  " This config is inspired by https://zenn.dev/monaqa/articles/2020-12-22-vim-abbrev
-  cabbrev <expr> q (getcmdtype() ==# ":" && getcmdline() ==# "q") ? "echo 'use :quit'" : "q"
-  cabbrev <expr> qui (getcmdtype() ==# ":" && getcmdline() ==# "qui") ? "echo 'use :quit'" : "qui"
-  cabbrev <expr> wq (getcmdtype() ==# ":" && getcmdline() ==# "wq") ? "echo 'use :quit'" : "wq"
-  cabbrev <expr> xa (getcmdtype() ==# ":" && getcmdline() ==# "xa") ? "echo 'use :quit'" : "xa"
+  " https://stackoverflow.com/questions/11828270/how-do-i-exit-vim
+  function! s:command_solver(target)
+    return (getcmdtype() == ':' && getcmdline() ==# a:target)
+  endfunction
+
+  cnoreabbrev <expr> x <SID>command_solver('x') ? 'ConfirmQuit' : 'x'
+  cnoreabbrev <expr> q <SID>command_solver('q') ? 'ConfirmQuit' : 'q'
+  cnoreabbrev <expr> wq <SID>command_solver('wq') ? 'ConfirmQuit' : 'wq'
+  cnoreabbrev <expr> xa <SID>command_solver('xa') ? 'ConfirmQuitAll' : 'xa'
+  cnoreabbrev <expr> qa <SID>command_solver('qa') ? 'ConfirmQuitAll' : 'qa'
   cnoremap quit :<C-u>ConfirmQuit<CR>
 
   " Disable unuse commands
