@@ -52,6 +52,7 @@ vim.cmd([[
   nmap <C-z> <Nop>
   nnoremap Z <Nop>
   nnoremap Q <Nop>
+  nnoremap q <Nop>
   nnoremap q: <Nop>
 
   " <Space> Leaders
