@@ -159,8 +159,6 @@ require('luasnip.loaders.from_vscode').lazy_load()
 
 require('nvim-autopairs').setup {}
 
-require('symbols-outline').setup {}
-
 require('nvim_context_vt').setup {
   -- see https://github.com/andersevenrud/nvim_context_vt
   prefix = '',
@@ -176,4 +174,9 @@ require('nvim_context_vt').setup {
     -- This is the standard text
     return opts.prefix .. ' :' .. (start_row + 1)
   end,
+}
+
+require('docs-view').setup {
+  position = 'right',
+  width = 60,
 }

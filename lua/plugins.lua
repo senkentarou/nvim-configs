@@ -36,7 +36,6 @@ vim.cmd([[
   " Treesitter
   Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
   Plug 'sheerun/vim-polyglot'
-  Plug 'simrat39/symbols-outline.nvim'
   Plug 'lukas-reineke/indent-blankline.nvim', { 'tag': 'v2.20.8' }
   Plug 'johmsalas/text-case.nvim'
   Plug 'machakann/vim-sandwich'
@@ -48,6 +47,7 @@ vim.cmd([[
   Plug 'windwp/nvim-autopairs'
   Plug 'andymass/vim-matchup'
   Plug 'RRethy/nvim-treesitter-endwise'
+  Plug 'amrbashir/nvim-docs-view'
   " Utilities
   Plug 'w0ng/vim-hybrid'
   Plug 'goolord/alpha-nvim'
