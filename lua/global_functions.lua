@@ -21,7 +21,7 @@ G.close_buffer = function()
     'help',
     'vim-plug',
     'lspinfo',
-    'nvim-docs-view'
+    'nvim-docs-view',
   }, filetype) >= 0 then
     -- close pane
     command = 'close'
