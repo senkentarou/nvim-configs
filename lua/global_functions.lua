@@ -10,6 +10,12 @@ G.toggle_lsp_lines_text = function()
   })
 end
 
+G.move_to_start_context = function()
+  -- see https://neovim.io/doc/user/treesitter.html#TSNode%3Astart()
+  local row, _, _ = vim.treesitter.get_node():start()
+  vim.api.nvim_command(':' .. (row + 1))
+end
+
 G.close_buffer = function()
   local filetype = vim.bo.filetype
   local command = ''

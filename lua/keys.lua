@@ -102,14 +102,14 @@ vim.cmd([[
   nnoremap <silent> <C-g><C-g> :<C-u>lua require('gitsigns').setqflist('all')<CR>
   nnoremap <silent> <C-g><C-o> :<C-u>Goacf<CR>
   nnoremap <silent> <C-g><C-l> :<C-u>lua require('telescope').extensions.git_log.list_commits_on_file()<CR>
-  nnoremap <silent> <C-g><C-p> :<C-u>Gitsigns prev_hunk<CR>
-  nnoremap <silent> <C-g><C-n> :<C-u>Gitsigns next_hunk<CR>
-  nnoremap <silent> <C-g><C-j> :<C-u>Gitsigns undo_stage_hunk<CR>
-  nnoremap <silent> <C-g><C-k> :<C-u>Gitsigns stage_hunk<CR>
-  vnoremap <silent> <C-g><C-k> :Gitsigns stage_hunk<CR>
-  nnoremap <silent> <C-g><C-h> :<C-u>Gitsigns reset_hunk<CR>
-  vnoremap <silent> <C-g><C-h> :Gitsigns reset_hunk<CR>
-  nnoremap <silent> - :<C-u>Gitsigns toggle_deleted<CR>
+  nnoremap <C-g><C-p> :<C-u>Gitsigns prev_hunk<CR>
+  nnoremap <C-g><C-n> :<C-u>Gitsigns next_hunk<CR>
+  nnoremap <C-g><C-j> :<C-u>Gitsigns undo_stage_hunk<CR>
+  nnoremap <C-g><C-k> :<C-u>Gitsigns stage_hunk<CR>
+  vnoremap <C-g><C-k> :Gitsigns stage_hunk<CR>
+  nnoremap <C-g><C-h> :<C-u>Gitsigns reset_hunk<CR>
+  vnoremap <C-g><C-h> :Gitsigns reset_hunk<CR>
+  nnoremap - :<C-u>Gitsigns toggle_deleted<CR>
   nnoremap <silent> + :<C-u>lua require('telescope').extensions.gh_pr.list({ remote = 'upstream', search = 'is:pr is:open user-review-requested:@me' })<CR>
   nnoremap <silent> _ :<C-u>lua require('telescope').extensions.gh_pr.list({ remote = 'upstream' })<CR>
 
@@ -126,7 +126,7 @@ vim.cmd([[
 
   " <C-s> Motion
   nmap <C-s> <Nop>
-  nnoremap <silent> <C-s><C-s> %
+  nnoremap <silent> <C-s><C-s> :<C-u>TextCaseOpenTelescope<CR>
 
   " Moving cursor
   nmap j <Plug>(accelerated_jk_gj)
@@ -149,7 +149,8 @@ vim.cmd([[
   "  `sd(` pattern: (foo) => foo
   " sr: surround replace
   "  `sr("` pattern: (foo) => "foo"
-  nnoremap ss :<C-u>TextCaseOpenTelescope<CR>
+  nnoremap ss :<C-u>lua require('global_functions').move_to_start_context()<CR>
+  nnoremap sm %
   nnoremap sj <Plug>(edgemotion-j)
   vnoremap sj <Plug>(edgemotion-j)
   nnoremap sk <Plug>(edgemotion-k)
