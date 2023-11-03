@@ -121,7 +121,7 @@ vim.cmd([[
   nmap <C-e> <Nop>
   nnoremap <silent> <C-e><C-e> :<C-u>lua vim.lsp.buf.definition()<CR>
   nnoremap <silent> <C-e><C-r> :<C-u>lua vim.lsp.buf.references()<CR>
-  nnoremap <silent> <C-e><C-d> :<C-u>lua vim.lsp.buf.rename()<CR>
+  nnoremap <silent> <C-e>r :<C-u>lua vim.lsp.buf.rename()<CR>
 
   " <C-s> Motion
   nmap <C-s> <Nop>
