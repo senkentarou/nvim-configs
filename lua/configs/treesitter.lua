@@ -22,6 +22,7 @@ require('nvim-treesitter.configs').setup {
     'vim',
     'markdown',
     'bash',
+    'vimdoc',
   },
   incremental_selection = {
     enable = true,
