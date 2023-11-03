@@ -89,7 +89,6 @@ require('lualine').setup {
     },
     lualine_x = {
       'encoding',
-      'fileformat',
       'filetype',
     },
     lualine_y = {
