@@ -27,6 +27,7 @@ vim.cmd([[
   Plug 'hrsh7th/cmp-path'
   Plug 'hrsh7th/cmp-cmdline'
   Plug 'hrsh7th/nvim-cmp'
+  Plug 'roobert/action-hints.nvim'
   Plug 'aznhe21/actions-preview.nvim'
   Plug 'nvimtools/none-ls.nvim'
   Plug 'jose-elias-alvarez/typescript.nvim'

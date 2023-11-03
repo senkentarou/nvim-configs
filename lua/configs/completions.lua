@@ -208,6 +208,14 @@ require('actions-preview').setup {
   },
 }
 
+require('action-hints').setup {
+  template = {
+    definition = { text = " 📚", color = "#add8e6" },
+    references = { text = " 🔍 %s", color = "#ff6666" },
+  },
+  use_virtual_text = true,
+}
+
 require('mason').setup {}
 require('mason-lspconfig').setup {}
 require('mason-tool-installer').setup {}
