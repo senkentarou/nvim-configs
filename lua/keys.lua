@@ -49,7 +49,6 @@ vim.cmd([[
   cnoremap quit :<C-u>ConfirmQuit<CR>
 
   " Disable unuse commands
-  nmap <C-z> <Nop>
   nnoremap Z <Nop>
   nnoremap Q <Nop>
   nnoremap q <Nop>
@@ -78,11 +77,6 @@ vim.cmd([[
   " comments
   nmap <Leader>c <Plug>(comment_toggle_linewise_current)
   vmap <Leader>c <Plug>(comment_toggle_linewise_visual)
-  " rspecs
-  nnoremap <silent> <Leader>x :<C-u>RSpecJump!<CR>
-  nnoremap <silent> <Leader>z :<C-u>RSpecCurrentFile<CR>
-  nnoremap <silent> <Leader>Z :<C-u>RSpecNearest<CR>
-  nnoremap <silent> <C-z> :<C-u>RSpecShowLastResult<CR>
   " diff lines
   vnoremap <silent> <C-y> :Linediff<CR>
   nnoremap <silent> <C-y> :<C-u>LinediffReset<CR>
@@ -91,6 +85,13 @@ vim.cmd([[
   nnoremap <silent> <Esc><Esc> :noh<CR>
   nnoremap <silent> ; :<C-u>lua require('telescope.builtin').buffers({ sort_lastused = true, ignore_current_buffer = true })<CR>
   nnoremap <silent> <C-q> :<C-u>lua require('global_functions').close_buffer()<CR>
+
+  " <C-z> rspec
+  nmap <C-z> <Nop>
+  nnoremap <silent> <C-z><C-z> :<C-u>RSpecJump!<CR>
+  nnoremap <silent> <C-z><C-j> :<C-u>RSpecCurrentFile<CR>
+  nnoremap <silent> <C-z><C-k> :<C-u>RSpecNearest<CR>
+  nnoremap <silent> <C-z><C-l> :<C-u>RSpecShowLastResult<CR>
 
   " <C-f> Find files
   nmap <C-f> <Nop>
