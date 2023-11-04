@@ -44,5 +44,3 @@ require('rspec').setup {
 }
 
 require('confirm-quit').setup {}
-
-require('textcase').setup {}

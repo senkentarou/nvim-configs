@@ -132,7 +132,6 @@ vim.cmd([[
 
   " <C-s> Motion
   nmap <C-s> <Nop>
-  nnoremap <silent> <C-s><C-s> :<C-u>TextCaseOpenTelescope<CR>
 
   " Moving cursor
   nmap j <Plug>(accelerated_jk_gj)

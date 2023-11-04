@@ -36,7 +36,6 @@ vim.cmd([[
   Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
   Plug 'sheerun/vim-polyglot'
   Plug 'lukas-reineke/indent-blankline.nvim', { 'tag': 'v2.20.8' }
-  Plug 'johmsalas/text-case.nvim'
   Plug 'machakann/vim-sandwich'
   Plug 'numToStr/Comment.nvim'
   Plug 'andersevenrud/nvim_context_vt'
