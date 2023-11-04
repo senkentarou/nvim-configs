@@ -98,7 +98,22 @@ G.convert_word = function(opts)
       end,
     }),
     sorter = config.generic_sorter(opts),
-    attach_mappings = function(prompt_bufnr, _)
+    attach_mappings = function(prompt_bufnr, map)
+      map("i", "<C-r>", function()
+        actions.close(prompt_bufnr)
+
+        local selection = action_state.get_selected_entry()
+        local converted_word = convert(opts.current_word, selection.opts.condition)
+
+        if opts.current_word == converted_word then
+          return
+        end
+
+        -- replace by vim.lsp
+        local params = vim.lsp.util.make_position_params()
+        params.newName = converted_word
+        vim.lsp.buf_request(0, 'textDocument/rename', params)
+      end)
       actions.select_default:replace(function()
         actions.close(prompt_bufnr)
 
