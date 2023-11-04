@@ -35,6 +35,7 @@ G.convert_word = function(opts)
 
   opts = opts or {}
   opts.bufnr = vim.fn.bufnr()
+  opts.current_line = vim.fn.line('.')
   opts.current_word = vim.fn.expand("<cword>")
 
   if not opts.current_word:find('[a-zA-Z_]') then
@@ -69,12 +70,21 @@ G.convert_word = function(opts)
         },
       },
       entry_maker = function(entry)
+        local display = entry[1]
+        local condition = entry[2]
+
+        local converted_word = convert(opts.current_word, condition)
+        if opts.current_word == converted_word then
+          return
+        end
+
         return {
           value = entry,
-          display = entry[1],
-          ordinal = entry[1],
+          display = display,
+          ordinal = display,
           opts = {
-            condition = entry[2],
+            condition = condition,
+            converted_word = converted_word,
           },
         }
       end,
@@ -82,10 +92,8 @@ G.convert_word = function(opts)
     previewer = previewers.new_buffer_previewer({
       title = 'case preview',
       define_preview = function(self, entry, _)
-        local converted_word = convert(opts.current_word, entry.opts.condition)
-
         vim.api.nvim_buf_set_lines(self.state.bufnr, 0, -1, false, {
-          opts.current_word .. '  ' .. converted_word,
+          opts.current_word .. '  ' .. entry.opts.converted_word,
         })
       end,
     }),
@@ -101,9 +109,13 @@ G.convert_word = function(opts)
           return
         end
 
-        -- move word start
+        -- search word only current line
         -- https://vimhelp.org/builtin.txt.html#searchpos%28%29
-        local row_pos, col_pos = unpack(vim.fn.searchpos(opts.current_word, 'bcn'))
+        local row_pos, col_pos = unpack(vim.fn.searchpos(opts.current_word, 'bcn', opts.current_line))
+
+        if row_pos == 0 or col_pos == 0 then
+          return
+        end
 
         -- replace word
         vim.api.nvim_buf_set_text(0, row_pos - 1, col_pos - 1, row_pos - 1, col_pos - 1 + #opts.current_word, {
