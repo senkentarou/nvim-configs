@@ -11,8 +11,22 @@ G.toggle_lsp_lines_text = function()
 end
 
 G.move_to_start_context = function()
-  -- see https://neovim.io/doc/user/treesitter.html#TSNode%3Astart()
-  local row, col, _ = vim.treesitter.get_node():start()
+  -- see https://neovim.io/doc/user/treesitter.html#treesitter-node
+  -- and context taegets: https://github.com/andersevenrud/nvim_context_vt/blob/a14f9292b4bd68ceed433fc513f287641816dc6d/lua/nvim_context_vt/config.lua#L17
+  local targets = require('nvim_context_vt.config').targets
+
+  local node = vim.treesitter.get_node()
+  while node ~= nil and not vim.tbl_contains(targets, node:type()) do
+    node = node:parent()
+  end
+
+  if node == nil then
+    vim.notify('no target to move')
+    return
+  end
+
+  local row, col, _ = node:start()
+
   vim.api.nvim_command(':' .. (row + 1) .. 'norm' .. (col + 1) .. '|')
 end
 
