@@ -155,8 +155,8 @@ vim.cmd([[
   "  `sd(` pattern: (foo) => foo
   " sr: surround replace
   "  `sr("` pattern: (foo) => "foo"
-  nnoremap ss :<C-u>lua require('global_functions').move_to_start_context()<CR>
-  nnoremap sm %
+  nnoremap <silent> ss :<C-u>lua require('global_functions').move_to_start_context()<CR>
+  nnoremap sm <Plug>(matchup-%)
   nnoremap sj <Plug>(edgemotion-j)
   vnoremap sj <Plug>(edgemotion-j)
   nnoremap sk <Plug>(edgemotion-k)
