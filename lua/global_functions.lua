@@ -1,5 +1,97 @@
 local G = {}
 
+-- TODO: wants to as plugin
+G.convert_word = function(opts)
+  local actions = require('telescope.actions')
+  local action_state = require('telescope.actions.state')
+  local pickers = require('telescope.pickers')
+  local finders = require('telescope.finders')
+  local previewers = require('telescope.previewers')
+  local config = require('telescope.config').values
+
+  local function convert(word, condition)
+    if condition == 'snake_case' then
+      return word:gsub('([a-z])([A-Z])', '%1_%2'):lower()
+    elseif condition == 'camelCase' then
+      return word:gsub('(_)([a-z])', function(_, l)
+        return l:upper()
+      end)
+    end
+
+    vim.notify('cannot convert.')
+  end
+
+  opts = opts or {}
+  opts.bufnr = vim.fn.bufnr()
+  opts.current_word = vim.fn.expand("<cword>")
+
+  if not opts.current_word:find('[a-zA-Z_]') then
+    vim.notify('no convert case: ' .. opts.current_word)
+    return
+  end
+
+  pickers.new(opts, {
+    prompt_title = 'case "' .. opts.current_word .. '"',
+    results_title = 'convert actions',
+    finder = finders.new_table {
+      results = {
+        {
+          'convert to camelCase',
+          'camelCase',
+        },
+        {
+          'convert to snake_case',
+          'snake_case',
+        },
+      },
+      entry_maker = function(entry)
+        return {
+          value = entry,
+          display = entry[1],
+          ordinal = entry[1],
+          opts = {
+            condition = entry[2],
+          },
+        }
+      end,
+    },
+    previewer = previewers.new_buffer_previewer({
+      title = 'case preview',
+      define_preview = function(self, entry, _)
+        local converted_word = convert(opts.current_word, entry.opts.condition)
+
+        vim.api.nvim_buf_set_lines(self.state.bufnr, 0, -1, false, {
+          opts.current_word .. '  ' .. converted_word,
+        })
+      end,
+    }),
+    sorter = config.generic_sorter(opts),
+    attach_mappings = function(prompt_bufnr, _)
+      actions.select_default:replace(function()
+        actions.close(prompt_bufnr)
+
+        local selection = action_state.get_selected_entry()
+        local converted_word = convert(opts.current_word, selection.opts.condition)
+
+        if opts.current_word == converted_word then
+          return
+        end
+
+        -- move word start
+        -- https://vimhelp.org/builtin.txt.html#searchpos%28%29
+        local row_pos, col_pos = unpack(vim.fn.searchpos(opts.current_word, 'bcn'))
+
+        -- replace word
+        vim.api.nvim_buf_set_text(0, row_pos - 1, col_pos - 1, row_pos - 1, col_pos - 1 + #opts.current_word, {
+          converted_word,
+        })
+      end)
+
+      return true
+    end,
+  }):find()
+end
+
 G.toggle_lsp_lines_text = function()
   local flag = vim.diagnostic.config().virtual_lines
   local toggled_flag = not flag

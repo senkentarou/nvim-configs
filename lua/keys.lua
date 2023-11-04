@@ -132,6 +132,7 @@ vim.cmd([[
 
   " <C-s> Motion
   nmap <C-s> <Nop>
+  nnoremap <silent> <C-s><C-s> :<C-u>lua require('global_functions').convert_word()<CR>
 
   " Moving cursor
   nmap j <Plug>(accelerated_jk_gj)
