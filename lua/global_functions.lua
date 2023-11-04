@@ -16,6 +16,18 @@ G.convert_word = function(opts)
       return word:gsub('(_)([a-z])', function(_, l)
         return l:upper()
       end)
+    elseif condition == 'UPPER_SNAKE_CASE' then
+      return word:gsub('([a-z])([A-Z])', '%1_%2'):upper()
+    elseif condition == 'UpperCamelCase' then
+      local camel = word:gsub('(_)([a-z])', function(_, l)
+        return l:upper()
+      end)
+      return camel:gsub('^([a-z])', function(l)
+        return l:upper()
+      end)
+    elseif condition == 'chain-case' then
+      local snake = word:gsub('([a-z])([A-Z])', '%1_%2'):lower()
+      return snake:gsub('([a-z])_([a-z])', '%1-%2'):lower()
     end
 
     vim.notify('cannot convert.')
@@ -36,12 +48,24 @@ G.convert_word = function(opts)
     finder = finders.new_table {
       results = {
         {
+          'convert to snake_case',
+          'snake_case',
+        },
+        {
           'convert to camelCase',
           'camelCase',
         },
         {
-          'convert to snake_case',
-          'snake_case',
+          'convert to UPPER_SNAKE_CASE',
+          'UPPER_SNAKE_CASE',
+        },
+        {
+          'convert to UpperCamelCase',
+          'UpperCamelCase',
+        },
+        {
+          'convert to chain-case',
+          'chain-case',
         },
       },
       entry_maker = function(entry)
