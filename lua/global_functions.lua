@@ -25,9 +25,9 @@ G.convert_word = function(opts)
       return camel:gsub('^([a-z])', function(l)
         return l:upper()
       end)
-    elseif condition == 'chain-case' then
+    elseif condition == 'lower-chain-case' then
       local snake = word:gsub('([a-z])([A-Z])', '%1_%2'):lower()
-      return snake:gsub('([a-z])_([a-z])', '%1-%2'):lower()
+      return snake:gsub('([a-z])_([a-z])', '%1-%2')
     end
 
     vim.notify('cannot convert.')
@@ -65,8 +65,8 @@ G.convert_word = function(opts)
           'UpperCamelCase',
         },
         {
-          'convert to chain-case',
-          'chain-case',
+          'convert to lower-chain-case',
+          'lower-chain-case',
         },
       },
       entry_maker = function(entry)
