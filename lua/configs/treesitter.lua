@@ -161,7 +161,7 @@ require('nvim-autopairs').setup {}
 
 require('nvim_context_vt').setup {
   -- see https://github.com/andersevenrud/nvim_context_vt
-  prefix = '',
+  prefix = '§',
   custom_parser = function(node, _, opts)
     -- If you return `nil`, no virtual text will be displayed.
     if node:type() == 'function' then
@@ -172,7 +172,7 @@ require('nvim_context_vt').setup {
     local start_row, _, _, _ = vim.treesitter.get_node_range(node)
 
     -- This is the standard text
-    return opts.prefix .. ' :' .. (start_row + 1)
+    return opts.prefix .. ':' .. (start_row + 1)
   end,
 }
 
