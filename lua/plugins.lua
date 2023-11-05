@@ -67,6 +67,7 @@ vim.cmd([[
   Plug 'senkentarou/gobf.nvim'
   Plug 'senkentarou/telescope-gh-pr.nvim'
   Plug 'senkentarou/telescope-git-log.nvim'
+  Plug 'senkentarou/telescope-convert-word-case.nvim'
 
   "
   " Switch to original plugin!

@@ -132,7 +132,7 @@ vim.cmd([[
 
   " <C-s> Motion
   nmap <C-s> <Nop>
-  nnoremap <silent> <C-s><C-s> :<C-u>lua require('global_functions').convert_word()<CR>
+  nnoremap <silent> <C-s><C-s> :<C-u>lua require('telescope').extensions.convert_word_case.convert_word_case()<CR>
 
   " Moving cursor
   nmap j <Plug>(accelerated_jk_gj)
