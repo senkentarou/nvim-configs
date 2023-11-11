@@ -172,10 +172,16 @@ vim.cmd([[
   vnoremap sh ^
   nnoremap sl $
   vnoremap sl $
-  nnoremap f :<C-u>HopChar1CurrentLineAC<CR>
-  vnoremap f <CMD>HopChar1CurrentLineAC<CR>
-  nnoremap F :<C-u>HopChar1CurrentLineBC<CR>
-  vnoremap F <CMD>HopChar1CurrentLineBC<CR>
+  nnoremap f :<C-u>HopPatternCurrentLineAC<CR>
+  vnoremap f <CMD>HopPatternCurrentLineAC<CR>
+  nnoremap F :<C-u>HopPatternCurrentLineBC<CR>
+  vnoremap F <CMD>HopPatternCurrentLineBC<CR>
+  nnoremap t :<C-u>HopNode<CR>
+  vnoremap t <CMD>HopNode<CR>
+  nnoremap L :<C-u>HopPatternAC<CR>
+  vnoremap L <CMD>HopPatternAC<CR>
+  nnoremap H :<C-u>HopPatternBC<CR>
+  vnoremap H <CMD>HopPatternBC<CR>
 
   " github copilot
   " see https://github.com/github/copilot.vim/blob/release/doc/copilot.txt
