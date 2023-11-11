@@ -17,6 +17,10 @@ end
 telescope.setup {
   defaults = {
     mappings = {
+      n = {
+        ["<C-q>"] = actions.close,
+        ["<CR>"] = open_multiple_files,
+      },
       i = {
         ["<C-q>"] = actions.close,
         ["<Up>"] = actions.cycle_history_prev,
@@ -32,10 +36,6 @@ telescope.setup {
         ["<C-f>"] = actions.which_key,
         ["<C-u>"] = actions.preview_scrolling_up,
         ["<C-d>"] = actions.preview_scrolling_down,
-        ["<CR>"] = open_multiple_files,
-      },
-      n = {
-        ["<C-q>"] = actions.close,
         ["<CR>"] = open_multiple_files,
       },
     },
