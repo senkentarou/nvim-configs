@@ -53,6 +53,11 @@ vim.cmd([[
   cnoreabbrev <expr> qa <SID>command_solver('qa') ? 'ConfirmQuitAll' : 'qa'
   cnoremap quit :<C-u>ConfirmQuit<CR>
 
+  cnoremap <C-a> <Home>
+  cnoremap <C-e> <End>
+  cnoremap <C-h> <Left>
+  cnoremap <C-l> <Right>
+
   " Disable unuse commands
   nnoremap Z <Nop>
   nnoremap Q <Nop>
@@ -133,13 +138,17 @@ vim.cmd([[
   nnoremap <silent> <C-e>r :<C-u>lua vim.lsp.buf.rename()<CR>
   nnoremap = :<C-u>lua require('global_functions').toggle_lsp_lines_text()<CR>
 
-  " <C-a> Actions
-  nmap <C-a> <Nop>
-  nnoremap <silent> <C-a><C-a> :<C-u>lua require('actions-preview').code_actions()<CR>
+  " <C-x> Actions
+  nmap <C-x> <Nop>
+  nnoremap <silent> <C-x><C-x> :<C-u>lua require('actions-preview').code_actions()<CR>
 
   " <C-s> Motion
   nmap <C-s> <Nop>
   nnoremap <silent> <C-s><C-s> :<C-u>lua require('telescope').extensions.convert_word_case.convert_word_case()<CR>
+
+  " <C-a> Telescope
+  nmap <C-a> <Nop>
+  nnoremap <silent> <C-a><C-a> :<C-u>Telescope<CR>
 
   " Moving cursor
   nmap j <Plug>(accelerated_jk_gj)
@@ -153,7 +162,6 @@ vim.cmd([[
   nnoremap <C-k> <C-w><C-k>
   nnoremap <C-l> <C-w><C-l>
   nnoremap <C-h> <C-w><C-h>
-
   " Moving hop keyword
   nnoremap s <Nop>
   " sa: surround add
