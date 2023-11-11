@@ -53,6 +53,7 @@ vim.cmd([[
   Plug 'rhysd/accelerated-jk'
   Plug 'haya14busa/vim-edgemotion'
   Plug 'folke/todo-comments.nvim'
+  Plug 'lewis6991/gitsigns.nvim'
   Plug 'AndrewRadev/linediff.vim'
   Plug 'github/copilot.vim'
   Plug 'yutkat/confirm-quit.nvim'
@@ -74,9 +75,6 @@ vim.cmd([[
   "
   " Switch to original plugin!
   "
-  " Plug 'lewis6991/gitsigns.nvim' " disable until https://github.com/lewis6991/gitsigns.nvim/issues/791 is as fixed
-  Plug 'senkentarou/gitsigns.nvim' " Use instead of lewis6991/gitsigns.nvim
-
   " Plug 'nvim-telescope/telescope-file-browser.nvim' " disable until https://github.com/nvim-telescope/telescope-file-browser.nvim/issues/104 is as fixed
   Plug 'senkentarou/telescope-file-browser.nvim' " Use instead of nvim-telescope/telescope-file-browser.nvim
 
