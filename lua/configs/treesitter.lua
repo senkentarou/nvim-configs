@@ -175,8 +175,3 @@ require('nvim_context_vt').setup {
     return opts.prefix .. ':' .. (start_row + 1)
   end,
 }
-
-require('docs-view').setup {
-  position = 'right',
-  width = 60,
-}

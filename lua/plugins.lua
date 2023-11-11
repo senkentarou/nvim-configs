@@ -45,7 +45,6 @@ vim.cmd([[
   Plug 'windwp/nvim-autopairs'
   Plug 'andymass/vim-matchup'
   Plug 'RRethy/nvim-treesitter-endwise'
-  Plug 'amrbashir/nvim-docs-view'
   " Utilities
   Plug 'w0ng/vim-hybrid'
   Plug 'goolord/alpha-nvim'
