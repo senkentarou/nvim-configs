@@ -62,3 +62,10 @@ vim.g.copilot_filetypes = {
   markdown = true,
   text = true,
 }
+
+vim.g.memolist_filename_prefix_none = 1
+vim.g.memolist_memo_date = "%Y-%m-%d %H:%M:%S"
+vim.g.memolist_path = "~/.memolist/memo"
+vim.g.memolist_memo_suffix = "md"
+vim.g.memolist_fzf = 1
+vim.g.memolist_template_dir_path = "~/.memolist/memotemplates"

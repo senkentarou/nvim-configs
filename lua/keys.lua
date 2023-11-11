@@ -61,8 +61,6 @@ vim.cmd([[
 
   " <Space> Leaders
   let mapleader="\<Space>"
-  nnoremap <silent> <Leader><Leader> :<C-u>lua require('global_functions').toggle_lsp_lines_text()<CR>
-  nnoremap <silent> <Leader>a :<C-u>lua require('actions-preview').code_actions()<CR>
   " github integrations
   nnoremap <silent> <Leader>o :<C-u>Gobf<CR>
   vnoremap <silent> <Leader>o :Gobf<CR>
@@ -76,6 +74,10 @@ vim.cmd([[
   nnoremap <silent> <Leader>< :<C-u>lua require('telescope.builtin').live_grep({ default_text = require('global_functions').cword_as_input() })<CR>
   nnoremap <silent> <Leader>m :<C-u>lua require('telescope.builtin').grep_string({ search = vim.fn.input('[GrepString] ') })<CR>
   nnoremap <silent> <Leader>M :<C-u>lua require('telescope.builtin').live_grep({ default_text = vim.fn.input('[LiveGrep] ') })<CR>
+  " memo
+  nnoremap <silent> <Leader><Leader> :<C-u>lua require('global_functions').start_memo()<CR>
+  nnoremap <silent> <Leader>x :<C-u>lua require('telescope').extensions.memo.grep_string({ search = vim.fn.input('[MemoString] ') })<CR>
+  nnoremap <silent> <Leader>X :<C-u>lua require('telescope').extensions.memo.live_grep({ default_text = require('global_functions').cword_as_input() })<CR>
   " buffers
   nnoremap <Leader>w :<C-u>w<CR>
   nnoremap <silent> <Leader>W :lua vim.lsp.buf.format({ async = true })<CR>
@@ -129,6 +131,11 @@ vim.cmd([[
   nnoremap <silent> <C-e><C-e> :<C-u>lua vim.lsp.buf.definition()<CR>
   nnoremap <silent> <C-e><C-r> :<C-u>lua vim.lsp.buf.references()<CR>
   nnoremap <silent> <C-e>r :<C-u>lua vim.lsp.buf.rename()<CR>
+  nnoremap = :<C-u>lua require('global_functions').toggle_lsp_lines_text()<CR>
+
+  " <C-a> Actions
+  nmap <C-a> <Nop>
+  nnoremap <silent> <C-a><C-a> :<C-u>lua require('actions-preview').code_actions()<CR>
 
   " <C-s> Motion
   nmap <C-s> <Nop>

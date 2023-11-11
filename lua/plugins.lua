@@ -57,6 +57,9 @@ vim.cmd([[
   Plug 'github/copilot.vim'
   Plug 'yutkat/confirm-quit.nvim'
   Plug 'mogulla3/rspec.nvim'
+  " Memo https://zenn.dev/koga1020/articles/009766e1bec42c
+  Plug 'glidenote/memolist.vim'
+  Plug 'delphinus/telescope-memo.nvim'
 
   "
   " My plugin
