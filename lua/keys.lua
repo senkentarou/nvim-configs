@@ -176,8 +176,6 @@ vim.cmd([[
   vnoremap f <CMD>HopChar1CurrentLineAC<CR>
   nnoremap F :<C-u>HopChar1CurrentLineBC<CR>
   vnoremap F <CMD>HopChar1CurrentLineBC<CR>
-  nnoremap H :<C-u>lua require('tsht').move({ side = "start" })<CR>
-  nnoremap L :<C-u>lua require('tsht').move({ side = "end" })<CR>
 
   " github copilot
   " see https://github.com/github/copilot.vim/blob/release/doc/copilot.txt
