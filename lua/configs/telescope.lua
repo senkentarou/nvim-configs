@@ -25,15 +25,15 @@ telescope.setup {
         ["<C-q>"] = actions.close,
         ["<Up>"] = actions.cycle_history_prev,
         ["<Down>"] = actions.cycle_history_next,
-        ["<C-k>"] = actions.move_selection_previous,
-        ["<C-j>"] = actions.move_selection_next,
-        ["<C-a>"] = function()
-          vim.cmd ":norm! I"
-        end,
+        ["<C-a>"] = { "<HOME>", type = "command" },
+        ["<C-e>"] = { "<END>", type = "command" },
         ["<C-l>"] = function()
           vim.cmd ":norm! D"
         end,
-        ["<C-f>"] = actions.which_key,
+        ["<C-k>"] = actions.move_selection_previous,
+        ["<C-j>"] = actions.move_selection_next,
+        ["<C-b>"] = actions.results_scrolling_up,
+        ["<C-f>"] = actions.results_scrolling_down,
         ["<C-u>"] = actions.preview_scrolling_up,
         ["<C-d>"] = actions.preview_scrolling_down,
         ["<CR>"] = open_multiple_files,
