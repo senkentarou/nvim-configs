@@ -1,6 +1,7 @@
 local telescope = require("telescope")
 local actions = require("telescope.actions")
 local actions_state = require("telescope.actions.state")
+local lga_actions = require("telescope-live-grep-args.actions")
 local file_browser_actions = telescope.extensions.file_browser.actions
 
 local open_multiple_files = function(bufnr)
@@ -25,8 +26,14 @@ telescope.setup {
         ["<C-q>"] = actions.close,
         ["<Up>"] = actions.cycle_history_prev,
         ["<Down>"] = actions.cycle_history_next,
-        ["<C-a>"] = { "<HOME>", type = "command" },
-        ["<C-e>"] = { "<END>", type = "command" },
+        ["<C-a>"] = {
+          "<HOME>",
+          type = "command",
+        },
+        ["<C-e>"] = {
+          "<END>",
+          type = "command",
+        },
         ["<C-l>"] = function()
           vim.cmd ":norm! D"
         end,
@@ -138,6 +145,19 @@ telescope.setup {
         },
       },
     },
+    live_grep_args = {
+      auto_quoting = true,
+      mappings = {
+        i = {
+          ["<C-i>"] = lga_actions.quote_prompt({
+            postfix = " --iglob **",
+          }),
+          ["<C-r>"] = lga_actions.quote_prompt({
+            postfix = " --iglob !**/spec/** ",
+          }),
+        },
+      },
+    },
   },
 }
 
@@ -146,3 +166,4 @@ telescope.load_extension('gh_pr')
 telescope.load_extension('git_log')
 telescope.load_extension('convert_word_case')
 telescope.load_extension('memo')
+telescope.load_extension('live_grep_args')
