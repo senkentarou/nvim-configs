@@ -150,6 +150,9 @@ vim.cmd([[
   nmap <C-a> <Nop>
   nnoremap <silent> <C-a><C-a> :<C-u>Telescope<CR>
 
+  " <C-t> Nop (tmux prefix)
+  nmap <C-t> <Nop>
+
   " Moving cursor
   nmap j <Plug>(accelerated_jk_gj)
   nmap k <Plug>(accelerated_jk_gk)
