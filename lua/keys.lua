@@ -59,6 +59,8 @@ vim.cmd([[
 
   " <Space> Leaders
   let mapleader="\<Space>"
+  nnoremap <silent> <Leader><Leader> :<C-u>lua require('global_functions').start_memo()<CR>
+  nnoremap <silent> <Leader>x :<C-u>lua require('telescope').extensions.memo.grep_string({ search = vim.fn.input('[MemoString] ') })<CR>
   " github integrations
   nnoremap <silent> <Leader>o :<C-u>Gobf<CR>
   vnoremap <silent> <Leader>o :Gobf<CR>
@@ -88,13 +90,6 @@ vim.cmd([[
   nnoremap <silent> <Esc><Esc> :noh<CR>
   nnoremap <silent> ; :<C-u>lua require('telescope.builtin').buffers({ sort_lastused = true, ignore_current_buffer = true })<CR>
   nnoremap <silent> <C-q> :<C-u>lua require('global_functions').close_buffer()<CR>
-
-  " <C-z> rspec
-  nmap <C-z> <Nop>
-  nnoremap <silent> <C-z><C-z> :<C-u>lua require('global_functions').toggle_rspec_file()<CR>
-  nnoremap <silent> <C-z><C-j> :<C-u>lua require('neotest').run.run()<CR>
-  nnoremap <silent> <C-z><C-k> :<C-u>lua require('neotest').run.run(vim.fn.expand("%"))<CR>
-  nnoremap <silent> <C-z><C-l> :<C-u>lua require('neotest').run.run_last()<CR>
 
   " <C-f> Find files
   nmap <C-f> <Nop>
@@ -129,16 +124,27 @@ vim.cmd([[
   nnoremap <silent> <C-e>r :<C-u>lua vim.lsp.buf.rename()<CR>
   nnoremap = :<C-u>lua require('global_functions').toggle_lsp_lines_text()<CR>
 
-  " <C-x> Post
+ " <C-x> Test
   nmap <C-x> <Nop>
-  nnoremap <silent> <Leader><Leader> :<C-u>lua require('global_functions').start_memo()<CR>
-  nnoremap <silent> <C-x><C-x> :<C-u>lua require('telescope').extensions.memo.grep_string({ search = vim.fn.input('[MemoString] ') })<CR>
+  nnoremap <silent> <C-x><C-x> :<C-u>lua require('global_functions').toggle_rspec_file()<CR>
+  nnoremap <silent> <C-x><C-j> :<C-u>lua require('neotest').run.run()<CR>
+  nnoremap <silent> <C-x><C-k> :<C-u>lua require('neotest').run.run(vim.fn.expand("%"))<CR>
+  nnoremap <silent> <C-x><C-l> :<C-u>lua require('neotest').run.run_last()<CR>
 
   " <C-a> Action
   nmap <C-a> <Nop>
   nnoremap <silent> <C-a><C-a> :<C-u>lua require('actions-preview').code_actions()<CR>
 
-  " <C-t> Nop (tmux prefix)
+  " <C-z> Nop
+  nmap <C-z> <Nop>
+
+  " <C-c> Nop (preserve for cancellation)
+  nmap <C-c> <Nop>
+
+  " <C-b> Nop (cannot reach left hand finger)
+  nmap <C-b> <Nop>
+
+  " <C-t> Nop (preserve for tmux prefix)
   nmap <C-t> <Nop>
 
   " <C-s> Motion
