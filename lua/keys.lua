@@ -46,13 +46,6 @@ vim.cmd([[
     return (getcmdtype() == ':' && getcmdline() ==# a:target)
   endfunction
 
-  cnoreabbrev <expr> x <SID>command_solver('x') ? 'ConfirmQuit' : 'x'
-  cnoreabbrev <expr> q <SID>command_solver('q') ? 'ConfirmQuit' : 'q'
-  cnoreabbrev <expr> wq <SID>command_solver('wq') ? 'ConfirmQuit' : 'wq'
-  cnoreabbrev <expr> xa <SID>command_solver('xa') ? 'ConfirmQuitAll' : 'xa'
-  cnoreabbrev <expr> qa <SID>command_solver('qa') ? 'ConfirmQuitAll' : 'qa'
-  cnoremap quit :<C-u>ConfirmQuit<CR>
-
   cnoremap <C-a> <Home>
   cnoremap <C-e> <End>
   cnoremap <C-h> <Left>
@@ -84,6 +77,8 @@ vim.cmd([[
   nnoremap <silent> <Leader>x :<C-u>lua require('telescope').extensions.memo.grep_string({ search = vim.fn.input('[MemoString] ') })<CR>
   nnoremap <silent> <Leader>X :<C-u>lua require('telescope').extensions.memo.live_grep({ default_text = require('global_functions').cword_as_input() })<CR>
   " buffers
+  nnoremap <Leader>z :<C-u>ConfirmQuitAll<CR>
+  nnoremap <Leader>q :<C-u>ConfirmQuit<CR>
   nnoremap <Leader>w :<C-u>w<CR>
   nnoremap <silent> <Leader>W :lua vim.lsp.buf.format({ async = true })<CR>
   " comments
