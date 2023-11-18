@@ -57,8 +57,9 @@ vim.cmd([[
   nnoremap <silent> <Leader>x :<C-u>lua require('telescope').extensions.memo.grep_string({ search = vim.fn.input('[MemoString] ') })<CR>
   " github integrations
   nnoremap <silent> <Leader>o :<C-u>Gobf<CR>
-  vnoremap <silent> <Leader>o :Gobf<CR>
-  nnoremap <silent> <Leader>O :<C-u>lua require('gobf').open_git_blob_file({ target_hash = vim.fn.input('[CommitHash] ')})<CR>
+  vnoremap <silent> <Leader>o <CMD>Gobf<CR>
+  nnoremap <silent> <Leader>O :<C-u>Gobfop<CR>
+  vnoremap <silent> <Leader>O <CMD>Gobfop<CR>
   nnoremap <silent> <Leader>p :<C-u>Gocd<CR>
   nnoremap <silent> <Leader>P :<C-u>Gopr<CR>
   " grep words
