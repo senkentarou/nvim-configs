@@ -45,6 +45,12 @@ vim.cmd([[
   Plug 'windwp/nvim-autopairs'
   Plug 'andymass/vim-matchup'
   Plug 'RRethy/nvim-treesitter-endwise'
+  " Test
+  Plug 'nvim-neotest/neotest'
+  Plug 'olimorris/neotest-rspec'
+  " Memo https://zenn.dev/koga1020/articles/009766e1bec42c
+  Plug 'glidenote/memolist.vim'
+  Plug 'delphinus/telescope-memo.nvim'
   " Utilities
   Plug 'w0ng/vim-hybrid'
   Plug 'goolord/alpha-nvim'
@@ -57,10 +63,6 @@ vim.cmd([[
   Plug 'AndrewRadev/linediff.vim'
   Plug 'github/copilot.vim'
   Plug 'yutkat/confirm-quit.nvim'
-  Plug 'mogulla3/rspec.nvim'
-  " Memo https://zenn.dev/koga1020/articles/009766e1bec42c
-  Plug 'glidenote/memolist.vim'
-  Plug 'delphinus/telescope-memo.nvim'
 
   "
   " My plugin

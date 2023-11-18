@@ -72,10 +72,6 @@ vim.cmd([[
   nnoremap <silent> <Leader>< :<C-u>lua require("telescope").extensions.live_grep_args.live_grep_args({ default_text = require('global_functions').cword_as_input() })<CR>
   nnoremap <silent> <Leader>m :<C-u>lua require('telescope.builtin').grep_string({ search = vim.fn.input('[GrepString] ') })<CR>
   nnoremap <silent> <Leader>M :<C-u>lua require("telescope").extensions.live_grep_args.live_grep_args({ default_text = vim.fn.input('[LiveGrep] ') })<CR>
-  " memo
-  nnoremap <silent> <Leader><Leader> :<C-u>lua require('global_functions').start_memo()<CR>
-  nnoremap <silent> <Leader>x :<C-u>lua require('telescope').extensions.memo.grep_string({ search = vim.fn.input('[MemoString] ') })<CR>
-  nnoremap <silent> <Leader>X :<C-u>lua require('telescope').extensions.memo.live_grep({ default_text = require('global_functions').cword_as_input() })<CR>
   " buffers
   nnoremap <Leader>z :<C-u>ConfirmQuitAll<CR>
   nnoremap <Leader>q :<C-u>ConfirmQuit<CR>
@@ -95,10 +91,10 @@ vim.cmd([[
 
   " <C-z> rspec
   nmap <C-z> <Nop>
-  nnoremap <silent> <C-z><C-z> :<C-u>RSpecJump!<CR>
-  nnoremap <silent> <C-z><C-j> :<C-u>RSpecCurrentFile<CR>
-  nnoremap <silent> <C-z><C-k> :<C-u>RSpecNearest<CR>
-  nnoremap <silent> <C-z><C-l> :<C-u>RSpecShowLastResult<CR>
+  nnoremap <silent> <C-z><C-z> :<C-u>lua require('global_functions').toggle_rspec_file()<CR>
+  nnoremap <silent> <C-z><C-j> :<C-u>lua require('neotest').run.run()<CR>
+  nnoremap <silent> <C-z><C-k> :<C-u>lua require('neotest').run.run(vim.fn.expand("%"))<CR>
+  nnoremap <silent> <C-z><C-l> :<C-u>lua require('neotest').run.run_last()<CR>
 
   " <C-f> Find files
   nmap <C-f> <Nop>
@@ -133,20 +129,21 @@ vim.cmd([[
   nnoremap <silent> <C-e>r :<C-u>lua vim.lsp.buf.rename()<CR>
   nnoremap = :<C-u>lua require('global_functions').toggle_lsp_lines_text()<CR>
 
-  " <C-x> Actions
+  " <C-x> Post
   nmap <C-x> <Nop>
-  nnoremap <silent> <C-x><C-x> :<C-u>lua require('actions-preview').code_actions()<CR>
+  nnoremap <silent> <Leader><Leader> :<C-u>lua require('global_functions').start_memo()<CR>
+  nnoremap <silent> <C-x><C-x> :<C-u>lua require('telescope').extensions.memo.grep_string({ search = vim.fn.input('[MemoString] ') })<CR>
+
+  " <C-a> Action
+  nmap <C-a> <Nop>
+  nnoremap <silent> <C-a><C-a> :<C-u>lua require('actions-preview').code_actions()<CR>
+
+  " <C-t> Nop (tmux prefix)
+  nmap <C-t> <Nop>
 
   " <C-s> Motion
   nmap <C-s> <Nop>
   nnoremap <silent> <C-s><C-s> :<C-u>lua require('telescope').extensions.convert_word_case.convert_word_case()<CR>
-
-  " <C-a> Telescope
-  nmap <C-a> <Nop>
-  nnoremap <silent> <C-a><C-a> :<C-u>Telescope<CR>
-
-  " <C-t> Nop (tmux prefix)
-  nmap <C-t> <Nop>
 
   " Moving cursor
   nmap j <Plug>(accelerated_jk_gj)
