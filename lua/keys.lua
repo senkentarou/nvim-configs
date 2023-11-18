@@ -40,12 +40,6 @@
 --
 -- * If you cannot apply your key mappings, you can see like ':verbose imap <C-h>' and can trace whole settings about it.
 vim.cmd([[
-  " Do NOT quit on command mode.
-  " https://stackoverflow.com/questions/11828270/how-do-i-exit-vim
-  function! s:command_solver(target)
-    return (getcmdtype() == ':' && getcmdline() ==# a:target)
-  endfunction
-
   cnoremap <C-a> <Home>
   cnoremap <C-e> <End>
   cnoremap <C-h> <Left>
