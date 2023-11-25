@@ -64,11 +64,8 @@ vim.cmd([[
   nnoremap <silent> <Leader>P :<C-u>Gopr<CR>
   " grep words
   nnoremap <silent> <Leader>n :<C-u>lua require('telescope.builtin').grep_string({ search = vim.fn.histget('@', -1) })<CR>
-  nnoremap <silent> <Leader>N :<C-u>lua require("telescope").extensions.live_grep_args.live_grep_args({ default_text = vim.fn.histget('@', -1) })<CR>
   nnoremap <silent> <Leader>, :<C-u>lua require('telescope.builtin').grep_string({ search = require('global_functions').cword_as_input() })<CR>
-  nnoremap <silent> <Leader>< :<C-u>lua require("telescope").extensions.live_grep_args.live_grep_args({ default_text = require('global_functions').cword_as_input() })<CR>
   nnoremap <silent> <Leader>m :<C-u>lua require('telescope.builtin').grep_string({ search = vim.fn.input('[GrepString] ') })<CR>
-  nnoremap <silent> <Leader>M :<C-u>lua require("telescope").extensions.live_grep_args.live_grep_args({ default_text = vim.fn.input('[LiveGrep] ') })<CR>
   " buffers
   nnoremap <Leader>z :<C-u>ConfirmQuitAll<CR>
   nnoremap <Leader>q :<C-u>ConfirmQuit<CR>

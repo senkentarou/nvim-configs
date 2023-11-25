@@ -32,7 +32,6 @@ vim.cmd([[
   Plug 'jose-elias-alvarez/typescript.nvim'
   " Telescope
   Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.4' }
-  Plug 'nvim-telescope/telescope-live-grep-args.nvim'
   " Treesitter
   Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
   Plug 'sheerun/vim-polyglot'
