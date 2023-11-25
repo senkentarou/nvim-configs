@@ -97,9 +97,6 @@ vim.cmd([[
   nnoremap <silent> <C-g><C-l> :<C-u>lua require('telescope').extensions.git_log.list_commits_on_file()<CR>
   nnoremap <C-g><C-p> :<C-u>Gitsigns prev_hunk<CR>
   nnoremap <C-g><C-n> :<C-u>Gitsigns next_hunk<CR>
-  nnoremap <C-g><C-j> :<C-u>Gitsigns undo_stage_hunk<CR>
-  nnoremap <C-g><C-k> :<C-u>Gitsigns stage_hunk<CR>
-  vnoremap <C-g><C-k> :Gitsigns stage_hunk<CR>
   nnoremap <C-g><C-h> :<C-u>Gitsigns reset_hunk<CR>
   vnoremap <C-g><C-h> :Gitsigns reset_hunk<CR>
   nnoremap - :<C-u>Gitsigns toggle_deleted<CR>
