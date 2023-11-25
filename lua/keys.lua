@@ -46,9 +46,12 @@ vim.cmd([[
   cnoremap <C-l> <Right>
 
   " Disable unuse commands
+  " close
   nnoremap Z <Nop>
   nnoremap Q <Nop>
+  " macro
   nnoremap q <Nop>
+  " command line window
   nnoremap q: <Nop>
 
   " <Space> Leaders
