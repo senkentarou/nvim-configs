@@ -86,7 +86,6 @@ vim.cmd([[
   " <C-f> Find files
   nmap <C-f> <Nop>
   nnoremap <silent> <C-f><C-f> :<C-u>lua require('telescope.builtin').find_files()<CR>
-  nnoremap <silent> <C-f><C-j> :<C-u>lua require('telescope.builtin').oldfiles()<CR>
 
   " <C-g> Git
   nmap <C-g> <Nop>
@@ -114,6 +113,7 @@ vim.cmd([[
   nnoremap <silent> <C-e><C-e> :<C-u>lua vim.lsp.buf.definition()<CR>
   nnoremap <silent> <C-e><C-r> :<C-u>lua vim.lsp.buf.references()<CR>
   nnoremap <silent> <C-e>r :<C-u>lua vim.lsp.buf.rename()<CR>
+  nnoremap <silent> <C-e><C-a> :<C-u>lua require('actions-preview').code_actions()<CR>
   nnoremap = :<C-u>lua require('global_functions').toggle_lsp_lines_text()<CR>
 
  " <C-x> Test
@@ -123,9 +123,8 @@ vim.cmd([[
   nnoremap <silent> <C-x><C-k> :<C-u>lua require('neotest').run.run(vim.fn.expand("%"))<CR>
   nnoremap <silent> <C-x><C-l> :<C-u>lua require('neotest').run.run_last()<CR>
 
-  " <C-a> Action
+  " <C-a> Nop
   nmap <C-a> <Nop>
-  nnoremap <silent> <C-a><C-a> :<C-u>lua require('actions-preview').code_actions()<CR>
 
   " <C-z> Nop
   nmap <C-z> <Nop>
