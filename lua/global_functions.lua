@@ -117,12 +117,11 @@ G.close_buffer = function()
   vim.api.nvim_command(command)
 end
 
-G.cword_as_input = function()
-  -- add cword into input history
+G.histadd_string = function(input)
+  -- add input into history
   -- :history @, if you want to see history
-  local cword = vim.fn.expand("<cword>")
-  vim.fn.histadd('@', cword)
-  return cword
+  vim.fn.histadd('@', input)
+  return input
 end
 
 return G

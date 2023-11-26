@@ -1,4 +1,6 @@
 local telescope = require("telescope")
+local finders = require("telescope.finders")
+local make_entry = require("telescope.make_entry")
 local actions = require("telescope.actions")
 local actions_state = require("telescope.actions.state")
 local file_browser_actions = telescope.extensions.file_browser.actions
@@ -12,6 +14,70 @@ local open_multiple_files = function(bufnr)
       vim.cmd(string.format("%s %s", "edit", section.path))
     end
   end
+end
+
+local picker_config = {
+  find_files = {
+    base_command = {
+      "rg",
+      "--files",
+      "--hidden",
+      "--glob=!.git/",
+    },
+    additional_options = {
+      "--glob=!spec/",
+    },
+    enable_options = false,
+  },
+  grep_string = {
+    base_command = {
+      "rg",
+      "--column",
+      "--line-number",
+      "--no-heading",
+      "--color=never",
+      "--smart-case",
+      "--with-filename",
+      "--trim",
+      "--hidden",
+      "--glob=!.git/",
+    },
+    additional_options = {
+      "--glob=!spec/",
+    },
+    enable_options = false,
+  },
+}
+
+local find_files_command = function()
+  local conf = picker_config.find_files
+  local command = vim.deepcopy(conf.base_command)
+
+  if conf.enable_options then
+    table.insert(command, conf.additional_options)
+  end
+
+  return vim.tbl_flatten(command)
+end
+
+local grep_string_command = function()
+  local conf = picker_config.grep_string
+  local command = vim.deepcopy(conf.base_command)
+
+  if conf.enable_options then
+    table.insert(command, conf.additional_options)
+  end
+
+  -- need to add history before grep_string
+  local latest_hist = vim.fn.histget('@', -1) or ''
+  if latest_hist ~= '' then
+    table.insert(command, {
+      "--",
+      latest_hist,
+    })
+  end
+
+  return vim.tbl_flatten(command)
 end
 
 telescope.setup {
@@ -67,43 +133,40 @@ telescope.setup {
       preview_cutoff = 120,
     },
   },
-  vimgrep_arguments = {
-    "rg",
-    "--column",
-    "--line-number",
-    "--no-heading",
-    "--color=always",
-    "--smart-case",
-    "--with-filename",
-    "--trim",
-  },
+  vimgrep_arguments = picker_config.grep_string.base_command,
   pickers = {
     find_files = {
       cwd = vim.fn.systemlist("git rev-parse --show-toplevel")[1],
-      find_command = {
-        "rg",
-        "--files",
-        "--hidden",
-        "--glob=!.git/",
+      find_command = picker_config.find_files.base_command,
+      mappings = {
+        i = {
+          -- toggle excludes by glob
+          ["<C-r>"] = function(bufnr)
+            picker_config.find_files.enable_options = not picker_config.find_files.enable_options
+
+            local current_picker = actions_state.get_current_picker(bufnr)
+            current_picker:refresh(finders.new_oneshot_job(find_files_command(), {
+              entry_maker = make_entry.gen_from_file(),
+            }))
+          end,
+        },
       },
-    },
-    live_grep = {
-      cwd = vim.fn.systemlist("git rev-parse --show-toplevel")[1],
-      glob_pattern = '!.git/',
-      additional_args = function()
-        return {
-          '--hidden',
-        }
-      end,
     },
     grep_string = {
       cwd = vim.fn.systemlist("git rev-parse --show-toplevel")[1],
-      additional_args = function()
-        return {
-          '--hidden',
-          "--glob=!.git/",
-        }
-      end,
+      mappings = {
+        i = {
+          -- toggle excludes by glob
+          ["<C-r>"] = function(bufnr)
+            picker_config.grep_string.enable_options = not picker_config.grep_string.enable_options
+
+            local current_picker = actions_state.get_current_picker(bufnr)
+            current_picker:refresh(finders.new_oneshot_job(grep_string_command(), {
+              entry_maker = make_entry.gen_from_vimgrep(),
+            }))
+          end,
+        },
+      },
     },
   },
   extensions = {
