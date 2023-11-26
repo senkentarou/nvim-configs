@@ -57,6 +57,7 @@ cmp.setup({
       with_text = true,
       menu = {
         buffer = '[Buf]',
+        rg = '[RGrep]',
         nvim_lsp = '[LSP]',
         nvim_lua = '[API]',
         luasnip = '[Snip]',
@@ -110,6 +111,11 @@ cmp.setup({
   sources = cmp.config.sources({
     {
       name = 'buffer',
+    },
+    {
+      name = 'rg',
+      -- Try it when you feel cmp performance is poor
+      -- keyword_length = 3
     },
     {
       name = 'nvim_lsp',

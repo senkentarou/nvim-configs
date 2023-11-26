@@ -20,6 +20,7 @@ vim.cmd([[
   Plug 'rafamadriz/friendly-snippets'
   Plug 'onsails/lspkind.nvim'
   Plug 'L3MON4D3/LuaSnip'
+  Plug 'lukas-reineke/cmp-rg'
   Plug 'saadparwaiz1/cmp_luasnip'
   Plug 'hrsh7th/cmp-nvim-lsp'
   Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
