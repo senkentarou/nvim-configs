@@ -65,6 +65,8 @@ vim.cmd([[
   vnoremap <silent> <Leader>O <CMD>Gobfop<CR>
   nnoremap <silent> <Leader>p :<C-u>Gocd<CR>
   nnoremap <silent> <Leader>P :<C-u>Gopr<CR>
+  " snippet
+  nnoremap <silent> <Leader>a :<C-u>lua require('telescope').extensions.luasnip.luasnip()<CR>
   " grep words
   nnoremap <silent> <Leader>n :<C-u>lua require('telescope.builtin').grep_string({ search = vim.fn.histget('@', -1) })<CR>
   nnoremap <silent> <Leader>, :<C-u>lua require('telescope.builtin').grep_string({ search = require('global_functions').cword_as_input() })<CR>
