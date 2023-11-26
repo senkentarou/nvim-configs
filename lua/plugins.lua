@@ -62,8 +62,8 @@ vim.cmd([[
   Plug 'folke/todo-comments.nvim'
   Plug 'lewis6991/gitsigns.nvim'
   Plug 'AndrewRadev/linediff.vim'
-  Plug 'github/copilot.vim'
   Plug 'yutkat/confirm-quit.nvim'
+  Plug 'zbirenbaum/copilot.lua'
 
   "
   " My plugin

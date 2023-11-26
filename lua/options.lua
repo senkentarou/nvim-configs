@@ -47,22 +47,6 @@ local function toggle_hlsearch(char)
 end
 vim.on_key(toggle_hlsearch, ns)
 
-vim.g.copilot_no_tab_map = true
-vim.g.copilot_filetypes = {
-  ['*'] = false,
-  ruby = true,
-  rspec = true,
-  javascript = true,
-  javascriptreact = true,
-  typescript = true,
-  typescriptreact = true,
-  yaml = true,
-  json = true,
-  lua = true,
-  markdown = true,
-  text = true,
-}
-
 vim.g.memolist_filename_prefix_none = 1
 vim.g.memolist_memo_date = "%Y-%m-%d %H:%M:%S"
 vim.g.memolist_path = "~/.memolist/memo"

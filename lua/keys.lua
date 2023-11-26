@@ -184,11 +184,4 @@ vim.cmd([[
   vnoremap L <CMD>HopPatternAC<CR>
   nnoremap H :<C-u>HopPatternBC<CR>
   vnoremap H <CMD>HopPatternBC<CR>
-
-  " github copilot
-  " see https://github.com/github/copilot.vim/blob/release/doc/copilot.txt
-  imap <silent> <C-j> <Plug>(copilot-next)
-  imap <silent> <C-k> <Plug>(copilot-previous)
-  imap <silent> <C-h> <Plug>(copilot-dismiss)
-  imap <silent><script><expr> <C-l> copilot#Accept("\<CR>")
 ]])
