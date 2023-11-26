@@ -45,6 +45,7 @@ require('nvim-treesitter.configs').setup {
 }
 
 local cmp = require('cmp')
+local lspkind = require("lspkind")
 local luasnip = require('luasnip')
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -53,7 +54,7 @@ end
 
 cmp.setup({
   formatting = {
-    format = require('lspkind').cmp_format({
+    format = lspkind.cmp_format({
       with_text = true,
       menu = {
         buffer = '[Buf]',
@@ -114,8 +115,7 @@ cmp.setup({
     },
     {
       name = 'rg',
-      -- Try it when you feel cmp performance is poor
-      -- keyword_length = 3
+      keyword_length = 3,
     },
     {
       name = 'nvim_lsp',

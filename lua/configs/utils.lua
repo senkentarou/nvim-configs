@@ -16,6 +16,7 @@ require('todo-comments').setup {
 require('confirm-quit').setup {}
 
 require('copilot').setup {
+  panel = { enabled = false },
   suggestion = {
     enabled = true,
     auto_trigger = true,
