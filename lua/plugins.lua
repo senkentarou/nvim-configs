@@ -32,7 +32,7 @@ vim.cmd([[
   Plug 'nvimtools/none-ls.nvim'
   Plug 'jose-elias-alvarez/typescript.nvim'
   " Telescope
-  Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.4' }
+  Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.5' }
   Plug 'nvim-telescope/telescope-file-browser.nvim'
   Plug 'benfowler/telescope-luasnip.nvim'
   " Treesitter
