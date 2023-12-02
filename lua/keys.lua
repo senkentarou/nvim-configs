@@ -118,12 +118,12 @@ vim.cmd([[
   nnoremap <silent> <C-e><C-a> :<C-u>lua require('actions-preview').code_actions()<CR>
   nnoremap = :<C-u>lua require('global_functions').toggle_lsp_lines_text()<CR>
 
- " <C-x> Test
+  " <C-x> Test
   nmap <C-x> <Nop>
   nnoremap <silent> <C-x><C-x> :<C-u>lua require('global_functions').toggle_rspec_file()<CR>
   nnoremap <silent> <C-x><C-j> :<C-u>lua require('neotest').run.run()<CR>
   nnoremap <silent> <C-x><C-k> :<C-u>lua require('neotest').run.run(vim.fn.expand("%"))<CR>
-  nnoremap <silent> <C-x><C-l> :<C-u>lua require('neotest').run.run_last()<CR>
+  nnoremap <silent> <C-x><C-l> :<C-u>lua require('neotest').output.open({ enter = true })<CR>
 
   " <C-a> Nop
   nmap <C-a> <Nop>
