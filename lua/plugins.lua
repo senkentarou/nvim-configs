@@ -33,6 +33,7 @@ vim.cmd([[
   Plug 'jose-elias-alvarez/typescript.nvim'
   " Telescope
   Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.4' }
+  Plug 'nvim-telescope/telescope-file-browser.nvim'
   Plug 'benfowler/telescope-luasnip.nvim'
   " Treesitter
   Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
@@ -77,9 +78,6 @@ vim.cmd([[
   "
   " Switch to original plugin!
   "
-  " Plug 'nvim-telescope/telescope-file-browser.nvim' " disable until https://github.com/nvim-telescope/telescope-file-browser.nvim/issues/104 is as fixed
-  Plug 'senkentarou/telescope-file-browser.nvim' " Use instead of nvim-telescope/telescope-file-browser.nvim
-
   " Plug 'windwp/nvim-ts-autotag' " disable until https://github.com/windwp/nvim-ts-autotag/pull/83 is merged
   Plug 'sifu/nvim-ts-autotag' " Use instead of windwp/nvim-ts-autotag
 
