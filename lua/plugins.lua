@@ -71,7 +71,6 @@ vim.cmd([[
   Plug 'senkentarou/gopr.nvim'
   Plug 'senkentarou/goacf.nvim'
   Plug 'senkentarou/gobf.nvim'
-  Plug 'senkentarou/telescope-gh-pr.nvim'
   Plug 'senkentarou/telescope-git-log.nvim'
   Plug 'senkentarou/telescope-convert-word-case.nvim'
 

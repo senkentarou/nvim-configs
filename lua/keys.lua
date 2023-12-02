@@ -101,9 +101,7 @@ vim.cmd([[
   nnoremap <C-g><C-n> :<C-u>Gitsigns next_hunk<CR>
   nnoremap <C-g><C-h> :<C-u>Gitsigns reset_hunk<CR>
   vnoremap <C-g><C-h> :Gitsigns reset_hunk<CR>
-  nnoremap - :<C-u>Gitsigns toggle_deleted<CR>
-  nnoremap <silent> + :<C-u>lua require('telescope').extensions.gh_pr.list({ remote = 'upstream', search = 'is:pr is:open user-review-requested:@me' })<CR>
-  nnoremap <silent> _ :<C-u>lua require('telescope').extensions.gh_pr.list({ remote = 'upstream' })<CR>
+  nnoremap <C-g><C-j> :<C-u>Gitsigns toggle_deleted<CR>
 
   " <C-w> Filer
   nmap <C-w> <Nop>
@@ -116,7 +114,7 @@ vim.cmd([[
   nnoremap <silent> <C-e><C-r> :<C-u>lua vim.lsp.buf.references()<CR>
   nnoremap <silent> <C-e>r :<C-u>lua vim.lsp.buf.rename()<CR>
   nnoremap <silent> <C-e><C-a> :<C-u>lua require('actions-preview').code_actions()<CR>
-  nnoremap = :<C-u>lua require('global_functions').toggle_lsp_lines_text()<CR>
+  nnoremap <C-e><C-j> :<C-u>lua require('global_functions').toggle_lsp_lines_text()<CR>
 
   " <C-x> Test
   nmap <C-x> <Nop>
