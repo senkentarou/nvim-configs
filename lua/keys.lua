@@ -94,7 +94,7 @@ vim.cmd([[
 
   " <C-g> Git
   nmap <C-g> <Nop>
-  nnoremap <silent> <C-g><C-g> :<C-u>lua require('telescope.builtin').git_status()<CR>
+  nnoremap <silent> <C-g><C-g> :<C-u>lua require('telescope.builtin').git_status({ initial_mode = 'normal' })<CR>
   nnoremap <silent> <C-g><C-o> :<C-u>Goacf<CR>
   nnoremap <silent> <C-g><C-l> :<C-u>lua require('telescope').extensions.git_log.list_commits_on_file()<CR>
   nnoremap <C-g><C-p> :<C-u>Gitsigns prev_hunk<CR>
@@ -148,7 +148,7 @@ vim.cmd([[
   nmap w <Plug>(smartword-w)
   nmap b <Plug>(smartword-b)
   nmap e <Plug>(smartword-e)
-  nmap ge <Plug>(smartword-ge)
+  nmap z <Plug>(smartword-ge)
   " Moving panes
   nnoremap <C-j> <C-w><C-j>
   nnoremap <C-k> <C-w><C-k>
@@ -156,7 +156,6 @@ vim.cmd([[
   nnoremap <C-h> <C-w><C-h>
   " Moving hop keyword
   nnoremap s <Nop>
-  nnoremap z <Nop>
   " sa: surround add
   "  `saiw(` pattern: foo => (foo)
   " sd: surround delete
@@ -164,7 +163,7 @@ vim.cmd([[
   " sr: surround replace
   "  `sr("` pattern: (foo) => "foo"
   nnoremap <silent> ss :<C-u>lua require('global_functions').move_to_context({ start = true })<CR>
-  nnoremap <silent> zz :<C-u>lua require('global_functions').move_to_context({ end_ = true })<CR>
+  nnoremap <silent> qq :<C-u>lua require('global_functions').move_to_context({ end_ = true })<CR>
   nnoremap sm <Plug>(matchup-%)
   nnoremap sj <Plug>(edgemotion-j)
   vnoremap sj <Plug>(edgemotion-j)
@@ -178,10 +177,4 @@ vim.cmd([[
   vnoremap f <CMD>HopPatternCurrentLineAC<CR>
   nnoremap F :<C-u>HopPatternCurrentLineBC<CR>
   vnoremap F <CMD>HopPatternCurrentLineBC<CR>
-  nnoremap t :<C-u>HopNode<CR>
-  vnoremap t <CMD>HopNode<CR>
-  nnoremap L :<C-u>HopPatternAC<CR>
-  vnoremap L <CMD>HopPatternAC<CR>
-  nnoremap H :<C-u>HopPatternBC<CR>
-  vnoremap H <CMD>HopPatternBC<CR>
 ]])
