@@ -1,5 +1,18 @@
 local G = {}
 
+local context_node = function()
+  -- see https://neovim.io/doc/user/treesitter.html#treesitter-node
+  -- and context taegets: https://github.com/andersevenrud/nvim_context_vt/blob/a14f9292b4bd68ceed433fc513f287641816dc6d/lua/nvim_context_vt/config.lua#L17
+  local targets = require('nvim_context_vt.config').targets
+
+  local node = vim.treesitter.get_node()
+  while node ~= nil and not vim.tbl_contains(targets, node:type()) do
+    node = node:parent()
+  end
+
+  return node
+end
+
 G.start_memo = function()
   -- date: 2023-11-11 00:00:00
   -- tags: [2023 11]
@@ -20,22 +33,26 @@ G.toggle_lsp_lines_text = function()
   })
 end
 
-G.move_to_start_context = function()
-  -- see https://neovim.io/doc/user/treesitter.html#treesitter-node
-  -- and context taegets: https://github.com/andersevenrud/nvim_context_vt/blob/a14f9292b4bd68ceed433fc513f287641816dc6d/lua/nvim_context_vt/config.lua#L17
-  local targets = require('nvim_context_vt.config').targets
+G.move_to_context = function(opt)
+  opt = opt or {}
 
-  local node = vim.treesitter.get_node()
-  while node ~= nil and not vim.tbl_contains(targets, node:type()) do
-    node = node:parent()
-  end
+  local node = context_node()
 
   if node == nil then
-    vim.notify('no target to move')
+    vim.notify('no target node to move')
     return
   end
 
-  local row, col, _ = node:start()
+  local row, col
+
+  if opt.start then
+    row, col, _ = node:start()
+  elseif opt.end_ then
+    row, col, _ = node:end_()
+  else
+    vim.notify('no target option to move: start or end_')
+    return
+  end
 
   vim.api.nvim_command(':' .. (row + 1) .. 'norm' .. (col + 1) .. '|')
 end

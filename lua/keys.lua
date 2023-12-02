@@ -156,13 +156,15 @@ vim.cmd([[
   nnoremap <C-h> <C-w><C-h>
   " Moving hop keyword
   nnoremap s <Nop>
+  nnoremap z <Nop>
   " sa: surround add
   "  `saiw(` pattern: foo => (foo)
   " sd: surround delete
   "  `sd(` pattern: (foo) => foo
   " sr: surround replace
   "  `sr("` pattern: (foo) => "foo"
-  nnoremap <silent> ss :<C-u>lua require('global_functions').move_to_start_context()<CR>
+  nnoremap <silent> ss :<C-u>lua require('global_functions').move_to_context({ start = true })<CR>
+  nnoremap <silent> zz :<C-u>lua require('global_functions').move_to_context({ end_ = true })<CR>
   nnoremap sm <Plug>(matchup-%)
   nnoremap sj <Plug>(edgemotion-j)
   vnoremap sj <Plug>(edgemotion-j)
