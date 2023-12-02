@@ -33,8 +33,8 @@ G.toggle_lsp_lines_text = function()
   })
 end
 
-G.move_to_context = function(opt)
-  opt = opt or {}
+G.move_to_context = function(opts)
+  opts = opts or {}
 
   local node = context_node()
 
@@ -45,9 +45,9 @@ G.move_to_context = function(opt)
 
   local row, col
 
-  if opt.start then
+  if opts.start then
     row, col, _ = node:start()
-  elseif opt.end_ then
+  elseif opts.end_ then
     row, col, _ = node:end_()
   else
     vim.notify('no target option to move: start or end_')
@@ -139,6 +139,25 @@ G.histadd_string = function(input)
   -- :history @, if you want to see history
   vim.fn.histadd('@', input)
   return input
+end
+
+G.hop_with_word = function(opts)
+  opts = opts or {}
+
+  local word
+
+  if opts.latest_search then
+    word = vim.api.nvim_exec('echo @/', true)
+  elseif opts.current_cursor then
+    word = vim.fn.expand("<cword>")
+  else
+    vim.notify('no target option to hop: latest_search or current_cursor')
+    return
+  end
+
+  vim.notify('hop with "' .. word .. '" ')
+
+  require('hop').hint_patterns({}, word)
 end
 
 return G

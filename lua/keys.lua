@@ -173,6 +173,10 @@ vim.cmd([[
   vnoremap sh ^
   nnoremap sl $
   vnoremap sl $
+  nnoremap sm :<C-u>HopNode<CR>
+  vnoremap sm <CMD>HopNode<CR>
+  nnoremap sn :<C-u>lua require('global_functions').hop_with_word({ latest_search = true })<CR>
+  nnoremap s, :<C-u>lua require('global_functions').hop_with_word({ current_cursor = true })<CR>
   nnoremap f :<C-u>HopPatternCurrentLineAC<CR>
   vnoremap f <CMD>HopPatternCurrentLineAC<CR>
   nnoremap F :<C-u>HopPatternCurrentLineBC<CR>
