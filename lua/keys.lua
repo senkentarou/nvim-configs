@@ -58,6 +58,8 @@ vim.cmd([[
 
   " <Space> Leaders
   let mapleader="\<Space>"
+  " snippet
+  nnoremap <silent> <Leader><Leader> :<C-u>lua require('telescope').extensions.luasnip.luasnip()<CR>
   " Github integrations
   nnoremap <silent> <Leader>o :<C-u>Gobf<CR>
   vnoremap <silent> <Leader>o <CMD>Gobf<CR>
@@ -65,8 +67,6 @@ vim.cmd([[
   vnoremap <silent> <Leader>O <CMD>Gobfop<CR>
   nnoremap <silent> <Leader>p :<C-u>Gocd<CR>
   nnoremap <silent> <Leader>P :<C-u>Gopr<CR>
-  " snippet
-  nnoremap <silent> <Leader>a :<C-u>lua require('telescope').extensions.luasnip.luasnip()<CR>
   " grep words
   nnoremap <silent> <Leader>n :<C-u>lua require('telescope.builtin').grep_string({ search = vim.fn.histget('@', -1) })<CR>
   nnoremap <silent> <Leader>, :<C-u>lua require('telescope.builtin').grep_string({ search = require('global_functions').histadd_string(vim.fn.expand("<cword>")) })<CR>
@@ -82,6 +82,8 @@ vim.cmd([[
   " comments
   nmap <Leader>c <Plug>(comment_toggle_linewise_current)
   vmap <Leader>c <Plug>(comment_toggle_linewise_visual)
+  " rspec
+  nnoremap <silent> <Leader>x :<C-u>lua require('global_functions').toggle_rspec_file()<CR>
   " diff lines
   vnoremap <silent> <C-y> :Linediff<CR>
   nnoremap <silent> <C-y> :<C-u>LinediffReset<CR>
