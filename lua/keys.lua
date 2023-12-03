@@ -151,7 +151,6 @@ vim.cmd([[
   nmap w <Plug>(smartword-w)
   nmap b <Plug>(smartword-b)
   nmap e <Plug>(smartword-e)
-  nmap z <Plug>(smartword-ge)
   " Moving panes
   nnoremap <C-j> <C-w><C-j>
   nnoremap <C-k> <C-w><C-k>
