@@ -45,6 +45,8 @@ vim.cmd([[
   cnoremap <C-h> <Left>
   cnoremap <C-l> <Right>
 
+  cnoreabbrev <expr> h getcmdtype() == ":" && getcmdline() == 'h' ? 'tab help' : 'h'
+
   " Disable unuse commands
   " close
   nnoremap Z <Nop>
@@ -56,9 +58,7 @@ vim.cmd([[
 
   " <Space> Leaders
   let mapleader="\<Space>"
-  nnoremap <silent> <Leader><Leader> :<C-u>lua require('global_functions').start_memo()<CR>
-  nnoremap <silent> <Leader>x :<C-u>lua require('telescope').extensions.memo.grep_string({ search = vim.fn.input('[MemoString] ') })<CR>
-  " github integrations
+  " Github integrations
   nnoremap <silent> <Leader>o :<C-u>Gobf<CR>
   vnoremap <silent> <Leader>o <CMD>Gobf<CR>
   nnoremap <silent> <Leader>O :<C-u>Gobfop<CR>
@@ -147,11 +147,7 @@ vim.cmd([[
   nmap w <Plug>(smartword-w)
   nmap b <Plug>(smartword-b)
   nmap e <Plug>(smartword-e)
-  " Moving panes
-  nnoremap <C-j> <C-w><C-j>
-  nnoremap <C-k> <C-w><C-k>
-  nnoremap <C-l> <C-w><C-l>
-  nnoremap <C-h> <C-w><C-h>
+
   " Moving hop keyword
   nnoremap s <Nop>
   " sa: surround add
@@ -181,4 +177,19 @@ vim.cmd([[
   vnoremap <silent> f <CMD>lua require('global_functions').hop_with_char({ direction = 'after_cursor' })<CR>
   nnoremap <silent> F :<C-u>lua require('global_functions').hop_with_char({ direction = 'before_cursor' })<CR>
   vnoremap <silent> F <CMD>lua require('global_functions').hop_with_char({ direction = 'before_cursor' })<CR>
+
+  " Moving tab
+  nnoremap t <Nop>
+  nnoremap <silent> tt :<C-u>lua require('global_functions').start_memo()<CR>
+  nnoremap <silent> tn :<C-u>tabnext<CR>
+  nnoremap <silent> tp :<C-u>tabprev<CR>
+  nnoremap <silent> tm :<C-u>lua require('telescope').extensions.memo.grep_string({ search = vim.fn.input('[MemoString] ') })<CR>
+  nnoremap <silent> tM :<C-u>lua require('telescope').extensions.memo.live_grep({ default_text = vim.fn.strftime("%Y-%m-%d") })<CR>
+  nnoremap <silent> t, :<C-u>lua require('telescope').extensions.memo.grep_string({ search = vim.fn.expand("<cword>") })<CR>
+
+  " Moving window
+  nnoremap <C-j> <C-w><C-j>
+  nnoremap <C-k> <C-w><C-k>
+  nnoremap <C-l> <C-w><C-l>
+  nnoremap <C-h> <C-w><C-h>
 ]])
