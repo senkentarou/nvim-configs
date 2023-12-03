@@ -158,6 +158,29 @@ G.hop_with_word = function(opts)
   vim.notify('hop with "' .. word .. '" ')
 
   require('hop').hint_patterns({}, word)
+
+  vim.notify('')
+end
+
+G.hop_with_char = function(opts)
+  opts = opts or {}
+
+  local direction
+
+  if opts.direction == 'before_cursor' then
+    direction = require('hop.hint').HintDirection.BEFORE_CURSOR
+  elseif opts.direction == 'after_cursor' then
+    direction = require('hop.hint').HintDirection.AFTER_CURSOR
+  end
+
+  vim.notify('Hop with char: ')
+
+  require('hop').hint_patterns({
+    direction = direction,
+    current_line_only = true,
+  }, vim.fn.getcharstr())
+
+  vim.notify('')
 end
 
 return G

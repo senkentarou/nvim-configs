@@ -71,6 +71,9 @@ vim.cmd([[
   nnoremap <silent> <Leader>n :<C-u>lua require('telescope.builtin').grep_string({ search = vim.fn.histget('@', -1) })<CR>
   nnoremap <silent> <Leader>, :<C-u>lua require('telescope.builtin').grep_string({ search = require('global_functions').histadd_string(vim.fn.expand("<cword>")) })<CR>
   nnoremap <silent> <Leader>m :<C-u>lua require('telescope.builtin').grep_string({ search = require('global_functions').histadd_string(vim.fn.input('[GrepString] ')) })<CR>
+  " find char
+  nnoremap <silent> <Leader>f :<C-u>lua require('global_functions').hop_with_char()<CR>
+  vnoremap <silent> <Leader>f <CMD>lua require('global_functions').hop_with_char()<CR>
   " buffers
   nnoremap <Leader>z :<C-u>ConfirmQuitAll<CR>
   nnoremap <Leader>q :<C-u>ConfirmQuit<CR>
@@ -176,9 +179,11 @@ vim.cmd([[
   nnoremap sm :<C-u>HopNode<CR>
   vnoremap sm <CMD>HopNode<CR>
   nnoremap sn :<C-u>lua require('global_functions').hop_with_word({ latest_search = true })<CR>
+  vnoremap sn <CMD>lua require('global_functions').hop_with_word({ latest_search = true })<CR>
   nnoremap s, :<C-u>lua require('global_functions').hop_with_word({ current_cursor = true })<CR>
-  nnoremap f :<C-u>HopPatternCurrentLineAC<CR>
-  vnoremap f <CMD>HopPatternCurrentLineAC<CR>
-  nnoremap F :<C-u>HopPatternCurrentLineBC<CR>
-  vnoremap F <CMD>HopPatternCurrentLineBC<CR>
+  vnoremap s, <CMD>lua require('global_functions').hop_with_word({ current_cursor = true })<CR>
+  nnoremap <silent> f :<C-u>lua require('global_functions').hop_with_char({ direction = 'after_cursor' })<CR>
+  vnoremap <silent> f <CMD>lua require('global_functions').hop_with_char({ direction = 'after_cursor' })<CR>
+  nnoremap <silent> F :<C-u>lua require('global_functions').hop_with_char({ direction = 'before_cursor' })<CR>
+  vnoremap <silent> F <CMD>lua require('global_functions').hop_with_char({ direction = 'before_cursor' })<CR>
 ]])
