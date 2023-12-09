@@ -21,4 +21,4 @@ local opts = {
   },
 }
 
-require('lazy').setup(require('configs'), opts)
+require('lazy').setup(require('lazy-nvim'), opts)

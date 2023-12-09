@@ -118,8 +118,9 @@ G.close_buffer = function()
     command = ':'
   elseif vim.fn.index({
     'help',
-    'vim-plug',
     'lspinfo',
+    'lazy',
+    'startuptime',
   }, filetype) >= 0 then
     -- close pane
     command = 'close'
