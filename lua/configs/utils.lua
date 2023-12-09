@@ -4,6 +4,10 @@ require('hop').setup {}
 
 require('Comment').setup {}
 
+require('treesj').setup {
+  use_default_keymaps = false,
+}
+
 require('todo-comments').setup {
   -- see https://github.com/folke/todo-comments.nvim#%EF%B8%8F-configuration
   keywords = {

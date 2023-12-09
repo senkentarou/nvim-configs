@@ -58,8 +58,7 @@ vim.cmd([[
 
   " <Space> Leaders
   let mapleader="\<Space>"
-  " snippet
-  nnoremap <silent> <Leader><Leader> :<C-u>lua require('telescope').extensions.luasnip.luasnip()<CR>
+  nnoremap <silent> <Leader><Leader> :<C-u>lua require('treesj').toggle()<CR>
   " Github integrations
   nnoremap <silent> <Leader>o :<C-u>Gobf<CR>
   vnoremap <silent> <Leader>o <CMD>Gobf<CR>
@@ -74,6 +73,8 @@ vim.cmd([[
   " find char
   nnoremap <silent> <Leader>f :<C-u>lua require('global_functions').hop_with_char()<CR>
   vnoremap <silent> <Leader>f <CMD>lua require('global_functions').hop_with_char()<CR>
+  " snippet
+  nnoremap <silent> <Leader>l :<C-u>lua require('telescope').extensions.luasnip.luasnip()<CR>
   " buffers
   nnoremap <Leader>z :<C-u>ConfirmQuitAll<CR>
   nnoremap <Leader>q :<C-u>ConfirmQuit<CR>

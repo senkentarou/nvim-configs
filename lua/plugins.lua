@@ -47,6 +47,7 @@ vim.cmd([[
   Plug 'windwp/nvim-autopairs'
   Plug 'andymass/vim-matchup'
   Plug 'RRethy/nvim-treesitter-endwise'
+  Plug 'Wansmer/treesj'
   " Memo https://zenn.dev/koga1020/articles/009766e1bec42c
   Plug 'glidenote/memolist.vim'
   Plug 'delphinus/telescope-memo.nvim'
