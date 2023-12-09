@@ -68,11 +68,11 @@ vim.cmd([[
   nnoremap <silent> <Leader>P :<C-u>Gopr<CR>
   " grep words
   nnoremap <silent> <Leader>n :<C-u>lua require('telescope.builtin').grep_string({ search = vim.fn.histget('@', -1) })<CR>
-  nnoremap <silent> <Leader>, :<C-u>lua require('telescope.builtin').grep_string({ search = require('global_functions').histadd_string(vim.fn.expand("<cword>")) })<CR>
-  nnoremap <silent> <Leader>m :<C-u>lua require('telescope.builtin').grep_string({ search = require('global_functions').histadd_string(vim.fn.input('[GrepString] ')) })<CR>
+  nnoremap <silent> <Leader>, :<C-u>lua require('telescope.builtin').grep_string({ search = require('globals').histadd_string(vim.fn.expand("<cword>")) })<CR>
+  nnoremap <silent> <Leader>m :<C-u>lua require('telescope.builtin').grep_string({ search = require('globals').histadd_string(vim.fn.input('[GrepString] ')) })<CR>
   " find char
-  nnoremap <silent> <Leader>f :<C-u>lua require('global_functions').hop_with_char()<CR>
-  vnoremap <silent> <Leader>f <CMD>lua require('global_functions').hop_with_char()<CR>
+  nnoremap <silent> <Leader>f :<C-u>lua require('globals').hop_with_char()<CR>
+  vnoremap <silent> <Leader>f <CMD>lua require('globals').hop_with_char()<CR>
   " snippet
   nnoremap <silent> <Leader>l :<C-u>lua require('telescope').extensions.luasnip.luasnip()<CR>
   " buffers
@@ -84,7 +84,7 @@ vim.cmd([[
   nmap <Leader>c <Plug>(comment_toggle_linewise_current)
   vmap <Leader>c <Plug>(comment_toggle_linewise_visual)
   " rspec
-  nnoremap <silent> <Leader>x :<C-u>lua require('global_functions').toggle_rspec_file()<CR>
+  nnoremap <silent> <Leader>x :<C-u>lua require('globals').toggle_rspec_file()<CR>
   " diff lines
   vnoremap <silent> <C-y> :Linediff<CR>
   nnoremap <silent> <C-y> :<C-u>LinediffReset<CR>
@@ -92,7 +92,7 @@ vim.cmd([[
   inoremap <silent> jj <ESC>
   nnoremap <silent> <Esc><Esc> :noh<CR>
   nnoremap <silent> ; :<C-u>lua require('telescope.builtin').buffers({ sort_lastused = true, ignore_current_buffer = true })<CR>
-  nnoremap <silent> <C-q> :<C-u>lua require('global_functions').close_buffer()<CR>
+  nnoremap <silent> <C-q> :<C-u>lua require('globals').close_buffer()<CR>
 
   " <C-f> Find files
   nmap <C-f> <Nop>
@@ -120,7 +120,7 @@ vim.cmd([[
   nnoremap <silent> <C-e><C-r> :<C-u>lua vim.lsp.buf.references()<CR>
   nnoremap <silent> <C-e>r :<C-u>lua vim.lsp.buf.rename()<CR>
   nnoremap <silent> <C-e><C-a> :<C-u>lua require('actions-preview').code_actions()<CR>
-  nnoremap <C-e><C-j> :<C-u>lua require('global_functions').toggle_lsp_lines_text()<CR>
+  nnoremap <C-e><C-j> :<C-u>lua require('globals').toggle_lsp_lines_text()<CR>
 
   " <C-x> Nop
   nmap <C-x> <Nop>
@@ -159,8 +159,8 @@ vim.cmd([[
   "  `sd(` pattern: (foo) => foo
   " sr: surround replace
   "  `sr("` pattern: (foo) => "foo"
-  nnoremap <silent> ss :<C-u>lua require('global_functions').move_to_context({ start = true })<CR>
-  nnoremap <silent> qq :<C-u>lua require('global_functions').move_to_context({ end_ = true })<CR>
+  nnoremap <silent> ss :<C-u>lua require('globals').move_to_context({ start = true })<CR>
+  nnoremap <silent> qq :<C-u>lua require('globals').move_to_context({ end_ = true })<CR>
   nnoremap sm <Plug>(matchup-%)
   nnoremap sj <Plug>(edgemotion-j)
   vnoremap sj <Plug>(edgemotion-j)
@@ -172,18 +172,18 @@ vim.cmd([[
   vnoremap sl $
   nnoremap sm :<C-u>HopNode<CR>
   vnoremap sm <CMD>HopNode<CR>
-  nnoremap sn :<C-u>lua require('global_functions').hop_with_word({ latest_search = true })<CR>
-  vnoremap sn <CMD>lua require('global_functions').hop_with_word({ latest_search = true })<CR>
-  nnoremap s, :<C-u>lua require('global_functions').hop_with_word({ current_cursor = true })<CR>
-  vnoremap s, <CMD>lua require('global_functions').hop_with_word({ current_cursor = true })<CR>
-  nnoremap <silent> f :<C-u>lua require('global_functions').hop_with_char({ direction = 'after_cursor' })<CR>
-  vnoremap <silent> f <CMD>lua require('global_functions').hop_with_char({ direction = 'after_cursor' })<CR>
-  nnoremap <silent> F :<C-u>lua require('global_functions').hop_with_char({ direction = 'before_cursor' })<CR>
-  vnoremap <silent> F <CMD>lua require('global_functions').hop_with_char({ direction = 'before_cursor' })<CR>
+  nnoremap sn :<C-u>lua require('globals').hop_with_word({ latest_search = true })<CR>
+  vnoremap sn <CMD>lua require('globals').hop_with_word({ latest_search = true })<CR>
+  nnoremap s, :<C-u>lua require('globals').hop_with_word({ current_cursor = true })<CR>
+  vnoremap s, <CMD>lua require('globals').hop_with_word({ current_cursor = true })<CR>
+  nnoremap <silent> f :<C-u>lua require('globals').hop_with_char({ direction = 'after_cursor' })<CR>
+  vnoremap <silent> f <CMD>lua require('globals').hop_with_char({ direction = 'after_cursor' })<CR>
+  nnoremap <silent> F :<C-u>lua require('globals').hop_with_char({ direction = 'before_cursor' })<CR>
+  vnoremap <silent> F <CMD>lua require('globals').hop_with_char({ direction = 'before_cursor' })<CR>
 
   " Moving tab
   nnoremap t <Nop>
-  nnoremap <silent> tt :<C-u>lua require('global_functions').start_memo()<CR>
+  nnoremap <silent> tt :<C-u>lua require('globals').start_memo()<CR>
   nnoremap <silent> tn :<C-u>tabnext<CR>
   nnoremap <silent> tp :<C-u>tabprev<CR>
   nnoremap <silent> tm :<C-u>lua require('telescope').extensions.memo.grep_string({ search = vim.fn.input('[MemoString] ') })<CR>

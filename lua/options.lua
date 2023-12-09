@@ -1,7 +1,6 @@
 --
 -- Vim options
 --
-vim.cmd([[ colorscheme hybrid ]])
 vim.opt.mouse = ""
 vim.opt.undofile = true
 vim.opt.cmdheight = 2
@@ -46,6 +45,12 @@ local function toggle_hlsearch(char)
   end
 end
 vim.on_key(toggle_hlsearch, ns)
+
+vim.diagnostic.config({
+  update_in_insert = false,
+  virtual_text = true,
+  virtual_lines = false,
+})
 
 vim.g.memolist_filename_prefix_none = 1
 vim.g.memolist_memo_date = "%Y-%m-%d %H:%M:%S"

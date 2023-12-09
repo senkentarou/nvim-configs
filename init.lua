@@ -1,8 +1,5 @@
---
--- Load
---
-if vim.loader then
-  vim.loader.enable()
-end
-
 require('plugins')
+require('options')
+require('keymaps')
+require('autocmds')
+require('globals')
