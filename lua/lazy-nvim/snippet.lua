@@ -1,7 +1,10 @@
 return {
   {
     'hrsh7th/nvim-cmp',
-    event = 'InsertEnter',
+    event = {
+      'CmdlineEnter',
+      'InsertEnter',
+    },
     dependencies = {
       'lukas-reineke/cmp-rg',
       'saadparwaiz1/cmp_luasnip',
