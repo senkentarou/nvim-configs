@@ -3,7 +3,8 @@ local finders = require("telescope.finders")
 local make_entry = require("telescope.make_entry")
 local actions = require("telescope.actions")
 local actions_state = require("telescope.actions.state")
-local file_browser_actions = telescope.extensions.file_browser.actions
+local file_browser_actions = require('telescope._extensions.file_browser.actions')
+local project_actions = require('telescope._extensions.project.actions')
 
 local open_multiple_files = function(bufnr)
   local picker = actions_state.get_current_picker(bufnr)
@@ -170,6 +171,18 @@ telescope.setup {
     },
   },
   extensions = {
+    project = {
+      base_dirs = {
+        '~/work',
+        '~/mywork',
+      },
+      order_by = 'recent',
+      search_by = 'title',
+      -- default for on_project_selected = find project files
+      on_project_selected = function(prompt_bufnr)
+        project_actions.change_working_directory(prompt_bufnr, false)
+      end,
+    },
     file_browser = {
       hijack_netrw = true,
       path = "%:p:h",
@@ -215,3 +228,4 @@ telescope.load_extension('git_log')
 telescope.load_extension('convert_word_case')
 telescope.load_extension('memo')
 telescope.load_extension('luasnip')
+telescope.load_extension('project')

@@ -17,8 +17,10 @@ dashboard.section.bottom_buttons.val = {
     val = 1,
   },
   dashboard.button("e", " New File", "<cmd>ene<CR>"),
-  dashboard.button("t", " Telescope Builtins", ":<C-u>lua require('telescope.builtin').builtin()<CR>"),
-  dashboard.button("p", " Update Plugins", "<cmd>Lazy sync<CR>"),
+  dashboard.button("d", " Change Project", "<cmd>Telescope project<CR>"),
+  dashboard.button("t", " Telescope Builtins", "<cmd>Telescope<CR>"),
+  dashboard.button("l", " Show Plugins", "<cmd>Lazy<CR>"),
+  dashboard.button("p", "󰚰 Update Plugins", "<cmd>Lazy sync<CR>"),
   {
     type = "padding",
     val = 1,
