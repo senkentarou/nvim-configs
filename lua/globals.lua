@@ -146,7 +146,7 @@ G.hop_with_word = function(opts)
     return
   end
 
-  vim.notify('Hop with "' .. word .. '" ')
+  vim.notify('Hop with "' .. word .. '": ')
 
   require('hop').hint_patterns({}, word)
 end
@@ -166,7 +166,7 @@ G.hop_with_char = function(opts)
 
   require('hop').hint_patterns({
     direction = direction,
-    current_line_only = true,
+    current_line_only = (opts.current_line_only == true),
   }, vim.fn.getcharstr())
 end
 
