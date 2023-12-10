@@ -13,16 +13,6 @@ local context_node = function()
   return node
 end
 
-G.start_memo = function()
-  -- date: 2023-11-11 00:00:00
-  -- tags: [2023 11]
-  -- categories: [memo]
-  local date = vim.fn.strftime("%Y-%m-%d_%H-%M-%S")
-  local year, month, _ = unpack(vim.split(vim.split(date, '_')[1], '-'))
-
-  vim.api.nvim_command('MemoNewWithMeta \'' .. date .. '\', \'' .. year .. ' ' .. month .. '\', \'memo\'')
-end
-
 G.toggle_lsp_lines_text = function()
   local flag = vim.diagnostic.config().virtual_lines
   local toggled_flag = not flag
@@ -156,11 +146,9 @@ G.hop_with_word = function(opts)
     return
   end
 
-  vim.notify('hop with "' .. word .. '" ')
+  vim.notify('Hop with "' .. word .. '" ')
 
   require('hop').hint_patterns({}, word)
-
-  vim.notify('')
 end
 
 G.hop_with_char = function(opts)
@@ -180,8 +168,6 @@ G.hop_with_char = function(opts)
     direction = direction,
     current_line_only = true,
   }, vim.fn.getcharstr())
-
-  vim.notify('')
 end
 
 return G

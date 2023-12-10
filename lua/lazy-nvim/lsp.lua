@@ -32,32 +32,13 @@ return {
   {
     'Maan2003/lsp_lines.nvim',
     event = 'BufRead',
+    init = function()
+      vim.diagnostic.config({
+        update_in_insert = false,
+        virtual_text = true,
+        virtual_lines = false,
+      })
+    end,
     opts = {},
-  },
-  {
-    'aznhe21/actions-preview.nvim',
-    opts = {
-      -- options for vim.diff(): https://neovim.io/doc/user/lua.html#vim.diff()
-      diff = {
-        algorithm = 'patience',
-        ignore_whitespace = true,
-      },
-      backend = {
-        'telescope',
-      },
-      telescope = {
-        sorting_strategy = 'ascending',
-        layout_strategy = 'vertical',
-        layout_config = {
-          width = 0.8,
-          height = 0.9,
-          prompt_position = 'top',
-          preview_cutoff = 20,
-          preview_height = function(_, _, max_lines)
-            return max_lines - 15
-          end,
-        },
-      },
-    },
   },
 }

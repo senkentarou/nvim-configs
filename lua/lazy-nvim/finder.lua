@@ -9,9 +9,6 @@ return {
       'benfowler/telescope-luasnip.nvim',
       'senkentarou/telescope-git-log.nvim',
       'senkentarou/telescope-convert-word-case.nvim',
-      -- memo
-      'delphinus/telescope-memo.nvim',
-      'glidenote/memolist.vim',
     },
     cmd = {
       'Telescope',

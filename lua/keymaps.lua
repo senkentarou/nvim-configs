@@ -45,8 +45,6 @@ vim.cmd([[
   cnoremap <C-h> <Left>
   cnoremap <C-l> <Right>
 
-  cnoreabbrev <expr> h getcmdtype() == ":" && getcmdline() == 'h' ? 'tab help' : 'h'
-
   " Disable unuse commands
   " close
   nnoremap Z <Nop>
@@ -85,14 +83,12 @@ vim.cmd([[
   vmap <Leader>c <Plug>(comment_toggle_linewise_visual)
   " rspec
   nnoremap <silent> <Leader>x :<C-u>lua require('globals').toggle_rspec_file()<CR>
-  " diff lines
-  vnoremap <silent> <C-y> :Linediff<CR>
-  nnoremap <silent> <C-y> :<C-u>LinediffReset<CR>
   " utilities
   inoremap <silent> jj <ESC>
-  nnoremap <silent> <Esc><Esc> :noh<CR>
   nnoremap <silent> ; :<C-u>lua require('telescope.builtin').buffers({ sort_lastused = true, ignore_current_buffer = true })<CR>
   nnoremap <silent> <C-q> :<C-u>lua require('globals').close_buffer()<CR>
+  vnoremap <silent> <C-y> :Linediff<CR>
+  nnoremap <silent> <C-y> :<C-u>LinediffReset<CR>
 
   " <C-f> Find files
   nmap <C-f> <Nop>
@@ -107,7 +103,6 @@ vim.cmd([[
   nnoremap <C-g><C-n> :<C-u>Gitsigns next_hunk<CR>
   nnoremap <C-g><C-h> :<C-u>Gitsigns reset_hunk<CR>
   vnoremap <C-g><C-h> :Gitsigns reset_hunk<CR>
-  nnoremap <C-g><C-j> :<C-u>Gitsigns toggle_deleted<CR>
 
   " <C-w> Filer
   nmap <C-w> <Nop>
@@ -119,8 +114,7 @@ vim.cmd([[
   nnoremap <silent> <C-e><C-e> :<C-u>lua vim.lsp.buf.definition()<CR>
   nnoremap <silent> <C-e><C-r> :<C-u>lua vim.lsp.buf.references()<CR>
   nnoremap <silent> <C-e>r :<C-u>lua vim.lsp.buf.rename()<CR>
-  nnoremap <silent> <C-e><C-a> :<C-u>lua require('actions-preview').code_actions()<CR>
-  nnoremap <C-e><C-j> :<C-u>lua require('globals').toggle_lsp_lines_text()<CR>
+  nnoremap <silent> K :<C-u>lua require('globals').toggle_lsp_lines_text()<CR>
 
   " <C-x> Nop
   nmap <C-x> <Nop>
@@ -180,15 +174,6 @@ vim.cmd([[
   vnoremap <silent> f <CMD>lua require('globals').hop_with_char({ direction = 'after_cursor' })<CR>
   nnoremap <silent> F :<C-u>lua require('globals').hop_with_char({ direction = 'before_cursor' })<CR>
   vnoremap <silent> F <CMD>lua require('globals').hop_with_char({ direction = 'before_cursor' })<CR>
-
-  " Moving tab
-  nnoremap t <Nop>
-  nnoremap <silent> tt :<C-u>lua require('globals').start_memo()<CR>
-  nnoremap <silent> tn :<C-u>tabnext<CR>
-  nnoremap <silent> tp :<C-u>tabprev<CR>
-  nnoremap <silent> tm :<C-u>lua require('telescope').extensions.memo.grep_string({ search = vim.fn.input('[MemoString] ') })<CR>
-  nnoremap <silent> tM :<C-u>lua require('telescope').extensions.memo.live_grep({ default_text = vim.fn.strftime("%Y-%m-%d") })<CR>
-  nnoremap <silent> t, :<C-u>lua require('telescope').extensions.memo.grep_string({ search = vim.fn.expand("<cword>") })<CR>
 
   " Moving window
   nnoremap <C-j> <C-w><C-j>
