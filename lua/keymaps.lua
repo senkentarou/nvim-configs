@@ -116,11 +116,13 @@ vim.cmd([[
   nnoremap <silent> <C-e>r :<C-u>lua vim.lsp.buf.rename()<CR>
   nnoremap <silent> K :<C-u>lua require('globals').toggle_lsp_lines_text()<CR>
 
-  " <C-x> Nop
+  " <C-x> Dial Down
   nmap <C-x> <Nop>
+  nnoremap <silent> <C-x><C-x> <Plug>(dial-decrement)
 
-  " <C-a> Nop
+  " <C-a> Dial Up
   nmap <C-a> <Nop>
+  nnoremap <silent> <C-a><C-a> <Plug>(dial-increment)
 
   " <C-z> Nop
   nmap <C-z> <Nop>
