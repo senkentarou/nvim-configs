@@ -114,7 +114,7 @@ vim.cmd([[
   nnoremap <silent> <C-e><C-e> :<C-u>lua vim.lsp.buf.definition()<CR>
   nnoremap <silent> <C-e><C-r> :<C-u>lua vim.lsp.buf.references()<CR>
   nnoremap <silent> <C-e>r :<C-u>lua vim.lsp.buf.rename()<CR>
-  nnoremap <silent> K :<C-u>lua require('globals').toggle_lsp_lines_text()<CR>
+  nnoremap <silent> = :<C-u>lua require('globals').toggle_lsp_lines_text()<CR>
 
   " <C-x> Dial Down
   nmap <C-x> <Nop>
@@ -156,7 +156,7 @@ vim.cmd([[
   " sr: surround replace
   "  `sr("` pattern: (foo) => "foo"
   nnoremap <silent> ss :<C-u>lua require('globals').move_to_context({ start = true })<CR>
-  nnoremap <silent> sm :<C-u>lua require('globals').move_to_context({ end_ = true })<CR>
+  nnoremap <silent> sn :<C-u>lua require('globals').move_to_context({ end_ = true })<CR>
   nnoremap sj <Plug>(edgemotion-j)
   vnoremap sj <Plug>(edgemotion-j)
   nnoremap sk <Plug>(edgemotion-k)
@@ -165,18 +165,14 @@ vim.cmd([[
   vnoremap sh ^
   nnoremap sl $
   vnoremap sl $
-  nnoremap <silent> sn :<C-u>lua require('globals').hop_with_word({ latest_search = true })<CR>
-  vnoremap <silent> sn <CMD>lua require('globals').hop_with_word({ latest_search = true })<CR>
+  nnoremap <silent> sm :<C-u>lua require('hop').hint_patterns({}, vim.fn.input('[HopWithWord] '))<CR>
+  vnoremap <silent> sm <CMD>lua require('hop').hint_patterns({}, vim.fn.input('[HopWithWord] '))<CR>
   nnoremap <silent> s, :<C-u>lua require('globals').hop_with_word({ current_cursor = true })<CR>
   vnoremap <silent> s, <CMD>lua require('globals').hop_with_word({ current_cursor = true })<CR>
   nnoremap <silent> f :<C-u>lua require('globals').hop_with_char({ direction = 'after_cursor', current_line_only = true })<CR>
   vnoremap <silent> f <CMD>lua require('globals').hop_with_char({ direction = 'after_cursor', current_line_only = true })<CR>
   nnoremap <silent> F :<C-u>lua require('globals').hop_with_char({ direction = 'before_cursor', current_line_only = true })<CR>
   vnoremap <silent> F <CMD>lua require('globals').hop_with_char({ direction = 'before_cursor', current_line_only = true })<CR>
-  nnoremap <silent> t :<C-u>lua require('globals').hop_with_char({ direction = 'after_cursor', current_line_only = false })<CR>
-  vnoremap <silent> t <CMD>lua require('globals').hop_with_char({ direction = 'after_cursor', current_line_only = false })<CR>
-  nnoremap <silent> T :<C-u>lua require('globals').hop_with_char({ direction = 'after_cursor', current_line_only = false })<CR>
-  vnoremap <silent> T <CMD>lua require('globals').hop_with_char({ direction = 'after_cursor', current_line_only = false })<CR>
 
   " Moving window
   nnoremap <C-j> <C-w><C-j>
