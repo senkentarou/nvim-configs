@@ -13,6 +13,10 @@ local context_node = function()
   return node
 end
 
+G.toggle_hisearch = function()
+  vim.o.hlsearch = not vim.o.hlsearch
+end
+
 G.toggle_lsp_lines_text = function()
   local flag = vim.diagnostic.config().virtual_lines
   local toggled_flag = not flag

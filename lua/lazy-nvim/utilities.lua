@@ -8,6 +8,14 @@ return {
     event = 'BufRead',
   },
   {
+    'yutkat/wb-only-current-line.nvim',
+    event = 'BufRead',
+  },
+  {
+    't9md/vim-quickhl',
+    event = 'BufRead',
+  },
+  {
     'folke/todo-comments.nvim',
     event = 'BufRead',
     opts = {

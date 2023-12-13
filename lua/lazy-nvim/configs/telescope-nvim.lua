@@ -226,5 +226,4 @@ telescope.setup {
 telescope.load_extension('file_browser')
 telescope.load_extension('git_log')
 telescope.load_extension('convert_word_case')
-telescope.load_extension('luasnip')
 telescope.load_extension('project')

@@ -56,7 +56,6 @@ vim.cmd([[
 
   " <Space> Leaders
   let mapleader="\<Space>"
-  nnoremap <silent> <Leader><Leader> :<C-u>lua require('treesj').toggle()<CR>
   " Github integrations
   nnoremap <silent> <Leader>o :<C-u>Gobf<CR>
   vnoremap <silent> <Leader>o <CMD>Gobf<CR>
@@ -68,11 +67,14 @@ vim.cmd([[
   nnoremap <silent> <Leader>n :<C-u>lua require('telescope.builtin').grep_string({ search = vim.fn.histget('@', -1) })<CR>
   nnoremap <silent> <Leader>, :<C-u>lua require('telescope.builtin').grep_string({ search = require('globals').histadd_string(vim.fn.expand("<cword>")) })<CR>
   nnoremap <silent> <Leader>m :<C-u>lua require('telescope.builtin').grep_string({ search = require('globals').histadd_string(vim.fn.input('[GrepString] ')) })<CR>
-  " find char
-  nnoremap <silent> <Leader>f :<C-u>lua require('globals').hop_with_char()<CR>
-  vnoremap <silent> <Leader>f <CMD>lua require('globals').hop_with_char()<CR>
-  " snippet
-  nnoremap <silent> <Leader>l :<C-u>lua require('telescope').extensions.luasnip.luasnip()<CR>
+  " quickhl
+  nnoremap <silent> <Leader>h <Plug>(quickhl-manual-reset)
+  nnoremap <silent> <Leader>j <Plug>(quickhl-cword-toggle)
+  nnoremap <silent> <Leader>k :<C-u>lua require('globals').toggle_hisearch()<CR>
+  nnoremap <silent> <Leader>l <Plug>(quickhl-manual-this)
+  nmap n <Plug>(quickhl-manual-go-to-next)
+  nmap N <Plug>(quickhl-manual-go-to-prev)
+
   " buffers
   nnoremap <Leader>z :<C-u>ConfirmQuitAll<CR>
   nnoremap <Leader>q :<C-u>ConfirmQuit<CR>
@@ -173,6 +175,8 @@ vim.cmd([[
   vnoremap <silent> f <CMD>lua require('globals').hop_with_char({ direction = 'after_cursor', current_line_only = true })<CR>
   nnoremap <silent> F :<C-u>lua require('globals').hop_with_char({ direction = 'before_cursor', current_line_only = true })<CR>
   vnoremap <silent> F <CMD>lua require('globals').hop_with_char({ direction = 'before_cursor', current_line_only = true })<CR>
+
+  nnoremap <silent> tt :<C-u>lua require('treesj').toggle()<CR>
 
   " Moving window
   nnoremap <C-j> <C-w><C-j>
