@@ -12,14 +12,20 @@ return {
   },
   {
     'senkentarou/gopr.nvim',
-    event = 'BufRead',
+    cmd = {
+      'Gocd',
+      'Gopr',
+    },
     opts = {
       default_remote = 'upstream',
     },
   },
   {
     'senkentarou/gobf.nvim',
-    event = 'BufRead',
+    cmd = {
+      'Gobf',
+      'Gobfop',
+    },
     opts = {
       default_remote = 'upstream',
       default_branches = {
@@ -31,6 +37,6 @@ return {
   },
   {
     'senkentarou/goacf.nvim',
-    event = 'VimEnter',
+    cmd = { 'Goacf' },
   },
 }

@@ -1,7 +1,7 @@
 return {
   {
     'rainbowhxch/accelerated-jk.nvim',
-    lazy = false,
+    event = 'VimEnter',
   },
   {
     'kana/vim-smartword',
@@ -90,8 +90,8 @@ return {
     'monaqa/dial.nvim',
     event = 'BufRead',
     config = function()
-      local augend = require("dial.augend")
-      require("dial.config").augends:register_group{
+      local augend = require('dial.augend')
+      require('dial.config').augends:register_group{
         default = {
           augend.integer.alias.decimal,
           augend.date.alias["%Y-%m-%d"],
