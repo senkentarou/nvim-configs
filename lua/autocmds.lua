@@ -14,7 +14,6 @@ vim.cmd([[
     autocmd!
     autocmd BufNewFile,BufRead *.tsx set filetype=typescriptreact
     autocmd BufNewFile,BufRead *.jsx set filetype=javascriptreact
-    autocmd BufNewfile,BufRead *_spec.rb set filetype=rspec
   augroup END
 
   augroup ColorSchemeSettings
@@ -29,5 +28,7 @@ vim.cmd([[
     autocmd VimEnter,ColorScheme * highlight CopilotSuggestion cterm=underline ctermfg=139 ctermbg=53 gui=underline guifg=#b294bb guibg=#5f005f guisp=Magenta
     " Hop
     autocmd VimEnter,ColorScheme * highlight HopUnmatched cterm=underline ctermfg=242 gui=underline guifg=#666666 guisp=#666666
+    " hlslens
+    autocmd VimEnter,ColorScheme * highlight HlSearchLens cterm=underline ctermfg=242 gui=underline guifg=#666666 guisp=#666666
   augroup END
 ]])

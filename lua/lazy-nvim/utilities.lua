@@ -16,6 +16,59 @@ return {
     event = 'BufRead',
   },
   {
+    'kevinhwang91/nvim-hlslens',
+    event = 'BufRead',
+    config = function()
+      require("scrollbar.handlers.search").setup({
+        override_lens = function(render, posList, nearest, idx, _)
+          local chunks = {
+            {
+              ('[%d/%d]'):format(idx, #posList),
+              'HlSearchLens',
+            },
+          }
+          local lnum, col = unpack(posList[idx])
+          render.setVirt(0, lnum - 1, col - 1, chunks, nearest)
+        end,
+      })
+    end,
+  },
+  {
+    'petertriho/nvim-scrollbar',
+    event = 'BufRead',
+    opts = {
+      marks = {
+        Search = {
+          color = '#f0c674',
+        },
+        Cursor = {
+          text = "◅",
+        },
+        Error = {
+          color = '#ff0000',
+        },
+        Warn = {
+          color = '#ffa500',
+        },
+        Info = {
+          color = '#add8e6',
+        },
+        Hint = {
+          color = '#d3d3d3',
+        },
+        GitAdd = {
+          color = '#d7ffaf',
+        },
+        GitChange = {
+          color = '#d7d7ff',
+        },
+        GitDelete = {
+          color = '#cc6666',
+        },
+      },
+    },
+  },
+  {
     'folke/todo-comments.nvim',
     event = 'BufRead',
     opts = {
