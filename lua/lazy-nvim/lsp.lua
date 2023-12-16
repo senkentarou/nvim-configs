@@ -20,16 +20,6 @@ return {
     opts = {},
   },
   {
-    'neovim/nvim-lspconfig',
-    dependencies = {
-      'nvimtools/none-ls.nvim',
-      'jose-elias-alvarez/typescript.nvim',
-    },
-    config = function()
-      require('lazy-nvim.configs.nvim-lspconfig')
-    end,
-  },
-  {
     'Maan2003/lsp_lines.nvim',
     event = 'BufRead',
     init = function()
