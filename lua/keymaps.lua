@@ -157,8 +157,6 @@ vim.cmd([[
   "  `sd(` pattern: (foo) => foo
   " sr: surround replace
   "  `sr("` pattern: (foo) => "foo"
-  nnoremap <silent> ss :<C-u>lua require('globals').move_to_context({ start = true })<CR>
-  nnoremap <silent> sn :<C-u>lua require('globals').move_to_context({ end_ = true })<CR>
   nnoremap sj <Plug>(edgemotion-j)
   vnoremap sj <Plug>(edgemotion-j)
   nnoremap sk <Plug>(edgemotion-k)
