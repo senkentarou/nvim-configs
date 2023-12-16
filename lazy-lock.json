@@ -41,7 +41,6 @@
   "telescope-convert-word-case.nvim": { "branch": "main", "commit": "ecb948a03546873be798fe41604bf3ad26b7d3af" },
   "telescope-file-browser.nvim": { "branch": "master", "commit": "8e0543365fe5781c9babea7db89ef06bcff3716d" },
   "telescope-git-log.nvim": { "branch": "main", "commit": "b5c9556ae1dfd4ae531e7a8ad69ccc1e880be2d8" },
-  "telescope-project.nvim": { "branch": "master", "commit": "1aaf16580a614601a7f7077d9639aeb457dc5559" },
   "telescope.nvim": { "branch": "master", "commit": "d90956833d7c27e73c621a61f20b29fdb7122709" },
   "todo-comments.nvim": { "branch": "main", "commit": "4a6737a8d70fe1ac55c64dfa47fcb189ca431872" },
   "typescript.nvim": { "branch": "main", "commit": "4de85ef699d7e6010528dcfbddc2ed4c2c421467" },
