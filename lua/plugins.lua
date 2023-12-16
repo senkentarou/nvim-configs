@@ -19,6 +19,11 @@ local opts = {
   defaults = {
     lazy = true,
   },
+  install = {
+    colorscheme = {
+      'hybrid',
+    },
+  },
 }
 
 require('lazy').setup(require('lazy-nvim'), opts)
