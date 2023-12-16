@@ -19,6 +19,7 @@ vim.cmd([[
 
   " <Space> Leaders
   let mapleader="\<Space>"
+  nnoremap <silent> <Leader><Leader> :<C-u>lua require('globals').jumplist()<CR>
   " Github integrations
   nnoremap <silent> <Leader>o :<C-u>Gobf<CR>
   vnoremap <silent> <Leader>o <CMD>Gobf<CR>

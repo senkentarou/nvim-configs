@@ -137,4 +137,18 @@ G.hop_with_char = function(opts)
   }, vim.fn.getcharstr())
 end
 
+G.jumplist = function()
+  local jumplist = vim.fn.getjumplist()
+
+  require('telescope.builtin').jumplist({
+    on_complete = {
+      function(self)
+        if #jumplist[1] ~= jumplist[2] then
+          self:move_selection(jumplist[2] - #jumplist[1] + 1)
+        end
+      end,
+    },
+  })
+end
+
 return G
