@@ -28,10 +28,4 @@ return {
     event = 'BufRead',
     opts = {},
   },
-  {
-    'Wansmer/treesj',
-    opts = {
-      use_default_keymaps = false,
-    },
-  },
 }

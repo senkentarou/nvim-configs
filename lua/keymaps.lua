@@ -72,6 +72,7 @@ vim.cmd([[
   nnoremap <silent> <Leader>j <Plug>(quickhl-cword-toggle)
   nnoremap <silent> <Leader>k :<C-u>lua require('globals').toggle_hisearch()<CR>
   nnoremap <silent> <Leader>l <Plug>(quickhl-manual-this)
+  nmap * <Plug>(quickhl-manual-this)
   nmap n <Plug>(quickhl-manual-go-to-next)
   nmap N <Plug>(quickhl-manual-go-to-prev)
 
@@ -173,8 +174,6 @@ vim.cmd([[
   vnoremap <silent> f <CMD>lua require('globals').hop_with_char({ direction = 'after_cursor', current_line_only = true })<CR>
   nnoremap <silent> F :<C-u>lua require('globals').hop_with_char({ direction = 'before_cursor', current_line_only = true })<CR>
   vnoremap <silent> F <CMD>lua require('globals').hop_with_char({ direction = 'before_cursor', current_line_only = true })<CR>
-
-  nnoremap <silent> tt :<C-u>lua require('treesj').toggle()<CR>
 
   " Moving window
   nnoremap <C-j> <C-w><C-j>
