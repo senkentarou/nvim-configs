@@ -101,7 +101,10 @@ return {
   },
   {
     'AndrewRadev/linediff.vim',
-    event = 'CmdlineEnter',
+    cmd = {
+      'Linediff',
+      'LinediffReset',
+    },
   },
   {
     'zbirenbaum/copilot.lua',
