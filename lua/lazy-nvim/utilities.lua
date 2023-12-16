@@ -37,12 +37,15 @@ return {
     'petertriho/nvim-scrollbar',
     event = 'BufRead',
     opts = {
+      handle = {
+        blend = 0,
+      },
       marks = {
-        Search = {
-          color = '#f0c674',
-        },
         Cursor = {
           text = "◅",
+        },
+        Search = {
+          color = '#f0c674',
         },
         Error = {
           color = '#ff0000',
