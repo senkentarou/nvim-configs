@@ -37,6 +37,9 @@ return {
     'petertriho/nvim-scrollbar',
     event = 'BufRead',
     opts = {
+      excluded_filetypes = {
+        'alpha',
+      },
       handle = {
         blend = 0,
       },
