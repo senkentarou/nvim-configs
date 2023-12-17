@@ -32,10 +32,10 @@ vim.cmd([[
   nnoremap <silent> <Leader>m :<C-u>lua require('telescope.builtin').grep_string({ search = require('globals').histadd_string(vim.fn.input('[GrepString] ')) })<CR>
   " quickhl
   nnoremap <silent> <Leader>h <Plug>(quickhl-manual-reset)
-  nnoremap <silent> <Leader>j *
+  nnoremap <silent> <Leader>j <Plug>(asterisk-z*)
   nnoremap <silent> <Leader>k :<C-u>lua require('globals').toggle_hisearch()<CR>
   nnoremap <silent> <Leader>l <Plug>(quickhl-manual-this)
-  nmap * *N
+  nmap * <Plug>(asterisk-z*)
   nmap n <Plug>(quickhl-manual-go-to-next)
   nmap N <Plug>(quickhl-manual-go-to-prev)
 

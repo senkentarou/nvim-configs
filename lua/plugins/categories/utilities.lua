@@ -16,6 +16,10 @@ return {
     event = 'BufRead',
   },
   {
+    'haya14busa/vim-asterisk',
+    event = 'BufRead',
+  },
+  {
     'folke/todo-comments.nvim',
     event = 'BufRead',
     opts = {
