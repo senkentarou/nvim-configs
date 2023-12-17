@@ -214,7 +214,6 @@ local configs = function()
   telescope.load_extension('file_browser')
   telescope.load_extension('git_log')
   telescope.load_extension('convert_word_case')
-
 end
 
 return {
@@ -227,6 +226,18 @@ return {
       'senkentarou/telescope-git-log.nvim',
       'senkentarou/telescope-convert-word-case.nvim',
     },
+    init = function()
+      vim.api.nvim_create_autocmd({
+        "VimEnter",
+        "ColorScheme",
+      }, {
+        group = vim.api.nvim_create_augroup("MyTelescope", {
+          clear = true,
+        }),
+        pattern = "*",
+        command = "highlight TelescopeMatching ctermfg=167 guifg=#cc6666",
+      })
+    end,
     cmd = {
       'Telescope',
     },
