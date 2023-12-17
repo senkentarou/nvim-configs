@@ -99,25 +99,6 @@ G.histadd_string = function(input)
   return input
 end
 
-G.hop_with_word = function(opts)
-  opts = opts or {}
-
-  local word
-
-  if opts.latest_search then
-    word = vim.api.nvim_exec('echo @/', true)
-  elseif opts.current_cursor then
-    word = vim.fn.expand("<cword>")
-  else
-    vim.notify('no target option to hop: latest_search or current_cursor')
-    return
-  end
-
-  vim.notify('Hop with "' .. word .. '": ')
-
-  require('hop').hint_patterns({}, word)
-end
-
 G.hop_with_char = function(opts)
   opts = opts or {}
 
@@ -129,12 +110,10 @@ G.hop_with_char = function(opts)
     direction = require('hop.hint').HintDirection.AFTER_CURSOR
   end
 
-  vim.notify('Hop with char: ')
-
   require('hop').hint_patterns({
     direction = direction,
     current_line_only = (opts.current_line_only == true),
-  }, vim.fn.getcharstr())
+  }, vim.fn.escape(vim.fn.getcharstr(), '\\/.$^~[]'))
 end
 
 return G
