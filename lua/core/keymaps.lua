@@ -129,8 +129,8 @@ vim.cmd([[
   vnoremap sh ^
   nnoremap sl $
   vnoremap sl $
-  nnoremap <silent> sm :<C-u>lua require('hop').hint_patterns({}, vim.fn.input('[HopWithWord] '))<CR>
-  vnoremap <silent> sm <CMD>lua require('hop').hint_patterns({}, vim.fn.input('[HopWithWord] '))<CR>
+  nnoremap <silent> ss :<C-u>lua require('hop').hint_patterns({}, vim.fn.input('[HopWithWord] '))<CR>
+  vnoremap <silent> ss <CMD>lua require('hop').hint_patterns({}, vim.fn.input('[HopWithWord] '))<CR>
   nnoremap <silent> f :<C-u>lua require('globals').hop_with_char({ direction = 'after_cursor', current_line_only = true })<CR>
   vnoremap <silent> f <CMD>lua require('globals').hop_with_char({ direction = 'after_cursor', current_line_only = true })<CR>
   nnoremap <silent> F :<C-u>lua require('globals').hop_with_char({ direction = 'before_cursor', current_line_only = true })<CR>
