@@ -12,7 +12,7 @@ local configs = function()
     actions.select_default(bufnr)
     for _, section in pairs(multi_sections) do
       if section.path ~= nil then -- is it a file -> open it as well:
-        vim.cmd(string.format("%s %s", "edit", section.path))
+        vim.api.nvim_exec(string.format("%s %s", "edit", section.path), false)
       end
     end
   end
@@ -101,7 +101,7 @@ local configs = function()
             type = "command",
           },
           ["<C-l>"] = function()
-            vim.cmd ":norm! D"
+            vim.api.nvim_exec(":norm! D", false)
           end,
           ["<C-k>"] = actions.move_selection_previous,
           ["<C-j>"] = actions.move_selection_next,
