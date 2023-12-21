@@ -1,7 +1,11 @@
 local G = {}
 
-G.toggle_hisearch = function()
-  vim.o.hlsearch = not vim.o.hlsearch
+G.toggle_hlsearch = function()
+  if vim.v.hlsearch == 0 then
+    vim.api.nvim_command('set hlsearch')
+  else
+    vim.api.nvim_command('set nohlsearch')
+  end
 end
 
 G.toggle_lsp_lines_text = function()

@@ -44,7 +44,7 @@ keymap('n', '<Leader>P', ':<C-u>Gopr<CR>', with_silent)
 
 keymap('n', '<Leader>h', '<Plug>(quickhl-manual-reset)', with_silent)
 keymap('n', '<Leader>j', '<Plug>(asterisk-z*)', with_silent)
-keymap('n', '<Leader>k', ':<C-u>lua require("globals").toggle_hisearch()<CR>', with_silent)
+keymap('n', '<Leader>k', ':<C-u>lua require("globals").toggle_hlsearch()<CR>', with_silent)
 keymap('n', '<Leader>l', '<Plug>(quickhl-manual-this)', with_silent)
 
 keymap('n', '*', '<Plug>(asterisk-z*)', with_remap)
