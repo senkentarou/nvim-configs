@@ -1,111 +1,127 @@
 --
 -- Key mappings
 --
-local keymap = vim.keymap.set
-local with_silent = {
-  silent = true,
-}
-local with_remap = {
-  remap = true,
-}
+-- wrap vim.keymap.set
+-- see: https://neovim.io/doc/user/lua.html#vim.keymap.set()
+local keymap = function(mode, lhs, rhs, opts)
+  vim.keymap.set(mode, lhs, rhs, opts)
+end
 
-keymap('c', '<C-a>', '<Home>', with_remap)
-keymap('c', '<C-e>', '<End>', with_remap)
-keymap('c', '<C-h>', '<Left>', with_remap)
-keymap('c', '<C-l>', '<Right>', with_remap)
+-- keymap with remap
+local r = function(mode, lhs, rhs)
+  keymap(mode, lhs, rhs, {
+    remap = true,
+  })
+end
 
-keymap('n', 'Z', '<Nop>', with_remap)
-keymap('n', 'Q', '<Nop>', with_remap)
-keymap('n', 'q', '<Nop>', with_remap)
-keymap('n', 'q:', '<Nop>', with_remap)
+-- keymap with silent
+local s = function(mode, lhs, rhs)
+  keymap(mode, lhs, rhs, {
+    silent = true,
+  })
+end
 
-keymap('n', 'j', '<Plug>(accelerated_jk_gj)', with_remap)
-keymap('n', 'k', '<Plug>(accelerated_jk_gk)', with_remap)
-keymap('n', 'w', '<Plug>(smartword-w)', with_remap)
-keymap('n', 'b', '<Plug>(smartword-b)', with_remap)
-keymap('n', 'e', '<Plug>(smartword-e)', with_remap)
+-- command mode
+r('c', '<C-a>', '<Home>')
+r('c', '<C-e>', '<End>')
+r('c', '<C-h>', '<Left>')
+r('c', '<C-l>', '<Right>')
 
-keymap('n', 's', '<Nop>', with_remap)
-keymap({ 'n', 'v' }, 'sj', '<Plug>(edgemotion-j)', with_silent)
-keymap({ 'n', 'v' }, 'sk', '<Plug>(edgemotion-k)', with_silent)
-keymap({ 'n', 'v' }, 'sh', '^', with_silent)
-keymap({ 'n', 'v' }, 'sl', '$', with_silent)
-keymap({ 'n', 'v' }, 'ss', '<CMD>lua require("hop").hint_patterns({}, vim.fn.input("[HopWithWord] "))<CR>', with_silent)
-keymap({ 'n', 'v' }, 'f', '<CMD>lua require("globals").hop_with_char({ direction = "after_cursor", current_line_only = true })<CR>', with_silent)
-keymap({ 'n', 'v' }, 'F', '<CMD>lua require("globals").hop_with_char({ direction = "before_cursor", current_line_only = true })<CR>', with_silent)
+-- disable default keymap
+r('n', 'Z', '<Nop>')
+r('n', 'Q', '<Nop>')
+r('n', 'q', '<Nop>')
+r('n', 'q:', '<Nop>')
+
+-- moving window
+s('n', '<C-j>', '<C-w><C-j>')
+s('n', '<C-k>', '<C-w><C-k>')
+s('n', '<C-l>', '<C-w><C-l>')
+s('n', '<C-h>', '<C-w><C-h>')
+
+-- moving cursor
+r('n', 'j', '<Plug>(accelerated_jk_gj)')
+r('n', 'k', '<Plug>(accelerated_jk_gk)')
+r('n', 'w', '<Plug>(smartword-w)')
+r('n', 'b', '<Plug>(smartword-b)')
+r('n', 'e', '<Plug>(smartword-e)')
+
+-- hopping cursor
+r('n', 's', '<Nop>')
+s({ 'n', 'v' }, 'sj', '<Plug>(edgemotion-j)')
+s({ 'n', 'v' }, 'sk', '<Plug>(edgemotion-k)')
+s({ 'n', 'v' }, 'sh', '^')
+s({ 'n', 'v' }, 'sl', '$')
+s({ 'n', 'v' }, 'ss', '<CMD>lua require("hop").hint_patterns({}, vim.fn.input("[HopWithWord] "))<CR>')
+s({ 'n', 'v' }, 'f', '<CMD>lua require("globals").hop_with_char({ direction = "after_cursor", current_line_only = true })<CR>')
+s({ 'n', 'v' }, 'F', '<CMD>lua require("globals").hop_with_char({ direction = "before_cursor", current_line_only = true })<CR>')
 
 -- leader family
 vim.g.mapleader = " "
-keymap('n', '<Space>', '<Nop>', with_remap)
-keymap({ 'n', 'v' }, '<Leader>o', '<CMD>Gobf<CR>', with_silent)
-keymap({ 'n', 'v' }, '<Leader>O', '<CMD>Gobfop<CR>', with_silent)
-keymap('n', '<Leader>p', ':<C-u>Gocd<CR>', with_silent)
-keymap('n', '<Leader>P', ':<C-u>Gopr<CR>', with_silent)
+r('n', '<Space>', '<Nop>')
+s({ 'n', 'v' }, '<Leader>o', '<CMD>Gobf<CR>')
+s({ 'n', 'v' }, '<Leader>O', '<CMD>Gobfop<CR>')
+s('n', '<Leader>p', ':<C-u>Gocd<CR>')
+s('n', '<Leader>P', ':<C-u>Gopr<CR>')
 
-keymap('n', '<Leader>h', '<Plug>(quickhl-manual-reset)', with_silent)
-keymap('n', '<Leader>j', '<Plug>(asterisk-z*)', with_silent)
-keymap('n', '<Leader>k', ':<C-u>lua require("globals").toggle_hlsearch()<CR>', with_silent)
-keymap('n', '<Leader>l', '<Plug>(quickhl-manual-this)', with_silent)
+s('n', '<Leader>h', '<Plug>(quickhl-manual-reset)')
+s('n', '<Leader>j', '<Plug>(asterisk-z*)')
+s('n', '<Leader>k', ':<C-u>lua require("globals").toggle_hlsearch()<CR>')
+s('n', '<Leader>l', '<Plug>(quickhl-manual-this)')
 
-keymap('n', '*', '<Plug>(asterisk-z*)', with_remap)
-keymap('n', 'n', '<Plug>(quickhl-manual-go-to-next)', with_remap)
-keymap('n', 'N', '<Plug>(quickhl-manual-go-to-prev)', with_remap)
+r('n', '*', '<Plug>(asterisk-z*)')
+r('n', 'n', '<Plug>(quickhl-manual-go-to-next)')
+r('n', 'N', '<Plug>(quickhl-manual-go-to-prev)')
 
-keymap('n', '<Leader>n', ':<C-u>lua require("telescope.builtin").grep_string({ search = vim.fn.histget("@", -1) })<CR>', with_silent)
-keymap('n', '<Leader>,', ':<C-u>lua require("telescope.builtin").grep_string({ search = require("globals").histadd_string(vim.fn.expand("<cword>")) })<CR>', with_silent)
-keymap('n', '<Leader>m', ':<C-u>lua require("telescope.builtin").grep_string({ search = require("globals").histadd_string(vim.fn.input("[GrepString] ")) })<CR>', with_silent)
+s('n', '<Leader>n', ':<C-u>lua require("telescope.builtin").grep_string({ search = vim.fn.histget("@", -1) })<CR>')
+s('n', '<Leader>,', ':<C-u>lua require("telescope.builtin").grep_string({ search = require("globals").histadd_string(vim.fn.expand("<cword>")) })<CR>')
+s('n', '<Leader>m', ':<C-u>lua require("telescope.builtin").grep_string({ search = require("globals").histadd_string(vim.fn.input("[GrepString] ")) })<CR>')
 
-keymap('n', '<Leader>z', ':<C-u>ConfirmQuitAll<CR>', with_silent)
-keymap('n', '<Leader>q', ':<C-u>ConfirmQuit<CR>', with_silent)
-keymap('n', '<Leader>w', ':<C-u>w<CR>', with_silent)
-keymap('n', '<Leader>W', ':<C-u>lua vim.lsp.buf.format({ async = true })<CR>', with_silent)
+s('n', '<Leader>z', ':<C-u>ConfirmQuitAll<CR>')
+s('n', '<Leader>q', ':<C-u>ConfirmQuit<CR>')
+s('n', '<Leader>w', ':<C-u>w<CR>')
+s('n', '<Leader>W', ':<C-u>lua vim.lsp.buf.format({ async = true })<CR>')
 
-keymap('n', '<Leader>c', '<Plug>(comment_toggle_linewise_current)', with_remap)
-keymap('v', '<Leader>c', '<Plug>(comment_toggle_linewise_visual)', with_remap)
+r('n', '<Leader>c', '<Plug>(comment_toggle_linewise_current)')
+r('v', '<Leader>c', '<Plug>(comment_toggle_linewise_visual)')
 
-keymap('n', '<Leader>x', ':<C-u>lua require("globals").toggle_rspec_file()<CR>', with_silent)
+s('n', '<Leader>x', ':<C-u>lua require("globals").toggle_rspec_file()<CR>')
 
 -- utilities
-keymap('i', 'jj', '<ESC>', with_remap)
-keymap('n', ';', ':<C-u>lua require("telescope.builtin").buffers({ sort_lastused = true, ignore_current_buffer = true })<CR>', with_silent)
-keymap('n', '<C-q>', ':<C-u>lua require("globals").close_buffer()<CR>', with_silent)
+r('i', 'jj', '<ESC>')
+s('n', ';', ':<C-u>lua require("telescope.builtin").buffers({ sort_lastused = true, ignore_current_buffer = true })<CR>')
+s('n', '<C-q>', ':<C-u>lua require("globals").close_buffer()<CR>')
 
-keymap('n', '<C-y>', ':<C-u>LinediffReset<CR>', with_silent)
-keymap('v', '<C-y>', ':Linediff<CR>', with_silent)
+s('n', '<C-y>', ':<C-u>LinediffReset<CR>')
+s('v', '<C-y>', ':Linediff<CR>')
 
-keymap('n', '<C-x>', '<Plug>(dial-decrement)', with_remap)
-keymap('n', '<C-a>', '<Plug>(dial-increment)', with_remap)
+r('n', '<C-x>', '<Plug>(dial-decrement)')
+r('n', '<C-a>', '<Plug>(dial-increment)')
 
--- " <C-f> Find files
-keymap('n', '<C-f>', '<Nop>', with_remap)
-keymap('n', '<C-f><C-f>', ':<C-u>lua require("telescope.builtin").find_files()<CR>', with_silent)
+-- <C-f> find files
+r('n', '<C-f>', '<Nop>')
+s('n', '<C-f><C-f>', ':<C-u>lua require("telescope.builtin").find_files()<CR>')
 
--- " <C-g> Git
-keymap('n', '<C-g>', '<Nop>', with_remap)
-keymap('n', '<C-g><C-g>', ':<C-u>lua require("telescope.builtin").git_status({ initial_mode = "normal" })<CR>', with_silent)
-keymap('n', '<C-g><C-o>', ':<C-u>Goacf<CR>', with_silent)
-keymap('n', '<C-g><C-l>', ':<C-u>lua require("telescope").extensions.git_log.list_commits_on_file()<CR>', with_silent)
-keymap('n', '<C-g><C-p>', ':<C-u>Gitsigns prev_hunk<CR>', with_silent)
-keymap('n', '<C-g><C-n>', ':<C-u>Gitsigns next_hunk<CR>', with_silent)
-keymap({ 'n', 'v' }, '<C-g><C-h>', '<CMD>Gitsigns reset_hunk<CR>', with_silent)
+-- <C-g> git
+r('n', '<C-g>', '<Nop>')
+s('n', '<C-g><C-g>', ':<C-u>lua require("telescope.builtin").git_status({ initial_mode = "normal" })<CR>')
+s('n', '<C-g><C-o>', ':<C-u>Goacf<CR>')
+s('n', '<C-g><C-l>', ':<C-u>lua require("telescope").extensions.git_log.list_commits_on_file()<CR>')
+s('n', '<C-g><C-p>', ':<C-u>Gitsigns prev_hunk<CR>')
+s('n', '<C-g><C-n>', ':<C-u>Gitsigns next_hunk<CR>')
+s({ 'n', 'v' }, '<C-g><C-h>', '<CMD>Gitsigns reset_hunk<CR>')
 
--- " <C-w> Filer
-keymap('n', '<C-w>', '<Nop>', with_remap)
-keymap('n', '<C-w><C-w>', ':<C-u>lua require("telescope").extensions.file_browser.file_browser({ initial_mode = "normal" })<CR>', with_silent)
+-- <C-w> filer
+r('n', '<C-w>', '<Nop>')
+s('n', '<C-w><C-w>', ':<C-u>lua require("telescope").extensions.file_browser.file_browser({ initial_mode = "normal" })<CR>')
 
--- " <C-e> LSP
-keymap('n', '<C-e>', '<Nop>', with_remap)
-keymap('n', '<C-e><C-e>', ':<C-u>lua vim.lsp.buf.definition()<CR>', with_silent)
-keymap('n', '<C-e><C-r>', ':<C-u>lua vim.lsp.buf.references()<CR>', with_silent)
-keymap('n', '<C-e>r', ':<C-u>lua vim.lsp.buf.rename()<CR>', with_silent)
-keymap('n', '=', ':<C-u>lua require("globals").toggle_lsp_lines_text()<CR>', with_silent)
+-- <C-e> LSP
+r('n', '<C-e>', '<Nop>')
+s('n', '<C-e><C-e>', ':<C-u>lua vim.lsp.buf.definition()<CR>')
+s('n', '<C-e><C-r>', ':<C-u>lua vim.lsp.buf.references()<CR>')
+s('n', '<C-e>r', ':<C-u>lua vim.lsp.buf.rename()<CR>')
+s('n', '=', ':<C-u>lua require("globals").toggle_lsp_lines_text()<CR>')
 
--- " <C-s> Replacer
-keymap('n', '<C-s>', '<Nop>', with_remap)
-keymap('n', '<C-s><C-s>', ':<C-u>lua require("telescope").extensions.convert_word_case.convert_word_case()<CR>', with_silent)
-
--- " Moving window
-keymap('n', '<C-j>', '<C-w><C-j>', with_silent)
-keymap('n', '<C-k>', '<C-w><C-k>', with_silent)
-keymap('n', '<C-l>', '<C-w><C-l>', with_silent)
-keymap('n', '<C-h>', '<C-w><C-h>', with_silent)
+-- <C-s> replacer
+r('n', '<C-s>', '<Nop>')
+s('n', '<C-s><C-s>', ':<C-u>lua require("telescope").extensions.convert_word_case.convert_word_case()<CR>')
