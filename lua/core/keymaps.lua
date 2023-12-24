@@ -104,7 +104,7 @@ s('n', '<C-f><C-f>', ':<C-u>lua require("telescope.builtin").find_files()<CR>')
 
 -- <C-g> git
 r('n', '<C-g>', '<Nop>')
-s('n', '<C-g><C-g>', ':<C-u>lua require("telescope.builtin").git_status({ initial_mode = "normal" })<CR>')
+s('n', '<C-g><C-g>', ':<C-u>lua require("telescope").extensions.git_status.git_status()<CR>')
 s('n', '<C-g><C-o>', ':<C-u>Goacf<CR>')
 s('n', '<C-g><C-l>', ':<C-u>lua require("telescope").extensions.git_log.list_commits_on_file()<CR>')
 s('n', '<C-g><C-p>', ':<C-u>Gitsigns prev_hunk<CR>')
