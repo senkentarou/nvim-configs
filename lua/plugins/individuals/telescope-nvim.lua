@@ -134,7 +134,6 @@ local configs = function()
         preview_cutoff = 120,
       },
     },
-    vimgrep_arguments = picker_config.grep_string.base_command,
     pickers = {
       find_files = {
         cwd = vim.fn.systemlist("git rev-parse --show-toplevel")[1],
@@ -155,6 +154,7 @@ local configs = function()
       },
       grep_string = {
         cwd = vim.fn.systemlist("git rev-parse --show-toplevel")[1],
+        vimgrep_arguments = picker_config.grep_string.base_command,
         mappings = {
           i = {
             -- toggle excludes by glob
