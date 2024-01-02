@@ -51,5 +51,11 @@ vim.api.nvim_create_autocmd({
 }, {
   group = my_autocmds,
   pattern = "*",
-  command = "highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE",
+  callback = function()
+    vim.api.nvim_exec([[
+      highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
+      highlight link DiffAdded DiffAdd
+      highlight link DiffRemoved DiffDelete
+    ]], false)
+  end,
 })
