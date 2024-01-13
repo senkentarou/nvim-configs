@@ -3,7 +3,7 @@
 --
 vim.opt.mouse = ""
 vim.opt.undofile = true
-vim.opt.cmdheight = 2
+vim.opt.cmdheight = 1
 vim.opt.ignorecase = true
 vim.opt.hidden = true
 vim.opt.autoread = true
