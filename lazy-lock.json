@@ -19,6 +19,7 @@
   "goacf.nvim": { "branch": "master", "commit": "b786591acce0a9e6efd07e91a4056b3399052bd5" },
   "gobf.nvim": { "branch": "master", "commit": "de741e3449ee703f64d59984178f02064494bbfa" },
   "gopr.nvim": { "branch": "master", "commit": "ee0428b36117dd314cb815c5d19a26bc5af2f0af" },
+  "highlight-undo.nvim": { "branch": "main", "commit": "50a6884a8476be04ecce8f1c4ed692c5000ef0a1" },
   "hop.nvim": { "branch": "master", "commit": "6d853addd6e11df8338b26e869a29b36f2c3e893" },
   "indent-blankline.nvim": { "branch": "master", "commit": "12e92044d313c54c438bd786d11684c88f6f78cd" },
   "lazy.nvim": { "branch": "main", "commit": "96584866b9c5e998cbae300594d0ccfd0c464627" },

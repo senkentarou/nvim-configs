@@ -20,6 +20,11 @@ return {
     event = 'BufRead',
   },
   {
+    'tzachar/highlight-undo.nvim',
+    event = 'BufRead',
+    opts = {},
+  },
+  {
     'folke/todo-comments.nvim',
     event = 'BufRead',
     opts = {
