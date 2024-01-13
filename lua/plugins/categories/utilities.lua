@@ -25,6 +25,13 @@ return {
     opts = {},
   },
   {
+    'nacro90/numb.nvim',
+    event = 'BufRead',
+    opts = {
+      show_numbers = true,
+    },
+  },
+  {
     'folke/todo-comments.nvim',
     event = 'BufRead',
     opts = {
