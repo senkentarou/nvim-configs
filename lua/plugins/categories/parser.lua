@@ -23,4 +23,11 @@ return {
     event = 'BufRead',
     opts = {},
   },
+  {
+    'NStefan002/visual-surround.nvim',
+    event = 'BufRead',
+    opts = {
+      use_default_keymaps = false,
+    },
+  },
 }

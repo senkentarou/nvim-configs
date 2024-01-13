@@ -57,5 +57,6 @@
   "vim-sandwich": { "branch": "master", "commit": "c5a2cc438ce6ea2005c556dc833732aa53cae21a" },
   "vim-smartword": { "branch": "master", "commit": "608d4883bb1eff4131f44857a21119220e55886d" },
   "vim-startuptime": { "branch": "master", "commit": "454b3de856b7bd298700de33d79774ca9b9e3875" },
+  "visual-surround.nvim": { "branch": "main", "commit": "666f8d3829ca18f9aae841bd945a5adf84ad2855" },
   "wb-only-current-line.nvim": { "branch": "main", "commit": "7580a58ee6b9df554e274ac7fc64b077cd3fb0f4" }
 }

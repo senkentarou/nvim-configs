@@ -21,6 +21,20 @@ local s = function(mode, lhs, rhs)
   })
 end
 
+-- visual surround
+for _, key in pairs({
+  "{",
+  "[",
+  "(",
+  "'",
+  '"',
+  "<",
+}) do
+  s('v', 's' .. key, function()
+    require('visual-surround').surround(key)
+  end)
+end
+
 -- command mode
 r('c', '<C-a>', '<Home>')
 r('c', '<C-e>', '<End>')
