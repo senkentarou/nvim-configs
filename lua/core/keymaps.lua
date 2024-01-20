@@ -104,7 +104,7 @@ s('n', '<Leader>x', ':<C-u>lua require("globals").toggle_rspec_file()<CR>')
 -- utilities
 r('i', 'jj', '<ESC>')
 s('n', ';', ':<C-u>lua require("telescope.builtin").buffers({ sort_lastused = true, ignore_current_buffer = true })<CR>')
-s('n', '<C-q>', ':<C-u>lua require("globals").close_buffer()<CR>')
+s('n', '<C-q>', ':<C-u>CloseBuffer<CR>')
 
 s('n', '<C-y>', ':<C-u>LinediffReset<CR>')
 s('v', '<C-y>', ':Linediff<CR>')

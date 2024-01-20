@@ -70,32 +70,6 @@ G.toggle_rspec_file = function()
   end
 end
 
-G.close_buffer = function()
-  local filetype = vim.bo.filetype
-  local command = ''
-
-  if filetype == 'alpha' then
-    -- no action
-    command = ':'
-  elseif vim.fn.index({
-    'help',
-    'lspinfo',
-    'lazy',
-    'startuptime',
-  }, filetype) >= 0 then
-    -- close pane
-    command = 'close'
-  elseif vim.fn.filter(vim.fn.range(1, vim.fn.bufnr('$')), 'buflisted(v:val)')[2] ~= nil then
-    -- close buffer
-    command = 'bd'
-  else
-    -- default open goolord/alpha-nvim
-    command = 'Alpha'
-  end
-
-  vim.api.nvim_command(command)
-end
-
 G.histadd_string = function(input)
   -- add input into history
   -- :history @, if you want to see history
