@@ -109,8 +109,10 @@ s('n', '<C-q>', ':<C-u>CloseBuffer<CR>')
 s('n', '<C-y>', ':<C-u>LinediffReset<CR>')
 s('v', '<C-y>', ':Linediff<CR>')
 
-r('n', '<C-x>', '<Plug>(dial-decrement)')
 r('n', '<C-a>', '<Plug>(dial-increment)')
+r('n', '<C-x>', '<Plug>(dial-decrement)')
+r('n', 'g<C-a>', 'g<Plug>(dial-increment)')
+r('n', 'g<C-x>', 'g<Plug>(dial-decrement)')
 
 -- <C-f> find files
 r('n', '<C-f>', '<Nop>')
