@@ -1,5 +1,5 @@
 local configs = function()
-  local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+  local capabilities = require('cmp_nvim_lsp').default_capabilities() -- nvim-cmpで補完候補にLSPを追加するための設定
   local nvim_lsp = require('lspconfig')
 
   nvim_lsp.ruby_lsp.setup {
@@ -18,10 +18,7 @@ end
 return {
   {
     'neovim/nvim-lspconfig',
-    dependencies = {
-      'nvimtools/none-ls.nvim',
-      'jose-elias-alvarez/typescript.nvim',
-    },
+    event = 'BufRead',
     config = configs,
   },
 }
