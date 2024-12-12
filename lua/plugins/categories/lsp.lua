@@ -1,20 +1,5 @@
 return {
   {
-    'williamboman/mason.nvim',
-    event = 'BufRead',
-    opts = {},
-  },
-  {
-    'williamboman/mason-lspconfig.nvim',
-    event = 'BufRead',
-    opts = {},
-  },
-  {
-    'WhoIsSethDaniel/mason-tool-installer.nvim',
-    event = 'BufRead',
-    opts = {},
-  },
-  {
     'j-hui/fidget.nvim',
     event = 'BufRead',
     opts = {},
