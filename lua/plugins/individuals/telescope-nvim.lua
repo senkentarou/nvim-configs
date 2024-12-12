@@ -229,9 +229,6 @@ return {
       'senkentarou/telescope-git-status.nvim',
       'senkentarou/telescope-git-commit.nvim',
       'senkentarou/telescope-convert-word-case.nvim',
-      -- {
-      --   dir = '~/mywork/telescope-git-commit.nvim',
-      -- },
     },
     init = function()
       vim.api.nvim_create_autocmd({
