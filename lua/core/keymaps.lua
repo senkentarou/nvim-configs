@@ -87,6 +87,7 @@ s('n', '<Leader>l', '<Plug>(quickhl-manual-this)')
 r('n', '*', '<Plug>(asterisk-z*)')
 r('n', 'n', '<Plug>(quickhl-manual-go-to-next)')
 r('n', 'N', '<Plug>(quickhl-manual-go-to-prev)')
+s('n', 'L', ':lua require("globals").pagedown()<CR>')
 
 s('n', '<Leader>n', ':<C-u>lua require("telescope.builtin").grep_string({ search = vim.fn.histget("@", -1) })<CR>')
 s('n', '<Leader>,', ':<C-u>lua require("telescope.builtin").grep_string({ search = require("globals").histadd_string(vim.fn.expand("<cword>")) })<CR>')

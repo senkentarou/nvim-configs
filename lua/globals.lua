@@ -94,4 +94,21 @@ G.hop_with_char = function(opts)
   }, vim.fn.escape(vim.fn.getcharstr(), '\\/.$^~[]'))
 end
 
+G.pagedown = function()
+  -- ref. https://zenn.dev/vim_jp/articles/20240522_ekiden_better_hl
+  local line = vim.fn.line('.')
+  vim.api.nvim_command('normal! L')
+
+  -- page down if the cursor is on the last page
+  if line == vim.fn.line('.') then
+    vim.api.nvim_command('normal! ztL')
+  end
+
+  if vim.fn.line('.') == vim.fn.line('$') then
+    vim.api.nvim_command('normal! z-')
+  end
+
+  vim.api.nvim_command('normal! 0')
+end
+
 return G
