@@ -94,18 +94,44 @@ G.hop_with_char = function(opts)
   }, vim.fn.escape(vim.fn.getcharstr(), '\\/.$^~[]'))
 end
 
+G.pageup = function()
+  -- ref. https://zenn.dev/vim_jp/articles/20240522_ekiden_better_hl
+  local line = vim.fn.line('.')
+  local topline = vim.fn.winsaveview().topline
+
+  vim.api.nvim_command('normal! H')
+
+  -- page up if the cursor is on the first of page
+  if line == vim.fn.line('.') then
+    vim.api.nvim_command('normal! zbH')
+  end
+
+  local newtopline = vim.fn.winsaveview().topline
+  if newtopline == 1 and newtopline ~= topline then
+    vim.api.nvim_exec(tostring(line), false)
+  end
+
+  vim.api.nvim_command('normal! 0')
+end
+
 G.pagedown = function()
   -- ref. https://zenn.dev/vim_jp/articles/20240522_ekiden_better_hl
   local line = vim.fn.line('.')
+  local topline = vim.fn.winsaveview().topline
+
   vim.api.nvim_command('normal! L')
 
-  -- page down if the cursor is on the last page
+  -- page down if the cursor is on the last of page
   if line == vim.fn.line('.') then
     vim.api.nvim_command('normal! ztL')
   end
 
   if vim.fn.line('.') == vim.fn.line('$') then
     vim.api.nvim_command('normal! z-')
+
+    if topline ~= vim.fn.winsaveview().topline then
+      vim.api.nvim_exec(tostring(line), false)
+    end
   end
 
   vim.api.nvim_command('normal! 0')
