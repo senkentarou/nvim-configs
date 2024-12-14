@@ -6,7 +6,7 @@ return {
       'Gopr',
     },
     opts = {
-      default_remote = 'upstream',
+      default_remote = 'origin',
     },
   },
   {
@@ -16,7 +16,7 @@ return {
       'Gobfop',
     },
     opts = {
-      default_remote = 'upstream',
+      default_remote = 'origin',
       default_branches = {
         'main',
         'master',
