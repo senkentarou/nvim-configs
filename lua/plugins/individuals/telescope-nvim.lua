@@ -17,69 +17,25 @@ local configs = function()
     end
   end
 
-  local picker_config = {
-    find_files = {
-      base_command = {
-        "rg",
-        "--files",
-        "--hidden",
-        "--glob=!.git/",
-      },
-      additional_options = {
-        "--glob=!spec/",
-      },
-      enable_options = false,
-    },
-    grep_string = {
-      base_command = {
-        "rg",
-        "--column",
-        "--line-number",
-        "--no-heading",
-        "--color=never",
-        "--smart-case",
-        "--with-filename",
-        "--trim",
-        "--hidden",
-        "--glob=!.git/",
-      },
-      additional_options = {
-        "--glob=!spec/",
-      },
-      enable_options = false,
-    },
+  local ff_base_cmd = {
+    "rg",
+    "--files",
+    "--hidden",
+    "--glob=!.git/",
   }
 
-  local find_files_command = function()
-    local conf = picker_config.find_files
-    local command = vim.deepcopy(conf.base_command)
-
-    if conf.enable_options then
-      table.insert(command, conf.additional_options)
-    end
-
-    return vim.tbl_flatten(command)
-  end
-
-  local grep_string_command = function()
-    local conf = picker_config.grep_string
-    local command = vim.deepcopy(conf.base_command)
-
-    if conf.enable_options then
-      table.insert(command, conf.additional_options)
-    end
-
-    -- need to add history before grep_string
-    local latest_hist = vim.fn.histget('@', -1) or ''
-    if latest_hist ~= '' then
-      table.insert(command, {
-        "--",
-        latest_hist,
-      })
-    end
-
-    return vim.tbl_flatten(command)
-  end
+  local gs_base_cmd = {
+    "rg",
+    "--column",
+    "--line-number",
+    "--no-heading",
+    "--color=never",
+    "--smart-case",
+    "--with-filename",
+    "--trim",
+    "--hidden",
+    "--glob=!.git/",
+  }
 
   telescope.setup {
     defaults = {
@@ -137,15 +93,25 @@ local configs = function()
     pickers = {
       find_files = {
         cwd = vim.fn.systemlist("git rev-parse --show-toplevel")[1],
-        find_command = picker_config.find_files.base_command,
+        find_command = ff_base_cmd,
         mappings = {
           i = {
-            -- toggle excludes by glob
-            ["<C-r>"] = function(bufnr)
-              picker_config.find_files.enable_options = not picker_config.find_files.enable_options
+            -- toggle rspec
+            ["<C-e>"] = function(bufnr)
+              local rspec_ignore = vim.b.telescope_rspec_ignore
+              if rspec_ignore == nil then
+                -- first time, set to true
+                rspec_ignore = true
+              end
+              vim.b.telescope_rspec_ignore = not rspec_ignore
+
+              local command = vim.deepcopy(ff_base_cmd)
+              if rspec_ignore then
+                table.insert(command, { "--glob=!spec/" })
+              end
 
               local current_picker = actions_state.get_current_picker(bufnr)
-              current_picker:refresh(finders.new_oneshot_job(find_files_command(), {
+              current_picker:refresh(finders.new_oneshot_job(vim.tbl_flatten(command), {
                 entry_maker = make_entry.gen_from_file(),
               }))
             end,
@@ -154,15 +120,34 @@ local configs = function()
       },
       grep_string = {
         cwd = vim.fn.systemlist("git rev-parse --show-toplevel")[1],
-        vimgrep_arguments = picker_config.grep_string.base_command,
+        vimgrep_arguments = gs_base_cmd,
         mappings = {
           i = {
             -- toggle excludes by glob
-            ["<C-r>"] = function(bufnr)
-              picker_config.grep_string.enable_options = not picker_config.grep_string.enable_options
+            ["<C-e>"] = function(bufnr)
+              local rspec_ignore = vim.b.telescope_rspec_ignore
+              if rspec_ignore == nil then
+                -- first time, set to true
+                rspec_ignore = true
+              end
+              vim.b.telescope_rspec_ignore = not rspec_ignore
+
+              local command = vim.deepcopy(gs_base_cmd)
+              if rspec_ignore then
+                table.insert(command, { "--glob=!spec/" })
+              end
+
+              -- need to add grep_string word
+              local latest_hist = vim.fn.histget('@', -1) or ''
+              if latest_hist ~= '' then
+                table.insert(command, {
+                  "--",
+                  latest_hist,
+                })
+              end
 
               local current_picker = actions_state.get_current_picker(bufnr)
-              current_picker:refresh(finders.new_oneshot_job(grep_string_command(), {
+              current_picker:refresh(finders.new_oneshot_job(vim.tbl_flatten(command), {
                 entry_maker = make_entry.gen_from_vimgrep(),
               }))
             end,
