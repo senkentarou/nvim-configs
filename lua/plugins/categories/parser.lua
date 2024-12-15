@@ -1,9 +1,34 @@
 return {
   {
-    'lukas-reineke/indent-blankline.nvim',
-    main = 'ibl',
-    event = 'BufRead',
-    opts = {},
+    'shellRaining/hlchunk.nvim',
+    event = { 'BufReadPre', 'BufNewFile' },
+    config = function()
+      require('hlchunk').setup({
+        chunk = {
+          enable = false,
+          chars = {
+            horizontal_line = "─",
+            vertical_line = "│",
+            left_top = "┌",
+            left_bottom = "└",
+            right_arrow = "─",
+          },
+          style = {
+            "#73a5ff",
+            "#f07882",
+          },
+          duration = 0,
+          delay = 300,
+        },
+        indent = {
+          enable = true,
+          chars = {
+            "│",
+            "¦",
+          },
+        },
+      })
+    end,
   },
   {
     'machakann/vim-sandwich',
