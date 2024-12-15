@@ -108,6 +108,7 @@ local configs = function()
               local command = vim.deepcopy(ff_base_cmd)
               if rspec_ignore then
                 table.insert(command, { "--glob=!spec/" })
+                vim.notify("rspec_ignore is true", vim.log.levels.INFO)
               end
 
               local current_picker = actions_state.get_current_picker(bufnr)
@@ -135,6 +136,7 @@ local configs = function()
               local command = vim.deepcopy(gs_base_cmd)
               if rspec_ignore then
                 table.insert(command, { "--glob=!spec/" })
+                vim.notify("rspec_ignore is true", vim.log.levels.INFO)
               end
 
               -- need to add grep_string word
