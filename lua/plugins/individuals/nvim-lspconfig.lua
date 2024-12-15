@@ -89,7 +89,7 @@ return {
       'williamboman/mason-lspconfig.nvim',
       'jay-babu/mason-null-ls.nvim',
     },
-    cmd = 'Mason',
+    event = 'BufRead',
     config = mason_config,
   },
   {
