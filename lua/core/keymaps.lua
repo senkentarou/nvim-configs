@@ -40,8 +40,11 @@ r('c', '<C-a>', '<Home>')
 r('c', '<C-e>', '<End>')
 r('c', '<C-h>', '<Left>')
 r('c', '<C-l>', '<Right>')
+r('c', '<C-w>', '<S-Right>')
+r('c', '<C-b>', '<S-Left>')
 
 -- disable default keymap
+r('n', '<C-z>', '<Nop>')
 r('n', 'Z', '<Nop>')
 r('n', 'Q', '<Nop>')
 r('n', 'q', '<Nop>')
@@ -58,7 +61,6 @@ r('n', 'j', '<Plug>(accelerated_jk_gj)')
 r('n', 'k', '<Plug>(accelerated_jk_gk)')
 r('n', 'w', '<Plug>(smartword-w)')
 r('n', 'b', '<Plug>(smartword-b)')
-r('n', 'e', '<Plug>(smartword-e)')
 
 -- hopping cursor
 r('n', 's', '<Nop>')
@@ -74,22 +76,19 @@ s({ 'n', 'v' }, 'F', '<CMD>lua require("globals").hop_with_char({ direction = "b
 vim.g.mapleader = " "
 r('n', '<Space>', '<Nop>')
 r('n', '<Leader><Space>', '<Nop>')
+
 s({ 'n', 'v' }, '<Leader>o', '<CMD>Gobf<CR>')
 s({ 'n', 'v' }, '<Leader>O', '<CMD>Gobfop<CR>')
 s('n', '<Leader>p', ':<C-u>Gocd<CR>')
 s('n', '<Leader>P', ':<C-u>Gopr<CR>')
 
-s('n', '<Leader>h', '<Plug>(quickhl-manual-reset)')
-s('n', '<Leader>j', '<Plug>(asterisk-z*)')
-s('n', '<Leader>k', ':<C-u>lua require("globals").toggle_hlsearch()<CR>')
-s('n', '<Leader>l', '<Plug>(quickhl-manual-this)')
-
-r('n', '*', '<Plug>(asterisk-z*)')
-r('n', 'n', '<Plug>(quickhl-manual-go-to-next)')
-r('n', 'N', '<Plug>(quickhl-manual-go-to-prev)')
-
-s('n', 'H', ':lua require("globals").pageup()<CR>')
-s('n', 'L', ':lua require("globals").pagedown()<CR>')
+s('n', '<Leader>j', ':<C-u>lua vim.lsp.buf.definition()<CR>')
+s('n', '<Leader>k', ':<C-u>lua vim.lsp.buf.references()<CR>')
+s('n', '<Leader>h', ':<C-u>lua vim.lsp.buf.rename()<CR>')
+s('n', '<Leader>l', ':<C-u>lua vim.lsp.buf.code_action()<CR>')
+s('n', '<Leader>w', ':<C-u>w<CR>')
+s('n', '<Leader>W', ':<C-u>lua vim.lsp.buf.format({ async = true })<CR>')
+s('n', '=', ':<C-u>lua require("globals").toggle_lsp_lines_text()<CR>')
 
 s('n', '<Leader>n', ':<C-u>lua require("telescope.builtin").grep_string({ search = vim.fn.histget("@", -1) })<CR>')
 s('n', '<Leader>,', ':<C-u>lua require("telescope.builtin").grep_string({ search = require("globals").histadd_string(vim.fn.expand("<cword>")) })<CR>')
@@ -97,26 +96,28 @@ s('n', '<Leader>m', ':<C-u>lua require("telescope.builtin").grep_string({ search
 
 s('n', '<Leader>z', ':<C-u>ConfirmQuitAll<CR>')
 s('n', '<Leader>q', ':<C-u>ConfirmQuit<CR>')
-s('n', '<Leader>w', ':<C-u>w<CR>')
-s('n', '<Leader>W', ':<C-u>lua vim.lsp.buf.format({ async = true })<CR>')
 
 r('n', '<Leader>c', '<Plug>(comment_toggle_linewise_current)')
 r('v', '<Leader>c', '<Plug>(comment_toggle_linewise_visual)')
 
-s('n', '<Leader>x', ':<C-u>lua require("globals").toggle_rspec_file()<CR>')
-
 -- utilities
 r('i', 'jj', '<ESC>')
+s('n', '<ESC><ESC>', ':<C-u>lua require("globals").toggle_hlsearch()<CR>')
 s('n', ';', ':<C-u>lua require("telescope.builtin").buffers({ sort_lastused = true, ignore_current_buffer = true })<CR>')
 s('n', '<C-q>', ':<C-u>CloseBuffer<CR>')
+
+r('n', '*', '<Plug>(asterisk-z*)')
+r('n', 'n', '<Plug>(quickhl-manual-go-to-next)')
+r('n', 'N', '<Plug>(quickhl-manual-go-to-prev)')
+
+s('n', '<C-u>', ':lua require("globals").pageup()<CR>')
+s('n', '<C-d>', ':lua require("globals").pagedown()<CR>')
 
 s('n', '<C-y>', ':<C-u>LinediffReset<CR>')
 s('v', '<C-y>', ':Linediff<CR>')
 
-r('n', '<C-a>', '<Plug>(dial-increment)')
-r('n', '<C-x>', '<Plug>(dial-decrement)')
-r('n', 'g<C-a>', 'g<Plug>(dial-increment)')
-r('n', 'g<C-x>', 'g<Plug>(dial-decrement)')
+r('n', '<C-a>', 'g<Plug>(dial-increment)')
+r('n', '<C-x>', 'g<Plug>(dial-decrement)')
 
 -- <C-f> find files
 r('n', '<C-f>', '<Nop>')
@@ -137,12 +138,9 @@ s({ 'n', 'v' }, '<C-g><C-j>', '<CMD>Gitsigns stage_hunk<CR>')
 r('n', '<C-w>', '<Nop>')
 s('n', '<C-w><C-w>', ':<C-u>lua require("telescope").extensions.file_browser.file_browser({ initial_mode = "normal" })<CR>')
 
--- <C-e> LSP
+-- <C-e> test
 r('n', '<C-e>', '<Nop>')
-s('n', '<C-e><C-e>', ':<C-u>lua vim.lsp.buf.definition()<CR>')
-s('n', '<C-e><C-r>', ':<C-u>lua vim.lsp.buf.references()<CR>')
-s('n', '<C-e>r', ':<C-u>lua vim.lsp.buf.rename()<CR>')
-s('n', '=', ':<C-u>lua require("globals").toggle_lsp_lines_text()<CR>')
+s('n', '<C-e><C-e>', ':<C-u>lua require("globals").toggle_rspec_file()<CR>')
 
 -- <C-s> replacer
 r('n', '<C-s>', '<Nop>')
