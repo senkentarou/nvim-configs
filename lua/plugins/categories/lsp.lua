@@ -2,6 +2,9 @@ return {
   {
     'j-hui/fidget.nvim',
     event = 'BufRead',
+    init = function()
+      vim.notify = require('fidget.notification').notify
+    end,
     opts = {},
   },
   {
