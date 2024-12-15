@@ -75,7 +75,7 @@ s({ 'n', 'v' }, 'F', '<CMD>lua require("globals").hop_with_char({ direction = "b
 -- leader family
 vim.g.mapleader = " "
 r('n', '<Space>', '<Nop>')
-s('n', '<Leader><Space>', ':lua require("globals").toggle_memo()<CR>')
+s('n', '<Leader><Space>', ':<C-u>lua require("globals").toggle_memo()<CR>')
 
 s({ 'n', 'v' }, '<Leader>o', '<CMD>Gobf<CR>')
 s({ 'n', 'v' }, '<Leader>O', '<CMD>Gobfop<CR>')

@@ -7,25 +7,25 @@ local configs = function()
   dashboard.section.mru.val = {}
   dashboard.section.bottom_buttons.val = {
     {
-      type = "text",
-      val = "Shortcuts",
+      type = 'text',
+      val = 'Shortcuts',
       opts = {
-        hl = "SpecialComment",
+        hl = 'SpecialComment',
       },
     },
     {
-      type = "padding",
+      type = 'padding',
       val = 1,
     },
-    dashboard.button("e", " New File", "<cmd>ene<CR>"),
-    dashboard.button("t", " Telescope Builtins", "<cmd>Telescope<CR>"),
-    dashboard.button("l", " Show Plugins", "<cmd>Lazy<CR>"),
-    dashboard.button("p", "󰚰 Update Plugins", "<cmd>Lazy sync<CR>"),
+    dashboard.button('e', ' Memo', '<CMD>lua require("globals").toggle_memo()<CR>'),
+    dashboard.button('t', ' Telescope Builtins', '<CMD>Telescope<CR>'),
+    dashboard.button('l', ' Show Plugins', '<CMD>Lazy<CR>'),
+    dashboard.button('p', '󰚰 Update Plugins', '<CMD>Lazy sync<CR>'),
     {
-      type = "padding",
+      type = 'padding',
       val = 1,
     },
-    dashboard.button("q", " Exit", "<cmd>qa<CR>"),
+    dashboard.button('q', ' Exit', '<CMD>qa<CR>'),
   }
   dashboard.section.footer.val = {}
 

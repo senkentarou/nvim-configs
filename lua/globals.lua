@@ -141,8 +141,8 @@ G.toggle_memo = function()
   local memo_path = vim.fn.expand("~/.local/share/memo.md")
   if vim.fn.expand("%:p") == memo_path then
     -- close memo
-    vim.api.nvim_command('w')
-    vim.api.nvim_command('bd')
+    -- see: https://github.com/senkentarou/close_buffer.nvim
+    vim.api.nvim_command('CloseBuffer')
     return
   end
 
