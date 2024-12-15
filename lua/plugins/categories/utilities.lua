@@ -82,6 +82,8 @@ return {
         'lspinfo',
         'lazy',
         'startuptime',
+        'copilot-chat',
+        'copilot-overlay',
       },
       default_window_command = 'Alpha',
       default_window_filetype = 'alpha',

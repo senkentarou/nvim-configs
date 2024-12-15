@@ -68,7 +68,6 @@ s({ 'n', 'v' }, 'sj', '<Plug>(edgemotion-j)')
 s({ 'n', 'v' }, 'sk', '<Plug>(edgemotion-k)')
 s({ 'n', 'v' }, 'sh', '^')
 s({ 'n', 'v' }, 'sl', '$')
-s({ 'n', 'v' }, 'ss', '<CMD>lua require("hop").hint_patterns({}, vim.fn.input("[HopWithWord] "))<CR>')
 s({ 'n', 'v' }, 'f', '<CMD>lua require("globals").hop_with_char({ direction = "after_cursor", current_line_only = true })<CR>')
 s({ 'n', 'v' }, 'F', '<CMD>lua require("globals").hop_with_char({ direction = "before_cursor", current_line_only = true })<CR>')
 
@@ -97,8 +96,11 @@ s('n', '<Leader>m', ':<C-u>lua require("telescope.builtin").grep_string({ search
 s('n', '<Leader>z', ':<C-u>ConfirmQuitAll<CR>')
 s('n', '<Leader>q', ':<C-u>ConfirmQuit<CR>')
 
-r('n', '<Leader>c', '<Plug>(comment_toggle_linewise_current)')
-r('v', '<Leader>c', '<Plug>(comment_toggle_linewise_visual)')
+s('n', '<Leader>c', '<Plug>(comment_toggle_linewise_current)')
+s('v', '<Leader>c', '<Plug>(comment_toggle_linewise_visual)')
+
+s('n', '<Leader>a', ':<C-u>lua require("telescope").extensions.convert_word_case.convert_word_case()<CR>')
+s('n', '<Leader>s', ':<C-u>lua require("globals").copilot_chat()<CR>')
 
 -- utilities
 r('i', 'jj', '<ESC>')
@@ -110,8 +112,8 @@ r('n', '*', '<Plug>(asterisk-z*)')
 r('n', 'n', '<Plug>(quickhl-manual-go-to-next)')
 r('n', 'N', '<Plug>(quickhl-manual-go-to-prev)')
 
-s('n', '<C-u>', ':lua require("globals").pageup()<CR>')
-s('n', '<C-d>', ':lua require("globals").pagedown()<CR>')
+s('n', '<C-u>', ':<C-u>lua require("globals").pageup()<CR>')
+s('n', '<C-d>', ':<C-u>lua require("globals").pagedown()<CR>')
 
 s('n', '<C-y>', ':<C-u>LinediffReset<CR>')
 s('v', '<C-y>', ':Linediff<CR>')
@@ -142,6 +144,6 @@ s('n', '<C-w><C-w>', ':<C-u>lua require("telescope").extensions.file_browser.fil
 r('n', '<C-e>', '<Nop>')
 s('n', '<C-e><C-e>', ':<C-u>lua require("globals").toggle_rspec_file()<CR>')
 
--- <C-s> replacer
+-- <C-s> chat
 r('n', '<C-s>', '<Nop>')
-s('n', '<C-s><C-s>', ':<C-u>lua require("telescope").extensions.convert_word_case.convert_word_case()<CR>')
+s({ 'n', 'v' }, '<C-s><C-s>', '<CMD>lua require("CopilotChat.integrations.telescope").pick(require("CopilotChat.actions").prompt_actions())<CR>')
