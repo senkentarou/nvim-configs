@@ -137,4 +137,26 @@ G.pagedown = function()
   vim.api.nvim_command('normal! 0')
 end
 
+G.toggle_memo = function()
+  local memo_path = vim.fn.expand("~/.local/share/memo.md")
+  if vim.fn.expand("%:p") == memo_path then
+    -- close memo
+    vim.api.nvim_command('w')
+    vim.api.nvim_command('bd')
+    return
+  end
+
+  -- open memo
+  vim.api.nvim_command('e ' .. memo_path)
+
+  vim.api.nvim_buf_set_option(0, 'bufhidden', 'wipe')
+  vim.api.nvim_buf_set_option(0, 'swapfile', false)
+
+  -- auto save
+  vim.api.nvim_create_autocmd(
+    { 'InsertLeave', 'TextChanged', 'BufLeave' },
+    { buffer = 0, command = 'silent update' }
+  )
+end
+
 return G
