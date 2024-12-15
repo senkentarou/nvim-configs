@@ -159,11 +159,4 @@ G.toggle_memo = function()
   )
 end
 
-G.copilot_chat = function()
-  local input = vim.fn.input("[ChatOnBuffer] ")
-  if input ~= "" then
-    require('CopilotChat').ask(input, { selection = require('CopilotChat.select').buffer })
-  end
-end
-
 return G

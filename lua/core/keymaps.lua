@@ -100,7 +100,7 @@ s('n', '<Leader>c', '<Plug>(comment_toggle_linewise_current)')
 s('v', '<Leader>c', '<Plug>(comment_toggle_linewise_visual)')
 
 s('n', '<Leader>a', ':<C-u>lua require("telescope").extensions.convert_word_case.convert_word_case()<CR>')
-s('n', '<Leader>s', ':<C-u>lua require("globals").copilot_chat()<CR>')
+s('n', '<Leader>s', ':<C-u>lua require("CopilotChat").ask(vim.fn.input("[ChatOnBuffer] "), { selection = require("CopilotChat.select").buffer })<CR>')
 
 -- utilities
 r('i', 'jj', '<ESC>')
