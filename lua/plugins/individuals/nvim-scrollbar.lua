@@ -12,7 +12,7 @@ return {
       },
       marks = {
         Cursor = {
-          text = "◅",
+          text = '◅',
         },
         Search = {
           color = '#f0c674',

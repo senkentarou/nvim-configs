@@ -65,9 +65,9 @@ local lsp_config = function()
   -- null-ls settings
   local null_ls = require('null-ls')
   null_ls.setup({
-    root_dir = nvim_lsp.util.root_pattern('package.json', '.git'),
     sources = {
       null_ls.builtins.formatting.stylua,
+      -- for settings: see https://kampfkarren.github.io/selene/usage/configuration.html?highlight=toml#configuration
       null_ls.builtins.diagnostics.selene,
       null_ls.builtins.formatting.prettier.with({
         filetypes = {

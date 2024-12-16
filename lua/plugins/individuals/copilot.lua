@@ -1,25 +1,25 @@
 local function generate_prompts(select)
   return {
     Explain = {
-      prompt = "/COPILOT_EXPLAIN アクティブな選択範囲にあるコードの説明を段落形式で書いてください。",
+      prompt = '/COPILOT_EXPLAIN アクティブな選択範囲にあるコードの説明を段落形式で書いてください。',
     },
     Review = {
-      prompt = "/COPILOT_REVIEW アクティブな選択範囲にあるコードをベテランエンジニアの視点でレビューしてください。コード部分以外は日本語で解説してください。",
+      prompt = '/COPILOT_REVIEW アクティブな選択範囲にあるコードをベテランエンジニアの視点でレビューしてください。コード部分以外は日本語で解説してください。',
     },
     Fix = {
-      prompt = "/COPILOT_GENERATE このコードには問題があります。バグを修正したコードに書き直してください。",
+      prompt = '/COPILOT_GENERATE このコードには問題があります。バグを修正したコードに書き直してください。',
     },
     Optimize = {
-      prompt = "/COPILOT_GENERATE 明瞭性と可読性を向上させるために、次のコードをリファクタリングしてください。",
+      prompt = '/COPILOT_GENERATE 明瞭性と可読性を向上させるために、次のコードをリファクタリングしてください。',
     },
     Docs = {
-      prompt = "/COPILOT_GENERATE 選択範囲について後から見た人が理解できる内容のドキュメントコメントを生成してください。",
+      prompt = '/COPILOT_GENERATE 選択範囲について後から見た人が理解できる内容のドキュメントコメントを生成してください。',
     },
     Tests = {
-      prompt = "/COPILOT_GENERATE 単体テストを生成してください。",
+      prompt = '/COPILOT_GENERATE 単体テストを生成してください。',
     },
     FixDiagnostic = {
-      prompt = "ファイル内の次のエラーを解決するように支援してください:",
+      prompt = 'ファイル内の次のエラーを解決するように支援してください:',
       selection = select.diagnostics,
     },
   }
@@ -31,14 +31,14 @@ return {
     event = 'BufRead',
     init = function()
       vim.api.nvim_create_autocmd({
-        "VimEnter",
-        "ColorScheme",
+        'VimEnter',
+        'ColorScheme',
       }, {
-        group = vim.api.nvim_create_augroup("MyCopilot", {
+        group = vim.api.nvim_create_augroup('MyCopilot', {
           clear = true,
         }),
-        pattern = "*",
-        command = "highlight CopilotSuggestion cterm=underline ctermfg=139 ctermbg=53 gui=underline guifg=#b294bb guibg=#5f005f guisp=Magenta",
+        pattern = '*',
+        command = 'highlight CopilotSuggestion cterm=underline ctermfg=139 ctermbg=53 gui=underline guifg=#b294bb guibg=#5f005f guisp=Magenta',
       })
     end,
     opts = {
@@ -50,12 +50,12 @@ return {
         auto_trigger = true,
         debounce = 75,
         keymap = {
-          accept = "<C-l>",
+          accept = '<C-l>',
           accept_word = false,
           accept_line = false,
-          next = "<C-j>",
-          prev = "<C-k>",
-          dismiss = "<C-h>",
+          next = '<C-j>',
+          prev = '<C-k>',
+          dismiss = '<C-h>',
         },
       },
       filetypes = {

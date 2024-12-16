@@ -13,6 +13,9 @@
   },
   "diagnostics": {
     "globals": ["vim"],
-    "hint.enable": false
+    "disable": [
+      "deprecated",
+      "mixed"
+    ]
   }
 }

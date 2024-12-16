@@ -7,14 +7,14 @@ return {
     },
     init = function()
       vim.api.nvim_create_autocmd({
-        "VimEnter",
-        "ColorScheme",
+        'VimEnter',
+        'ColorScheme',
       }, {
-        group = vim.api.nvim_create_augroup("MyGitsigns", {
+        group = vim.api.nvim_create_augroup('MyGitsigns', {
           clear = true,
         }),
-        pattern = "*",
-        command = "highlight GitSignsCurrentLineBlame ctermfg=243 guifg=#707880",
+        pattern = '*',
+        command = 'highlight GitSignsCurrentLineBlame ctermfg=243 guifg=#707880',
       })
     end,
     config = function()
@@ -22,7 +22,7 @@ return {
         current_line_blame = true,
         current_line_blame_formatter = '-- <summary> (<author_time:%R>) [<abbrev_sha>]',
       }
-      require("scrollbar.handlers.gitsigns").setup()
+      require('scrollbar.handlers.gitsigns').setup()
     end,
   },
 }

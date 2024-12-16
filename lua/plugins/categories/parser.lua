@@ -7,15 +7,15 @@ return {
         chunk = {
           enable = false,
           chars = {
-            horizontal_line = "─",
-            vertical_line = "│",
-            left_top = "┌",
-            left_bottom = "└",
-            right_arrow = "─",
+            horizontal_line = '─',
+            vertical_line = '│',
+            left_top = '┌',
+            left_bottom = '└',
+            right_arrow = '─',
           },
           style = {
-            "#73a5ff",
-            "#f07882",
+            '#73a5ff',
+            '#f07882',
           },
           duration = 0,
           delay = 300,
@@ -23,8 +23,8 @@ return {
         indent = {
           enable = true,
           chars = {
-            "│",
-            "¦",
+            '│',
+            '¦',
           },
         },
       })

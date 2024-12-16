@@ -3,9 +3,9 @@ local load_plugins = function(path)
   local basename = vim.fs.basename(path)
 
   for file, _ in vim.fs.dir(path) do
-    if vim.fn.empty(file:match("%.lua$")) == 0 then
+    if vim.fn.empty(file:match('%.lua$')) == 0 then
       vim.list_extend(loaded, {
-        require('plugins/' .. basename .. '/' .. file:gsub("%.lua$", '')),
+        require('plugins/' .. basename .. '/' .. file:gsub('%.lua$', '')),
       })
     end
   end

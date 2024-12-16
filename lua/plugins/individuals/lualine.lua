@@ -16,7 +16,7 @@ local configs = function()
   end
 
   local function current_repository()
-    return ' ' .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+    return ' ' .. vim.fn.fnamemodify(vim.fn.getcwd(), ':t')
   end
 
   require('lualine').setup {

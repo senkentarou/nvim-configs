@@ -1,7 +1,7 @@
 --
 -- Vim options
 --
-vim.opt.mouse = ""
+vim.opt.mouse = ''
 vim.opt.undofile = true
 vim.opt.cmdheight = 1
 vim.opt.ignorecase = true

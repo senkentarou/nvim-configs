@@ -21,7 +21,7 @@ end
 G.toggle_rspec_file = function()
   local current_file = vim.fn.expand('%:t')
 
-  if not string.match(current_file, "%.rb$") then
+  if not string.match(current_file, '%.rb$') then
     vim.notify('current file is not .rb file.')
     return
   end
@@ -30,10 +30,10 @@ G.toggle_rspec_file = function()
   local target_dir = nil
   local target_file = nil
 
-  if string.match(current_dir, "^spec/") then
+  if string.match(current_dir, '^spec/') then
     -- On "spec/" directory, "requests" directory files should be open as "controller.rb" file.
     -- The other files should be opend as it by target: ruby file is under "app" directory or not
-    if string.match(current_dir, "/requests") then
+    if string.match(current_dir, '/requests') then
       target_dir = string.gsub(current_dir, '^spec/requests', 'app/controllers')
       target_file = string.gsub(current_file, '_spec%.rb$', '_controller.rb')
     else
@@ -45,10 +45,10 @@ G.toggle_rspec_file = function()
 
       target_file = string.gsub(current_file, '_spec%.rb$', '.rb')
     end
-  elseif string.match(current_dir, "^app/") then
+  elseif string.match(current_dir, '^app/') then
     -- On "app/" directory, "controller.rb" file should be opend as "request" spec.
     -- The other files should be opend as it under the "spec" directory.
-    if string.match(current_dir, "/controllers") and string.match(current_file, "_controller%.rb$") then
+    if string.match(current_dir, '/controllers') and string.match(current_file, '_controller%.rb$') then
       target_dir = string.gsub(current_dir, 'app/controllers', 'spec/requests')
       target_file = string.gsub(current_file, '_controller%.rb$', '_spec.rb')
     else
@@ -138,8 +138,8 @@ G.pagedown = function()
 end
 
 G.toggle_memo = function()
-  local memo_path = vim.fn.expand("~/.local/share/memo.md")
-  if vim.fn.expand("%:p") == memo_path then
+  local memo_path = vim.fn.expand('~/.local/share/memo.md')
+  if vim.fn.expand('%:p') == memo_path then
     -- close memo
     -- see: https://github.com/senkentarou/close_buffer.nvim
     vim.api.nvim_command('CloseBuffer')
@@ -153,10 +153,7 @@ G.toggle_memo = function()
   vim.api.nvim_buf_set_option(0, 'swapfile', false)
 
   -- auto save
-  vim.api.nvim_create_autocmd(
-    { 'InsertLeave', 'TextChanged', 'BufLeave' },
-    { buffer = 0, command = 'silent update' }
-  )
+  vim.api.nvim_create_autocmd({ 'InsertLeave', 'TextChanged', 'BufLeave' }, { buffer = 0, command = 'silent update' })
 end
 
 return G
