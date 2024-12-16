@@ -3,13 +3,17 @@ local mason_config = function()
     'ruby_lsp',
     'eslint',
     'lua_ls',
+    'bashls',
   }
   local formatters = {
+    'rubocop', -- needs to use rubocop local project settings
     'stylua',
     'prettier',
+    'shfmt',
   }
   local linter_diagnostics = {
     'selene',
+    'shellcheck', -- needs to use bashls: see https://github.com/bash-lsp/bash-language-server
   }
 
   require('mason').setup()
@@ -61,14 +65,28 @@ local lsp_config = function()
     root_dir = nvim_lsp.util.root_pattern('.luarc.json', '.git'),
     capabilities = capabilities,
   })
+  -- Bash
+  -- lsp: bashls
+  -- formatter: shfmt
+  -- linter(diagnostics): bashls(shellcheck)
+  nvim_lsp.bashls.setup({
+    root_dir = nvim_lsp.util.root_pattern('.bashrc', '.git'),
+    capabilities = capabilities,
+  })
 
   -- null-ls settings
   local null_ls = require('null-ls')
   null_ls.setup({
     sources = {
-      null_ls.builtins.formatting.stylua,
-      -- for settings: see https://kampfkarren.github.io/selene/usage/configuration.html?highlight=toml#configuration
+      -- Lua
+      -- selene settings: see https://kampfkarren.github.io/selene/usage/configuration.html?highlight=toml#configuration
       null_ls.builtins.diagnostics.selene,
+      null_ls.builtins.formatting.stylua,
+
+      -- Bash
+      null_ls.builtins.formatting.shfmt,
+
+      -- React+TypeScript
       null_ls.builtins.formatting.prettier.with({
         filetypes = {
           'javascript',
