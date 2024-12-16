@@ -1,7 +1,7 @@
 local mason_config = function()
   local lsp_servers = {
     'ruby_lsp',
-    'eslint',
+    'ts_ls',
     'lua_ls',
     'bashls',
   }
@@ -44,10 +44,10 @@ local lsp_config = function()
     capabilities = capabilities,
   })
   -- React+TypeScript
-  -- lsp:
-  -- formatter:
-  -- linter(diagnostics):
-  nvim_lsp.eslint.setup({
+  -- lsp: ts_ls
+  -- formatter: prettier
+  -- linter(diagnostics): eslint
+  nvim_lsp.ts_ls.setup({
     root_dir = nvim_lsp.util.root_pattern('package.json', '.git'),
     filetypes = {
       'javascript',
@@ -102,7 +102,7 @@ end
 return {
   {
     'williamboman/mason.nvim',
-    -- see https://namileriblog.com/mac/lazy_nvim_lsp/
+    -- to learn plugins relationships, see https://namileriblog.com/mac/lazy_nvim_lsp/
     dependencies = {
       'williamboman/mason-lspconfig.nvim',
       'jay-babu/mason-null-ls.nvim',
