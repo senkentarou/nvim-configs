@@ -59,8 +59,8 @@ local lsp_config = function()
   })
   -- Lua
   -- lsp: lua_ls
-  -- formatter: stylua (null-ls)
-  -- linter(diagnostics): selene (null-ls)
+  -- formatter: stylua
+  -- linter(diagnostics): selene
   nvim_lsp.lua_ls.setup({
     root_dir = nvim_lsp.util.root_pattern('.luarc.json', '.git'),
     capabilities = capabilities,
