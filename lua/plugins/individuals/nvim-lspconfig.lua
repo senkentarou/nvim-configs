@@ -2,13 +2,14 @@ local mason_config = function()
   local lsp_servers = {
     'ruby_lsp',
     'ts_ls',
+    'eslint',
     'lua_ls',
     'bashls',
   }
   local formatters = {
     'rubocop', -- needs to use rubocop local project settings
-    'stylua',
     'prettier',
+    'stylua',
     'shfmt',
   }
   local linter_diagnostics = {
@@ -30,6 +31,16 @@ end
 local lsp_config = function()
   local capabilities = require('cmp_nvim_lsp').default_capabilities() -- nvim-cmpで補完候補にLSPを追加するための設定
   local nvim_lsp = require('lspconfig')
+  local rails_rspec = {
+    'ruby',
+    'rspec',
+  }
+  local typescript_react = {
+    'javascript',
+    'javascriptreact',
+    'typescript',
+    'typescriptreact',
+  }
 
   -- RubyOnRails
   -- lsp: ruby_lsp
@@ -37,26 +48,25 @@ local lsp_config = function()
   -- linter(diagnostics): ruby_lsp(rubocop)
   nvim_lsp.ruby_lsp.setup({
     root_dir = nvim_lsp.util.root_pattern('Gemfile', '.git'),
-    filetypes = {
-      'ruby',
-      'rspec',
-    },
+    filetypes = rails_rspec,
     capabilities = capabilities,
   })
   -- React+TypeScript
   -- lsp: ts_ls
   -- formatter: prettier
-  -- linter(diagnostics): eslint
+  -- linter(diagnostics): eslint(lsp)
   nvim_lsp.ts_ls.setup({
-    root_dir = nvim_lsp.util.root_pattern('package.json', '.git'),
-    filetypes = {
-      'javascript',
-      'javascriptreact',
-      'typescript',
-      'typescriptreact',
-    },
+    root_dir = nvim_lsp.util.root_pattern('package.json', 'tsconfig.json', '.git'),
+    filetypes = typescript_react,
     capabilities = capabilities,
   })
+  -- use eslint lsp: see https://github.com/nvimtools/none-ls.nvim/discussions/81
+  nvim_lsp.eslint.setup({
+    root_dir = nvim_lsp.util.root_pattern('package.json', '.eslintrc.js', '.git'),
+    filetypes = typescript_react,
+    capabilities = capabilities,
+  })
+
   -- Lua
   -- lsp: lua_ls
   -- formatter: stylua
@@ -82,18 +92,12 @@ local lsp_config = function()
       -- selene settings: see https://kampfkarren.github.io/selene/usage/configuration.html?highlight=toml#configuration
       null_ls.builtins.diagnostics.selene,
       null_ls.builtins.formatting.stylua,
-
       -- Bash
       null_ls.builtins.formatting.shfmt,
-
       -- React+TypeScript
       null_ls.builtins.formatting.prettier.with({
-        filetypes = {
-          'javascript',
-          'javascriptreact',
-          'typescript',
-          'typescriptreact',
-        },
+        -- root_dir = nvim_lsp.util.root_pattern('.prettierrc.js', '.git'),
+        filetypes = typescript_react,
       }),
     },
   })
