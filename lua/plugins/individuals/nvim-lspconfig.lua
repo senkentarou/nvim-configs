@@ -96,7 +96,7 @@ local lsp_config = function()
       null_ls.builtins.formatting.shfmt,
       -- React+TypeScript
       null_ls.builtins.formatting.prettier.with({
-        -- root_dir = nvim_lsp.util.root_pattern('.prettierrc.js', '.git'),
+        -- root_dir = nvim_lsp.util.root_pattern('package.json', '.prettierrc.js', '.git'),
         filetypes = typescript_react,
       }),
     },
