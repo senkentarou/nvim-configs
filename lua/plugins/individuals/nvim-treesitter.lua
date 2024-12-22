@@ -43,7 +43,7 @@ return {
     build = ':TSUpdate',
     event = 'BufRead',
     dependencies = {
-      'sifu/nvim-ts-autotag',
+      'windwp/nvim-ts-autotag',
       'RRethy/nvim-treesitter-endwise',
       'andymass/vim-matchup',
     },
