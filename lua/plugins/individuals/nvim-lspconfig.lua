@@ -6,6 +6,7 @@ local mason_config = function()
     'lua_ls',
     'bashls',
     'jsonls',
+    'yamlls',
   }
   local formatters = {
     'rubocop', -- needs to use local project settings
@@ -102,9 +103,30 @@ local lsp_config = function()
     capabilities = capabilities,
     settings = {
       json = {
+        schemas = require('schemastore').json.schemas(),
         format = { enable = true },
         validate = { enable = true },
-        schemas = require('schemastore').json.schemas(),
+      },
+    },
+  })
+
+  -- yaml
+  -- lsp: yamlls
+  -- formatter: yamlls
+  -- linter(diagnostics): yamlls
+  nvim_lsp.yamlls.setup({
+    root_dir = nvim_lsp.util.root_pattern('.git'),
+    capabilities = capabilities,
+    settings = {
+      yaml = {
+        schemaStore = {
+          -- use schemastore instead of built-in schemaStore
+          enable = false,
+          url = '',
+        },
+        schemas = require('schemastore').yaml.schemas(),
+        format = { enable = true },
+        validate = true,
       },
     },
   })
