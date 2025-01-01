@@ -5,9 +5,10 @@ local mason_config = function()
     'eslint',
     'lua_ls',
     'bashls',
+    'jsonls',
   }
   local formatters = {
-    'rubocop', -- needs to use rubocop local project settings
+    'rubocop', -- needs to use local project settings
     'prettier',
     'stylua',
     'shfmt',
@@ -28,6 +29,10 @@ local mason_config = function()
   })
 end
 
+-- setting references:
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
+-- https://github.com/nvimtools/none-ls.nvim/blob/main/doc/BUILTINS.md
+-- Deprecated contents: https://github.com/nvimtools/none-ls.nvim/discussions/81
 local lsp_config = function()
   local capabilities = require('cmp_nvim_lsp').default_capabilities() -- nvim-cmpで補完候補にLSPを追加するための設定
   local nvim_lsp = require('lspconfig')
@@ -51,6 +56,7 @@ local lsp_config = function()
     filetypes = rails_rspec,
     capabilities = capabilities,
   })
+
   -- React+TypeScript
   -- lsp: ts_ls
   -- formatter: prettier
@@ -60,6 +66,7 @@ local lsp_config = function()
     filetypes = typescript_react,
     capabilities = capabilities,
   })
+
   -- use eslint lsp: see https://github.com/nvimtools/none-ls.nvim/discussions/81
   nvim_lsp.eslint.setup({
     root_dir = nvim_lsp.util.root_pattern('package.json', '.eslintrc.js', '.git'),
@@ -75,6 +82,7 @@ local lsp_config = function()
     root_dir = nvim_lsp.util.root_pattern('.luarc.json', '.git'),
     capabilities = capabilities,
   })
+
   -- Bash
   -- lsp: bashls
   -- formatter: shfmt
@@ -82,6 +90,23 @@ local lsp_config = function()
   nvim_lsp.bashls.setup({
     root_dir = nvim_lsp.util.root_pattern('.bashrc', '.git'),
     capabilities = capabilities,
+  })
+
+  -- JSON
+  -- lsp: jsonls
+  -- formatter: jsonls
+  -- linter(diagnostics): jsonls
+  -- ※ diagnostics autofix is not supported
+  nvim_lsp.jsonls.setup({
+    root_dir = nvim_lsp.util.root_pattern('.git'),
+    capabilities = capabilities,
+    settings = {
+      json = {
+        format = { enable = true },
+        validate = { enable = true },
+        schemas = require('schemastore').json.schemas(),
+      },
+    },
   })
 
   -- null-ls settings
@@ -118,6 +143,7 @@ return {
     'neovim/nvim-lspconfig',
     dependencies = {
       'nvimtools/none-ls.nvim',
+      'b0o/schemastore.nvim',
     },
     event = 'BufRead',
     config = lsp_config,
