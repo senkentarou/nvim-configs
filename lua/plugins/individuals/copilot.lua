@@ -47,4 +47,10 @@ return {
       },
     },
   },
+  {
+    -- dir = '~/work/senkentarou/aibou.nvim',
+    'senkentarou/aibou.nvim',
+    cmd = {'AibouOpenChat', 'AibouToggleChat'},
+    opts = {},
+  },
 }

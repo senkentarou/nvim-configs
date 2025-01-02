@@ -5,9 +5,9 @@ return {
       'nvim-treesitter/nvim-treesitter',
       'nvim-tree/nvim-web-devicons',
     },
-    ft = { 'markdown' },
+    ft = { 'markdown', 'aibou-markdown' },
     opts = {
-      file_types = { 'markdown' },
+      file_types = { 'markdown', 'aibou-markdown' },
     },
   },
 }

@@ -148,3 +148,4 @@ s('n', '<C-e><C-e>', ':<C-u>lua require("globals").toggle_rspec_file()<CR>')
 
 -- <C-s> chat
 r('n', '<C-s>', '<Nop>')
+s('n', '<C-s><C-s>', ':<C-u>AibouToggleChat<CR>')
