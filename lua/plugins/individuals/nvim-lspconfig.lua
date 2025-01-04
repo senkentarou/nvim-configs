@@ -7,6 +7,7 @@ local mason_config = function()
     'bashls',
     'jsonls',
     'yamlls',
+    'dockerls',
   }
   local formatters = {
     'rubocop', -- needs to use local project settings
@@ -17,6 +18,7 @@ local mason_config = function()
   local linter_diagnostics = {
     'selene',
     'shellcheck', -- needs to use bashls: see https://github.com/bash-lsp/bash-language-server
+    -- 'hadolint', -- mason経由で入れるとdiagnosticsが表示されないので一時的にコメントアウト。brewなりで直接入れる。https://github.com/hadolint/hadolint
   }
 
   require('mason').setup()
@@ -131,6 +133,15 @@ local lsp_config = function()
     },
   })
 
+  -- Dockerfile
+  -- lsp: dockerls
+  -- formatter: dockerls
+  -- linter(diagnostics): hadolint
+  nvim_lsp.dockerls.setup({
+    root_dir = nvim_lsp.util.root_pattern('Dockerfile', '.hadolint.yaml', '.git'),
+    capabilities = capabilities,
+  })
+
   -- null-ls settings
   local null_ls = require('null-ls')
   null_ls.setup({
@@ -146,6 +157,8 @@ local lsp_config = function()
         -- root_dir = nvim_lsp.util.root_pattern('package.json', '.prettierrc.js', '.git'),
         filetypes = typescript_react,
       }),
+      -- Dockerfile
+      null_ls.builtins.diagnostics.hadolint,
     },
   })
 end
