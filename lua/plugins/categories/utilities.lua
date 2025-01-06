@@ -25,6 +25,16 @@ return {
     opts = {},
   },
   {
+    'uga-rosa/ccc.nvim',
+    event = 'BufRead',
+    opts = {
+      -- see https://zenn.dev/uga_rosa/articles/61200f157b70fc
+      highlighter = {
+        auto_enable = true,
+      },
+    },
+  },
+  {
     'nacro90/numb.nvim',
     event = 'BufRead',
     opts = {
