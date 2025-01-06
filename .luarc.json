@@ -12,10 +12,13 @@
     "checkThirdParty": false
   },
   "diagnostics": {
-    "globals": ["vim"],
+    "globals": [
+      "vim"
+    ],
     "disable": [
       "deprecated",
-      "mixed"
+      "mixed",
+      "undefined-field"
     ]
   }
 }
