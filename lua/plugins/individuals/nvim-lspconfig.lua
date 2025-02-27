@@ -2,6 +2,7 @@ local mason_config = function()
   local lsp_servers = {
     'ruby_lsp',
     'ts_ls',
+    'biome',
     'eslint',
     'lua_ls',
     'bashls',
