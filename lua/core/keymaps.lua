@@ -68,16 +68,8 @@ s({ 'n', 'v' }, 'sj', '<Plug>(edgemotion-j)')
 s({ 'n', 'v' }, 'sk', '<Plug>(edgemotion-k)')
 s({ 'n', 'v' }, 'sh', '^')
 s({ 'n', 'v' }, 'sl', '$')
-s(
-  { 'n', 'v' },
-  'f',
-  '<CMD>lua require("globals").hop_with_char({ direction = "after_cursor", current_line_only = true })<CR>'
-)
-s(
-  { 'n', 'v' },
-  'F',
-  '<CMD>lua require("globals").hop_with_char({ direction = "before_cursor", current_line_only = true })<CR>'
-)
+s({ 'n', 'v' }, 'f', '<CMD>lua require("globals").hop_with_char({ direction = "after_cursor", current_line_only = true })<CR>')
+s({ 'n', 'v' }, 'F', '<CMD>lua require("globals").hop_with_char({ direction = "before_cursor", current_line_only = true })<CR>')
 
 -- leader family
 vim.g.mapleader = ' '
@@ -97,17 +89,9 @@ s('n', '<Leader>w', ':<C-u>w<CR>')
 s('n', '<Leader>W', ':<C-u>lua vim.lsp.buf.format({ async = true })<CR>')
 s('n', '=', ':<C-u>lua require("globals").toggle_lsp_lines_text()<CR>')
 
-s('n', '<Leader>n', ':<C-u>lua require("telescope.builtin").grep_string({ search = vim.fn.histget("@", -1) })<CR>')
-s(
-  'n',
-  '<Leader>,',
-  ':<C-u>lua require("telescope.builtin").grep_string({ search = require("globals").histadd_string(vim.fn.expand("<cword>")) })<CR>'
-)
-s(
-  'n',
-  '<Leader>m',
-  ':<C-u>lua require("telescope.builtin").grep_string({ search = require("globals").histadd_string(vim.fn.input("[GrepString] ")) })<CR>'
-)
+s('n', '<Leader>,', ':<C-u>lua require("telescope.builtin").grep_string({ search = require("globals").histadd_string(vim.fn.expand("<cword>")) })<CR>')
+s('n', '<Leader>m', ':<C-u>lua require("telescope.builtin").grep_string({ search = require("globals").histadd_string(vim.fn.input("[GrepString] ")) })<CR>')
+s('n', '<Leader>M', ':<C-u>lua require("telescope.builtin").grep_string({ search = vim.fn.histget("@", -1) })<CR>')
 
 s('n', '<Leader>z', ':<C-u>ConfirmQuitAll<CR>')
 s('n', '<Leader>q', ':<C-u>ConfirmQuit<CR>')
@@ -115,21 +99,15 @@ s('n', '<Leader>q', ':<C-u>ConfirmQuit<CR>')
 s('n', '<Leader>c', '<Plug>(comment_toggle_linewise_current)')
 s('v', '<Leader>c', '<Plug>(comment_toggle_linewise_visual)')
 
-s('n', '<Leader>a', ':<C-u>lua require("telescope").extensions.convert_word_case.convert_word_case()<CR>')
-s(
-  'n',
-  '<Leader>s',
-  ':<C-u>lua require("CopilotChat").ask(vim.fn.input("[ChatOnBuffer] "), { selection = require("CopilotChat.select").buffer })<CR>'
-)
+s('n', '<Leader>n', '<Plug>(quickhl-manual-this)')
+s('n', '<Leader>N', '<Plug>(quickhl-manual-reset)')
+
+s('n', '<Leader>b', ':<C-u>lua require("telescope").extensions.convert_word_case.convert_word_case()<CR>')
 
 -- utilities
 r('i', 'jj', '<ESC>')
 s('n', '<ESC><ESC>', ':<C-u>lua require("globals").toggle_hlsearch()<CR>')
-s(
-  'n',
-  ';',
-  ':<C-u>lua require("telescope.builtin").buffers({ sort_lastused = true, ignore_current_buffer = true })<CR>'
-)
+s('n', ';', ':<C-u>lua require("telescope.builtin").buffers({ sort_lastused = true, ignore_current_buffer = true })<CR>')
 s('n', '<C-q>', ':<C-u>CloseBuffer<CR>')
 
 r('n', '*', '<Plug>(asterisk-z*)')
@@ -162,11 +140,7 @@ s({ 'n', 'v' }, '<C-g><C-j>', '<CMD>Gitsigns stage_hunk<CR>')
 
 -- <C-w> filer
 r('n', '<C-w>', '<Nop>')
-s(
-  'n',
-  '<C-w><C-w>',
-  ':<C-u>lua require("telescope").extensions.file_browser.file_browser({ initial_mode = "normal" })<CR>'
-)
+s('n', '<C-w><C-w>', ':<C-u>lua require("telescope").extensions.file_browser.file_browser({ initial_mode = "normal" })<CR>')
 
 -- <C-e> test
 r('n', '<C-e>', '<Nop>')
@@ -174,8 +148,4 @@ s('n', '<C-e><C-e>', ':<C-u>lua require("globals").toggle_rspec_file()<CR>')
 
 -- <C-s> chat
 r('n', '<C-s>', '<Nop>')
-s(
-  { 'n', 'v' },
-  '<C-s><C-s>',
-  '<CMD>lua require("CopilotChat.integrations.telescope").pick(require("CopilotChat.actions").prompt_actions())<CR>'
-)
+s('n', '<C-s><C-s>', ':<C-u>AibouToggleChat<CR>')

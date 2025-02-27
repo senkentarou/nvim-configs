@@ -5,9 +5,9 @@ return {
       'nvim-treesitter/nvim-treesitter',
       'nvim-tree/nvim-web-devicons',
     },
-    ft = { 'markdown', 'copilot-chat' },
+    ft = { 'markdown' },
     opts = {
-      file_types = { 'markdown', 'copilot-chat' },
+      file_types = { 'markdown' },
     },
   },
 }
