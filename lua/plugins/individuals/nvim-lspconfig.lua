@@ -53,10 +53,15 @@ local lsp_config = function()
   })
   -- React+TypeScript
   -- lsp: ts_ls
-  -- formatter: prettier
+  -- formatter: biome
   -- linter(diagnostics): eslint(lsp)
   nvim_lsp.ts_ls.setup({
     root_dir = nvim_lsp.util.root_pattern('package.json', 'tsconfig.json', '.git'),
+    filetypes = typescript_react,
+    capabilities = capabilities,
+  })
+  nvim_lsp.biome.setup({
+    root_dir = nvim_lsp.util.root_pattern('package.json', 'biome.json', '.git'),
     filetypes = typescript_react,
     capabilities = capabilities,
   })
@@ -94,11 +99,6 @@ local lsp_config = function()
       null_ls.builtins.formatting.stylua,
       -- Bash
       null_ls.builtins.formatting.shfmt,
-      -- React+TypeScript
-      null_ls.builtins.formatting.prettier.with({
-        -- root_dir = nvim_lsp.util.root_pattern('.prettierrc.js', '.git'),
-        filetypes = typescript_react,
-      }),
     },
   })
 end
