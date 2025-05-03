@@ -2,6 +2,7 @@ local mason_config = function()
   local lsp_servers = {
     'ruby_lsp',
     'ts_ls',
+    'biome',
     'eslint',
     'lua_ls',
     'bashls',
@@ -62,14 +63,18 @@ local lsp_config = function()
 
   -- React+TypeScript
   -- lsp: ts_ls
-  -- formatter: prettier
+  -- formatter: biome
   -- linter(diagnostics): eslint(lsp)
   nvim_lsp.ts_ls.setup({
     root_dir = nvim_lsp.util.root_pattern('package.json', 'tsconfig.json', '.git'),
     filetypes = typescript_react,
     capabilities = capabilities,
   })
-
+  nvim_lsp.biome.setup({
+    root_dir = nvim_lsp.util.root_pattern('package.json', 'biome.json', '.git'),
+    filetypes = typescript_react,
+    capabilities = capabilities,
+  })
   -- use eslint lsp: see https://github.com/nvimtools/none-ls.nvim/discussions/81
   nvim_lsp.eslint.setup({
     root_dir = nvim_lsp.util.root_pattern('package.json', '.eslintrc.js', '.git'),
@@ -152,11 +157,6 @@ local lsp_config = function()
       null_ls.builtins.formatting.stylua,
       -- Bash
       null_ls.builtins.formatting.shfmt,
-      -- React+TypeScript
-      null_ls.builtins.formatting.prettier.with({
-        -- root_dir = nvim_lsp.util.root_pattern('package.json', '.prettierrc.js', '.git'),
-        filetypes = typescript_react,
-      }),
       -- Dockerfile
       null_ls.builtins.diagnostics.hadolint,
     },
