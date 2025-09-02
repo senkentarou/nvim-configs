@@ -201,7 +201,6 @@ local configs = function()
   telescope.load_extension('file_browser')
   telescope.load_extension('git_log')
   telescope.load_extension('git_status')
-  telescope.load_extension('git_commit')
   telescope.load_extension('convert_word_case')
 end
 
@@ -213,7 +212,6 @@ return {
       'nvim-telescope/telescope-file-browser.nvim',
       'senkentarou/telescope-git-log.nvim',
       'senkentarou/telescope-git-status.nvim',
-      'senkentarou/telescope-git-commit.nvim',
       'senkentarou/telescope-convert-word-case.nvim',
     },
     init = function()
