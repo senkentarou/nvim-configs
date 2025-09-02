@@ -76,11 +76,11 @@ local lsp_config = function()
     capabilities = capabilities,
   })
   -- use eslint lsp: see https://github.com/nvimtools/none-ls.nvim/discussions/81
-  nvim_lsp.eslint.setup({
-    root_dir = nvim_lsp.util.root_pattern('package.json', '.eslintrc.js', '.git'),
-    filetypes = typescript_react,
-    capabilities = capabilities,
-  })
+  -- nvim_lsp.eslint.setup({
+  --   root_dir = nvim_lsp.util.root_pattern('package.json', '.eslintrc.js', '.git'),
+  --   filetypes = typescript_react,
+  --   capabilities = capabilities,
+  -- })
 
   -- Lua
   -- lsp: lua_ls

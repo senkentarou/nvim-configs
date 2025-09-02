@@ -14,7 +14,7 @@ vim.opt.backspace = [[indent,eol,start]]
 vim.opt.wrap = true
 vim.opt.whichwrap = [[b,s,<,>,[,],h,l]]
 vim.opt.cursorline = true
-vim.opt.clipboard = 'unnamed'
+vim.opt.clipboard = 'unnamedplus'
 vim.opt.completeopt = [[menuone,noinsert,noselect]]
 vim.opt.shortmess:append({
   c = true,
