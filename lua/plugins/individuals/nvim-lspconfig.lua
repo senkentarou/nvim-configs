@@ -1,8 +1,8 @@
 local mason_config = function()
   local lsp_servers = {
-    'ruby_lsp',
+    -- 'ruby_lsp',
     'ts_ls',
-    'biome',
+    -- 'biome',
     'eslint',
     'lua_ls',
     'bashls',
@@ -11,7 +11,7 @@ local mason_config = function()
     'dockerls',
   }
   local formatters = {
-    'rubocop', -- needs to use local project settings
+    -- 'rubocop', -- needs to use local project settings
     'prettier',
     'stylua',
     'shfmt',
@@ -40,10 +40,10 @@ end
 local lsp_config = function()
   local capabilities = require('cmp_nvim_lsp').default_capabilities() -- nvim-cmpで補完候補にLSPを追加するための設定
   local nvim_lsp = require('lspconfig')
-  local rails_rspec = {
-    'ruby',
-    'rspec',
-  }
+  -- local rails_rspec = {
+  --   'ruby',
+  --   'rspec',
+  -- }
   local typescript_react = {
     'javascript',
     'javascriptreact',
@@ -55,11 +55,11 @@ local lsp_config = function()
   -- lsp: ruby_lsp
   -- formatter: ruby_lsp(rubocop)
   -- linter(diagnostics): ruby_lsp(rubocop)
-  nvim_lsp.ruby_lsp.setup({
-    root_dir = nvim_lsp.util.root_pattern('Gemfile', '.git'),
-    filetypes = rails_rspec,
-    capabilities = capabilities,
-  })
+  -- nvim_lsp.ruby_lsp.setup({
+  --   root_dir = nvim_lsp.util.root_pattern('Gemfile', '.git'),
+  --   filetypes = rails_rspec,
+  --   capabilities = capabilities,
+  -- })
 
   -- React+TypeScript
   -- lsp: ts_ls
@@ -70,17 +70,17 @@ local lsp_config = function()
     filetypes = typescript_react,
     capabilities = capabilities,
   })
-  nvim_lsp.biome.setup({
-    root_dir = nvim_lsp.util.root_pattern('package.json', 'biome.json', '.git'),
-    filetypes = typescript_react,
-    capabilities = capabilities,
-  })
-  -- use eslint lsp: see https://github.com/nvimtools/none-ls.nvim/discussions/81
-  -- nvim_lsp.eslint.setup({
-  --   root_dir = nvim_lsp.util.root_pattern('package.json', '.eslintrc.js', '.git'),
+  -- nvim_lsp.biome.setup({
+  --   root_dir = nvim_lsp.util.root_pattern('package.json', 'biome.json', '.git'),
   --   filetypes = typescript_react,
   --   capabilities = capabilities,
   -- })
+  -- use eslint lsp: see https://github.com/nvimtools/none-ls.nvim/discussions/81
+  nvim_lsp.eslint.setup({
+    root_dir = nvim_lsp.util.root_pattern('package.json', '.eslintrc.js', '.git'),
+    filetypes = typescript_react,
+    capabilities = capabilities,
+  })
 
   -- Lua
   -- lsp: lua_ls
@@ -159,6 +159,11 @@ local lsp_config = function()
       null_ls.builtins.formatting.shfmt,
       -- Dockerfile
       null_ls.builtins.diagnostics.hadolint,
+      -- React+TypeScript
+      null_ls.builtins.formatting.prettier.with({
+        -- root_dir = nvim_lsp.util.root_pattern('.prettierrc.js', '.git'),
+        filetypes = typescript_react,
+      }),
     },
   })
 end
