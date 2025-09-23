@@ -41,8 +41,35 @@ vim.api.nvim_create_autocmd({
   'BufRead',
 }, {
   group = my_autocmds,
-  pattern = '*.tsx',
-  command = 'set filetype=typescriptreact',
+  pattern = '*.js',
+  command = 'set filetype=javascript',
+})
+
+vim.api.nvim_create_autocmd({
+  'BufNewFile',
+  'BufRead',
+}, {
+  group = my_autocmds,
+  pattern = '*.ts',
+  command = 'set filetype=typescript',
+})
+
+vim.api.nvim_create_autocmd({
+  'BufNewFile',
+  'BufRead',
+}, {
+  group = my_autocmds,
+  pattern = '*.sh',
+  command = 'set filetype=sh',
+})
+
+vim.api.nvim_create_autocmd({
+  'BufNewFile',
+  'BufRead',
+}, {
+  group = my_autocmds,
+  pattern = '*.lua',
+  command = 'set filetype=lua',
 })
 
 vim.api.nvim_create_autocmd({

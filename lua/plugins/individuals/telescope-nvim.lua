@@ -1,7 +1,5 @@
 local configs = function()
   local telescope = require('telescope')
-  local finders = require('telescope.finders')
-  local make_entry = require('telescope.make_entry')
   local actions = require('telescope.actions')
   local actions_state = require('telescope.actions.state')
   local file_browser_actions = require('telescope._extensions.file_browser.actions')
@@ -94,67 +92,10 @@ local configs = function()
       find_files = {
         cwd = vim.fn.systemlist('git rev-parse --show-toplevel')[1],
         find_command = ff_base_cmd,
-        mappings = {
-          i = {
-            -- toggle rspec
-            ['<C-e>'] = function(bufnr)
-              local rspec_ignore = vim.b.telescope_rspec_ignore
-              if rspec_ignore == nil then
-                -- first time, set to true
-                rspec_ignore = true
-              end
-              vim.b.telescope_rspec_ignore = not rspec_ignore
-
-              local command = vim.deepcopy(ff_base_cmd)
-              if rspec_ignore then
-                table.insert(command, { '--glob=!spec/' })
-                vim.notify('rspec_ignore is true', vim.log.levels.INFO)
-              end
-
-              local current_picker = actions_state.get_current_picker(bufnr)
-              current_picker:refresh(finders.new_oneshot_job(vim.tbl_flatten(command), {
-                entry_maker = make_entry.gen_from_file(),
-              }))
-            end,
-          },
-        },
       },
       grep_string = {
         cwd = vim.fn.systemlist('git rev-parse --show-toplevel')[1],
         vimgrep_arguments = gs_base_cmd,
-        mappings = {
-          i = {
-            -- toggle excludes by glob
-            ['<C-e>'] = function(bufnr)
-              local rspec_ignore = vim.b.telescope_rspec_ignore
-              if rspec_ignore == nil then
-                -- first time, set to true
-                rspec_ignore = true
-              end
-              vim.b.telescope_rspec_ignore = not rspec_ignore
-
-              local command = vim.deepcopy(gs_base_cmd)
-              if rspec_ignore then
-                table.insert(command, { '--glob=!spec/' })
-                vim.notify('rspec_ignore is true', vim.log.levels.INFO)
-              end
-
-              -- need to add grep_string word
-              local latest_hist = vim.fn.histget('@', -1) or ''
-              if latest_hist ~= '' then
-                table.insert(command, {
-                  '--',
-                  latest_hist,
-                })
-              end
-
-              local current_picker = actions_state.get_current_picker(bufnr)
-              current_picker:refresh(finders.new_oneshot_job(vim.tbl_flatten(command), {
-                entry_maker = make_entry.gen_from_vimgrep(),
-              }))
-            end,
-          },
-        },
       },
     },
     extensions = {

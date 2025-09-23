@@ -142,10 +142,9 @@ s({ 'n', 'v' }, '<C-g><C-j>', '<CMD>Gitsigns stage_hunk<CR>')
 r('n', '<C-w>', '<Nop>')
 s('n', '<C-w><C-w>', ':<C-u>lua require("telescope").extensions.file_browser.file_browser({ initial_mode = "normal" })<CR>')
 
--- <C-e> test
-r('n', '<C-e>', '<Nop>')
-s('n', '<C-e><C-e>', ':<C-u>lua require("globals").toggle_rspec_file()<CR>')
-
--- <C-s> chat
+-- <C-s> reserved for tmux
 r('n', '<C-s>', '<Nop>')
-s('n', '<C-s><C-s>', ':<C-u>AibouToggleChat<CR>')
+
+-- <C-t> too far from home position
+r('n', '<C-t>', '<Nop>')
+r('n', '<C-t>', '<Nop>')
