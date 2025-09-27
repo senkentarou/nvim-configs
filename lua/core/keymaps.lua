@@ -107,7 +107,7 @@ s('n', '<Leader>b', ':<C-u>lua require("telescope").extensions.convert_word_case
 -- utilities
 r('i', 'jj', '<ESC>')
 s('n', '<ESC><ESC>', ':<C-u>lua require("globals").toggle_hlsearch()<CR>')
-s('n', ';', ':<C-u>lua require("telescope.builtin").buffers({ sort_lastused = true, ignore_current_buffer = true })<CR>')
+s('n', ';', ':<C-u>lua require("telescope.builtin").buffers({ sort_lastused = true, sort_mru = true, ignore_current_buffer = true })<CR>')
 s('n', '<C-q>', ':<C-u>CloseBuffer<CR>')
 
 r('n', '*', '<Plug>(asterisk-z*)')
@@ -123,7 +123,7 @@ s('v', '<C-y>', ':Linediff<CR>')
 r('n', '<C-a>', 'g<Plug>(dial-increment)')
 r('n', '<C-x>', 'g<Plug>(dial-decrement)')
 
--- <C-f> find files
+-- <C-f> files
 r('n', '<C-f>', '<Nop>')
 s('n', '<C-f><C-f>', ':<C-u>lua require("telescope.builtin").find_files()<CR>')
 
@@ -146,5 +146,4 @@ s('n', '<C-w><C-w>', ':<C-u>lua require("telescope").extensions.file_browser.fil
 r('n', '<C-s>', '<Nop>')
 
 -- <C-t> too far from home position
-r('n', '<C-t>', '<Nop>')
 r('n', '<C-t>', '<Nop>')

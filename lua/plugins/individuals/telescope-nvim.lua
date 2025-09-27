@@ -2,11 +2,16 @@ local configs = function()
   local telescope = require('telescope')
   local actions = require('telescope.actions')
   local actions_state = require('telescope.actions.state')
+  local action_layout = require('telescope.actions.layout')
   local file_browser_actions = require('telescope._extensions.file_browser.actions')
 
   local open_multiple_files = function(bufnr)
     local picker = actions_state.get_current_picker(bufnr)
     local multi_sections = picker:get_multi_selection()
+
+    -- set current to jumplist to enable comming back
+    vim.cmd("normal! m'")
+
     actions.select_default(bufnr)
     for _, section in pairs(multi_sections) do
       if section.path ~= nil then -- is it a file -> open it as well:
@@ -40,10 +45,12 @@ local configs = function()
       mappings = {
         n = {
           ['<C-q>'] = actions.close,
+          ['<C-t>'] = action_layout.toggle_preview,
           ['<CR>'] = open_multiple_files,
         },
         i = {
           ['<C-q>'] = actions.close,
+          ['<C-t>'] = action_layout.toggle_preview,
           ['<Up>'] = actions.cycle_history_prev,
           ['<Down>'] = actions.cycle_history_next,
           ['<C-a>'] = {
@@ -83,8 +90,8 @@ local configs = function()
         vertical = {
           mirror = false,
         },
-        width = 0.87,
-        height = 0.80,
+        width = 0.95,
+        height = 0.90,
         preview_cutoff = 120,
       },
     },
