@@ -101,18 +101,15 @@ s('v', '<Leader>c', '<Plug>(comment_toggle_linewise_visual)')
 
 s('n', '<Leader>n', '<Plug>(quickhl-manual-this)')
 s('n', '<Leader>N', '<Plug>(quickhl-manual-reset)')
-
-s('n', '<Leader>b', ':<C-u>lua require("telescope").extensions.convert_word_case.convert_word_case()<CR>')
+r('n', '*', '<Plug>(asterisk-z*)')
+r('n', 'n', '<Plug>(quickhl-manual-go-to-next)')
+r('n', 'N', '<Plug>(quickhl-manual-go-to-prev)')
 
 -- utilities
 r('i', 'jj', '<ESC>')
 s('n', '<ESC><ESC>', ':<C-u>lua require("globals").toggle_hlsearch()<CR>')
 s('n', ';', ':<C-u>lua require("telescope.builtin").buffers({ sort_lastused = true, sort_mru = true, ignore_current_buffer = true })<CR>')
 s('n', '<C-q>', ':<C-u>CloseBuffer<CR>')
-
-r('n', '*', '<Plug>(asterisk-z*)')
-r('n', 'n', '<Plug>(quickhl-manual-go-to-next)')
-r('n', 'N', '<Plug>(quickhl-manual-go-to-prev)')
 
 s('n', '<C-u>', ':<C-u>lua require("globals").pageup()<CR>')
 s('n', '<C-d>', ':<C-u>lua require("globals").pagedown()<CR>')
@@ -123,15 +120,23 @@ s('v', '<C-y>', ':Linediff<CR>')
 r('n', '<C-a>', 'g<Plug>(dial-increment)')
 r('n', '<C-x>', 'g<Plug>(dial-decrement)')
 
--- <C-f> files
+-- <C-f> functions
 r('n', '<C-f>', '<Nop>')
 s('n', '<C-f><C-f>', ':<C-u>lua require("telescope.builtin").find_files()<CR>')
+
+-- <C-c>
+r('n', '<C-c>', '<Nop>')
+s('n', '<C-c><C-j>', ':<C-u>lua require("telescope").extensions.convert_word_case.convert_word_case()<CR>')
+s('n', '<C-c><C-k>', ':<C-u>lua require("telescope").extensions.copy_path.copy_path()<CR>')
+
+-- <C-t>
+r('n', '<C-t>', '<Nop>')
+s('n', '<C-t><C-t>', ':copen<CR>')
 
 -- <C-g> git
 r('n', '<C-g>', '<Nop>')
 s('n', '<C-g><C-o>', ':<C-u>Goacf<CR>')
 s('n', '<C-g><C-g>', ':<C-u>lua require("telescope").extensions.git_status.git_status()<CR>')
-s('n', '<C-g><C-k>', ':<C-u>lua require("telescope").extensions.git_commit.git_commit()<CR>')
 s('n', '<C-g><C-l>', ':<C-u>lua require("telescope").extensions.git_log.list_commits_on_file()<CR>')
 s('n', '<C-g><C-p>', ':<C-u>Gitsigns prev_hunk<CR>')
 s('n', '<C-g><C-n>', ':<C-u>Gitsigns next_hunk<CR>')
@@ -144,6 +149,3 @@ s('n', '<C-w><C-w>', ':<C-u>lua require("telescope").extensions.file_browser.fil
 
 -- <C-s> reserved for tmux
 r('n', '<C-s>', '<Nop>')
-
--- <C-t> too far from home position
-r('n', '<C-t>', '<Nop>')
