@@ -104,4 +104,27 @@ G.toggle_memo = function()
   vim.api.nvim_create_autocmd({ 'InsertLeave', 'TextChanged', 'BufLeave' }, { buffer = 0, command = 'silent update' })
 end
 
+G.open_in_vscode = function()
+  local current_file = vim.fn.expand('%:p')
+
+  -- check if current buffer has a file
+  if current_file == '' then
+    vim.notify('No file to open in VSCode', vim.log.levels.WARN)
+    return
+  end
+
+  -- open file in VSCode asynchronously
+  vim.system({ 'code', current_file }, { detach = true }, function(obj)
+    if obj.code == 0 then
+      vim.schedule(function()
+        vim.notify('Opened ' .. vim.fn.fnamemodify(current_file, ':t') .. ' in VSCode', vim.log.levels.INFO)
+      end)
+    else
+      vim.schedule(function()
+        vim.notify('Failed to open VSCode', vim.log.levels.ERROR)
+      end)
+    end
+  end)
+end
+
 return G

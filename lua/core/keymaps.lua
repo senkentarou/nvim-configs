@@ -95,6 +95,7 @@ s('n', '<Leader>M', ':<C-u>lua require("telescope.builtin").grep_string({ search
 
 s('n', '<Leader>z', ':<C-u>ConfirmQuitAll<CR>')
 s('n', '<Leader>q', ':<C-u>ConfirmQuit<CR>')
+s('n', '<Leader>b', ':<C-u>lua require("globals").open_in_vscode()<CR>')
 
 s('n', '<Leader>c', '<Plug>(comment_toggle_linewise_current)')
 s('v', '<Leader>c', '<Plug>(comment_toggle_linewise_visual)')
