@@ -150,9 +150,16 @@ local configs = function()
   telescope.load_extension('git_log')
   telescope.load_extension('git_status')
   telescope.load_extension('convert_word_case')
+  telescope.load_extension('copy_path')
 end
 
 return {
+  -- NOTE: For development
+  -- {
+  --   dir = '~/path/to/your/local/extension',
+  --   name = 'telescope-my-extension',
+  --   dependencies = { 'nvim-telescope/telescope.nvim' },
+  -- },
   {
     'nvim-telescope/telescope.nvim',
     dependencies = {
@@ -161,6 +168,7 @@ return {
       'senkentarou/telescope-git-log.nvim',
       'senkentarou/telescope-git-status.nvim',
       'senkentarou/telescope-convert-word-case.nvim',
+      'senkentarou/telescope-copy-path.nvim',
     },
     init = function()
       vim.api.nvim_create_autocmd({
