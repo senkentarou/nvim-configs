@@ -65,7 +65,6 @@ return {
     'neovim/nvim-lspconfig',
     dependencies = {
       'nvimtools/none-ls.nvim',
-      'b0o/schemastore.nvim',
     },
     event = 'BufRead',
     config = lsp_config,
