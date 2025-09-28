@@ -1,27 +1,21 @@
-local mason_config = function()
-  local lsp_servers = {
-    -- 'ruby_lsp',
-    'ts_ls',
-    -- 'biome',
-    'eslint',
-    'lua_ls',
-    'bashls',
-    'jsonls',
-    'yamlls',
-    'dockerls',
-  }
-  local formatters = {
-    -- 'rubocop', -- needs to use local project settings
-    'prettier',
-    'stylua',
-    'shfmt',
-  }
-  local linter_diagnostics = {
-    'selene',
-    'shellcheck', -- needs to use bashls: see https://github.com/bash-lsp/bash-language-server
-    -- 'hadolint', -- mason経由で入れるとdiagnosticsが表示されないので一時的にコメントアウト。brewなりで直接入れる。https://github.com/hadolint/hadolint
-  }
+local lsp_servers = {
+  'ts_ls',
+  -- 'biome',
+  'eslint',
+  'lua_ls',
+  'bashls',
+}
+local formatters = {
+  'prettier',
+  'stylua',
+  'shfmt',
+}
+local linter_diagnostics = {
+  'selene',
+  'shellcheck', -- needs to use bashls: see https://github.com/bash-lsp/bash-language-server
+}
 
+local mason_config = function()
   require('mason').setup()
   require('mason-lspconfig').setup({
     -- install lsp servers
@@ -33,118 +27,9 @@ local mason_config = function()
   })
 end
 
--- setting references:
--- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
--- https://github.com/nvimtools/none-ls.nvim/blob/main/doc/BUILTINS.md
--- Deprecated contents: https://github.com/nvimtools/none-ls.nvim/discussions/81
 local lsp_config = function()
-  local capabilities = require('cmp_nvim_lsp').default_capabilities() -- nvim-cmpで補完候補にLSPを追加するための設定
-  local nvim_lsp = require('lspconfig')
-  -- local rails_rspec = {
-  --   'ruby',
-  --   'rspec',
-  -- }
-  local typescript_react = {
-    'javascript',
-    'javascriptreact',
-    'typescript',
-    'typescriptreact',
-  }
-
-  -- RubyOnRails
-  -- lsp: ruby_lsp
-  -- formatter: ruby_lsp(rubocop)
-  -- linter(diagnostics): ruby_lsp(rubocop)
-  -- nvim_lsp.ruby_lsp.setup({
-  --   root_dir = nvim_lsp.util.root_pattern('Gemfile', '.git'),
-  --   filetypes = rails_rspec,
-  --   capabilities = capabilities,
-  -- })
-
-  -- React+TypeScript
-  -- lsp: ts_ls
-  -- formatter: biome
-  -- linter(diagnostics): eslint(lsp)
-  nvim_lsp.ts_ls.setup({
-    root_dir = nvim_lsp.util.root_pattern('package.json', 'tsconfig.json', '.git'),
-    filetypes = typescript_react,
-    capabilities = capabilities,
-  })
-  -- nvim_lsp.biome.setup({
-  --   root_dir = nvim_lsp.util.root_pattern('package.json', 'biome.json', '.git'),
-  --   filetypes = typescript_react,
-  --   capabilities = capabilities,
-  -- })
-  -- use eslint lsp: see https://github.com/nvimtools/none-ls.nvim/discussions/81
-  nvim_lsp.eslint.setup({
-    root_dir = nvim_lsp.util.root_pattern('package.json', '.eslintrc.js', '.git'),
-    filetypes = typescript_react,
-    capabilities = capabilities,
-  })
-
-  -- Lua
-  -- lsp: lua_ls
-  -- formatter: stylua
-  -- linter(diagnostics): selene
-  nvim_lsp.lua_ls.setup({
-    root_dir = nvim_lsp.util.root_pattern('.luarc.json', '.git'),
-    capabilities = capabilities,
-  })
-
-  -- Bash
-  -- lsp: bashls
-  -- formatter: shfmt
-  -- linter(diagnostics): bashls(shellcheck)
-  nvim_lsp.bashls.setup({
-    root_dir = nvim_lsp.util.root_pattern('.bashrc', '.git'),
-    capabilities = capabilities,
-  })
-
-  -- JSON
-  -- lsp: jsonls
-  -- formatter: jsonls
-  -- linter(diagnostics): jsonls
-  -- ※ diagnostics autofix is not supported
-  nvim_lsp.jsonls.setup({
-    root_dir = nvim_lsp.util.root_pattern('.git'),
-    capabilities = capabilities,
-    settings = {
-      json = {
-        schemas = require('schemastore').json.schemas(),
-        format = { enable = true },
-        validate = { enable = true },
-      },
-    },
-  })
-
-  -- yaml
-  -- lsp: yamlls
-  -- formatter: yamlls
-  -- linter(diagnostics): yamlls
-  nvim_lsp.yamlls.setup({
-    root_dir = nvim_lsp.util.root_pattern('.git'),
-    capabilities = capabilities,
-    settings = {
-      yaml = {
-        schemaStore = {
-          -- use schemastore instead of built-in schemaStore
-          enable = false,
-          url = '',
-        },
-        schemas = require('schemastore').yaml.schemas(),
-        format = { enable = true },
-        validate = true,
-      },
-    },
-  })
-
-  -- Dockerfile
-  -- lsp: dockerls
-  -- formatter: dockerls
-  -- linter(diagnostics): hadolint
-  nvim_lsp.dockerls.setup({
-    root_dir = nvim_lsp.util.root_pattern('Dockerfile', '.hadolint.yaml', '.git'),
-    capabilities = capabilities,
+  vim.lsp.config('*', {
+    capabilities = require('cmp_nvim_lsp').default_capabilities(),
   })
 
   -- null-ls settings
@@ -157,15 +42,12 @@ local lsp_config = function()
       null_ls.builtins.formatting.stylua,
       -- Bash
       null_ls.builtins.formatting.shfmt,
-      -- Dockerfile
-      null_ls.builtins.diagnostics.hadolint,
       -- React+TypeScript
-      null_ls.builtins.formatting.prettier.with({
-        -- root_dir = nvim_lsp.util.root_pattern('.prettierrc.js', '.git'),
-        filetypes = typescript_react,
-      }),
+      null_ls.builtins.formatting.prettier,
     },
   })
+
+  vim.lsp.enable(lsp_servers)
 end
 
 return {

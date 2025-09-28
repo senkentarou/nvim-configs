@@ -20,7 +20,6 @@
         │   └── utilities.lua
         ├── individuals
         │   ├── alpha-nvim.lua
-        │   ├── copilot.lua
         │   ├── gitsigns-nvim.lua
         │   ├── hop.lua
         │   ├── lualine.lua
