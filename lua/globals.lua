@@ -10,11 +10,12 @@ end
 
 G.toggle_lsp_lines_text = function()
   local flag = vim.diagnostic.config().virtual_lines
+  local is_virtual_text = flag == true
   local toggled_flag = not flag
 
   vim.diagnostic.config({
     virtual_lines = toggled_flag,
-    virtual_text = flag,
+    virtual_text = is_virtual_text,
   })
 end
 
@@ -85,12 +86,52 @@ G.pagedown = function()
   vim.api.nvim_command('normal! 0')
 end
 
+G.close_buffer = function()
+  local filetype = vim.bo.filetype
+
+  if filetype == 'alpha' then
+    return
+  end
+
+  -- add jumplist before close
+  vim.api.nvim_command("normal! m'")
+
+  local close_filetypes = {
+    'help',
+    'lspinfo',
+    'lazy',
+    'startuptime',
+    'aibou-markdown',
+  }
+
+  local cmd = ''
+  if vim.fn.index(close_filetypes, filetype) >= 0 then
+    cmd = 'close'
+  elseif vim.fn.filter(vim.fn.range(1, vim.fn.bufnr('$')), 'buflisted(v:val)')[2] ~= nil then
+    cmd = 'bd'
+  else
+    -- command to last buffer
+    cmd = 'Alpha'
+  end
+
+  vim.api.nvim_command(cmd)
+end
+
 G.toggle_memo = function()
   local memo_path = vim.fn.expand('~/.local/share/memo.md')
   if vim.fn.expand('%:p') == memo_path then
-    -- close memo
-    -- see: https://github.com/senkentarou/close_buffer.nvim
-    vim.api.nvim_command('CloseBuffer')
+    -- close memo without adding jumplist
+    local cmd
+
+    if vim.fn.filter(vim.fn.range(1, vim.fn.bufnr('$')), 'buflisted(v:val)')[2] ~= nil then
+      cmd = 'bd'
+    else
+      -- command to last buffer
+      cmd = 'Alpha'
+    end
+
+    vim.api.nvim_command(cmd)
+
     return
   end
 

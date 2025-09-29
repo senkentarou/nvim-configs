@@ -10,7 +10,7 @@ local configs = function()
     local multi_sections = picker:get_multi_selection()
 
     -- set current to jumplist to enable comming back
-    vim.cmd("normal! m'")
+    vim.api.nvim_command("normal! m'")
 
     actions.select_default(bufnr)
     for _, section in pairs(multi_sections) do

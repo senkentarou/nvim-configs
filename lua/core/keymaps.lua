@@ -110,7 +110,7 @@ r('n', 'N', '<Plug>(quickhl-manual-go-to-prev)')
 r('i', 'jj', '<ESC>')
 s('n', '<ESC><ESC>', ':<C-u>lua require("globals").toggle_hlsearch()<CR>')
 s('n', ';', ':<C-u>lua require("telescope.builtin").buffers({ sort_lastused = true, sort_mru = true, ignore_current_buffer = true })<CR>')
-s('n', '<C-q>', ':<C-u>CloseBuffer<CR>')
+s('n', '<C-q>', ':<C-u>lua require("globals").close_buffer()<CR>')
 
 s('n', '<C-u>', ':<C-u>lua require("globals").pageup()<CR>')
 s('n', '<C-d>', ':<C-u>lua require("globals").pagedown()<CR>')

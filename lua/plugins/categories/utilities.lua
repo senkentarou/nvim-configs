@@ -81,24 +81,6 @@ return {
     opts = {},
   },
   {
-    'senkentarou/close_buffer.nvim',
-    event = 'BufRead',
-    dependencies = {
-      'goolord/alpha-nvim', -- optional
-    },
-    opts = {
-      close_filetypes = {
-        'help',
-        'lspinfo',
-        'lazy',
-        'startuptime',
-        'aibou-markdown',
-      },
-      default_window_command = 'Alpha',
-      default_window_filetype = 'alpha',
-    },
-  },
-  {
     'dstein64/vim-startuptime',
     cmd = {
       'StartupTime',
