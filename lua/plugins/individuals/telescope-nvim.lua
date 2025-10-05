@@ -20,6 +20,38 @@ local configs = function()
     end
   end
 
+  local delete_buffer = function(bufnr)
+    local current_picker = actions_state.get_current_picker(bufnr)
+    local multi_sections = current_picker:get_multi_selection()
+
+    -- Get the buffer to delete
+    local target_bufnr
+    if #multi_sections > 0 then
+      target_bufnr = multi_sections[1].bufnr
+    else
+      local selection = actions_state.get_selected_entry()
+      target_bufnr = selection and selection.bufnr
+    end
+
+    -- Count buffers shown in telescope picker
+    local picker_entries = current_picker.manager:num_results()
+
+    -- If this is the last buffer in telescope, close immediately
+    if picker_entries <= 1 then
+      actions.close(bufnr)
+      if target_bufnr then
+        vim.schedule(function()
+          pcall(vim.api.nvim_buf_delete, target_bufnr, { force = false })
+        end)
+      end
+      vim.notify('Only one buffer remaining', vim.log.levels.INFO)
+      return
+    end
+
+    -- Use builtin delete_buffer action for normal cases
+    actions.delete_buffer(bufnr)
+  end
+
   local ff_base_cmd = {
     'rg',
     '--files',
@@ -42,6 +74,7 @@ local configs = function()
 
   telescope.setup {
     defaults = {
+      dynamic_preview_title = true,
       mappings = {
         n = {
           ['<C-q>'] = actions.close,
@@ -103,6 +136,21 @@ local configs = function()
       grep_string = {
         cwd = vim.fn.systemlist('git rev-parse --show-toplevel')[1],
         vimgrep_arguments = gs_base_cmd,
+        disable_coordinates = true,
+      },
+      live_grep = {
+        cwd = vim.fn.systemlist('git rev-parse --show-toplevel')[1],
+        disable_coordinates = true,
+      },
+      buffers = {
+        mappings = {
+          n = {
+            ['<C-c>'] = delete_buffer,
+          },
+          i = {
+            ['<C-c>'] = delete_buffer,
+          },
+        },
       },
     },
     extensions = {
@@ -143,6 +191,12 @@ local configs = function()
           },
         },
       },
+      psql_viewer = {
+        database = {
+          port = '45432',
+          database = 'development',
+        },
+      },
     },
   }
 
@@ -151,13 +205,20 @@ local configs = function()
   telescope.load_extension('git_status')
   telescope.load_extension('convert_word_case')
   telescope.load_extension('copy_path')
+  telescope.load_extension('psql_viewer')
 end
 
 return {
-  -- NOTE: For development
+  -- NOTE: use for development setting.
   -- {
   --   dir = '~/path/to/your/local/extension',
   --   name = 'telescope-my-extension',
+  --   dependencies = { 'nvim-telescope/telescope.nvim' },
+  -- },
+  -- NOTE: under construction
+  -- {
+  --   dir = '~/work/my/telescope-git-status.nvim',
+  --   name = 'git_status',
   --   dependencies = { 'nvim-telescope/telescope.nvim' },
   -- },
   {
@@ -169,6 +230,7 @@ return {
       'senkentarou/telescope-git-status.nvim',
       'senkentarou/telescope-convert-word-case.nvim',
       'senkentarou/telescope-copy-path.nvim',
+      'senkentarou/telescope-psql-viewer.nvim',
     },
     init = function()
       vim.api.nvim_create_autocmd({

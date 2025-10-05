@@ -124,6 +124,12 @@ r('n', '<C-x>', 'g<Plug>(dial-decrement)')
 -- <C-f> functions
 r('n', '<C-f>', '<Nop>')
 s('n', '<C-f><C-f>', ':<C-u>lua require("telescope.builtin").find_files()<CR>')
+s(
+  'n',
+  '<C-f><C-j>',
+  ":<C-u>lua require('telescope.builtin').live_grep({ prompt_title = 'GraphQL Queries', default_text = '(query|mutation) ', path_display = { 'hidden' }, glob_pattern = { '*.gql' } })<CR>"
+)
+s('n', '<C-f><C-k>', ':<C-u>lua require("telescope").extensions.psql_viewer.psql_viewer()<CR>')
 
 -- <C-c>
 r('n', '<C-c>', '<Nop>')
