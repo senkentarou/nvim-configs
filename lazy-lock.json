@@ -44,7 +44,7 @@
   "telescope-copy-path.nvim": { "branch": "main", "commit": "13f5fe42502c935a9c9ea751a92b51005bd70e3b" },
   "telescope-file-browser.nvim": { "branch": "master", "commit": "3610dc7dc91f06aa98b11dca5cc30dfa98626b7e" },
   "telescope-git-log.nvim": { "branch": "main", "commit": "b5c9556ae1dfd4ae531e7a8ad69ccc1e880be2d8" },
-  "telescope-git-status.nvim": { "branch": "main", "commit": "3c8846a0beafe86676f72713fe210698e2b3d80f" },
+  "telescope-git-status.nvim": { "branch": "main", "commit": "1e29c2684fc5e2963e60937b8c758897b991337c" },
   "telescope-psql-viewer.nvim": { "branch": "main", "commit": "c6ccb37b6dd1f0d4ddcef7ab73f0827339c7bc26" },
   "telescope.nvim": { "branch": "master", "commit": "b4da76be54691e854d3e0e02c36b0245f945c2c7" },
   "todo-comments.nvim": { "branch": "main", "commit": "304a8d204ee787d2544d8bc23cd38d2f929e7cc5" },
