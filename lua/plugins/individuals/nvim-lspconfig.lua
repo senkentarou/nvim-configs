@@ -4,6 +4,10 @@ local lsp_servers = {
   'eslint',
   'lua_ls',
   'bashls',
+  'yamlls',
+  'jsonls',
+  'graphql',
+  'cspell_ls', -- INIT: cspell --words-only --unique . 2>/dev/null | sort | jq -R . | jq -s .
 }
 local formatters = {
   'prettier',

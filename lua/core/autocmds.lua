@@ -18,59 +18,34 @@ vim.api.nvim_create_autocmd({
   command = 'setlocal formatoptions-=ro',
 })
 
-vim.api.nvim_create_autocmd({
-  'BufNewFile',
-  'BufRead',
-}, {
-  group = my_autocmds,
-  pattern = '*.jsx',
-  command = 'set filetype=javascriptreact',
-})
+-- Filetype mappings
+local filetype_mappings = {
+  { pattern = '*.jsx', filetype = 'javascriptreact' },
+  { pattern = '*.tsx', filetype = 'typescriptreact' },
+  { pattern = '*.js', filetype = 'javascript' },
+  { pattern = '*.ts', filetype = 'typescript' },
+  { pattern = '*.sh', filetype = 'sh' },
+  { pattern = '*.lua', filetype = 'lua' },
+  { pattern = '*.yaml', filetype = 'yaml' },
+  { pattern = '*.yml', filetype = 'yaml' },
+  { pattern = '*.json', filetype = 'json' },
+  { pattern = '*.tf', filetype = 'terraform' },
+  { pattern = '*.toml', filetype = 'toml' },
+  { pattern = '.tmux.conf', filetype = 'tmux' },
+  { pattern = '*.gql', filetype = 'graphql' },
+  { pattern = '*.graphql', filetype = 'graphql' },
+}
 
-vim.api.nvim_create_autocmd({
-  'BufNewFile',
-  'BufRead',
-}, {
-  group = my_autocmds,
-  pattern = '*.tsx',
-  command = 'set filetype=typescriptreact',
-})
-
-vim.api.nvim_create_autocmd({
-  'BufNewFile',
-  'BufRead',
-}, {
-  group = my_autocmds,
-  pattern = '*.js',
-  command = 'set filetype=javascript',
-})
-
-vim.api.nvim_create_autocmd({
-  'BufNewFile',
-  'BufRead',
-}, {
-  group = my_autocmds,
-  pattern = '*.ts',
-  command = 'set filetype=typescript',
-})
-
-vim.api.nvim_create_autocmd({
-  'BufNewFile',
-  'BufRead',
-}, {
-  group = my_autocmds,
-  pattern = '*.sh',
-  command = 'set filetype=sh',
-})
-
-vim.api.nvim_create_autocmd({
-  'BufNewFile',
-  'BufRead',
-}, {
-  group = my_autocmds,
-  pattern = '*.lua',
-  command = 'set filetype=lua',
-})
+for _, mapping in ipairs(filetype_mappings) do
+  vim.api.nvim_create_autocmd({
+    'BufNewFile',
+    'BufRead',
+  }, {
+    group = my_autocmds,
+    pattern = mapping.pattern,
+    command = 'set filetype=' .. mapping.filetype,
+  })
+end
 
 vim.api.nvim_create_autocmd({
   'VimEnter',

@@ -72,6 +72,14 @@ local configs = function()
     '--glob=!.git/',
   }
 
+  local get_git_root = function()
+    local result = vim.fn.systemlist('git rev-parse --show-toplevel 2>/dev/null')
+    if vim.v.shell_error == 0 and result[1] then
+      return result[1]
+    end
+    return vim.fn.getcwd()
+  end
+
   telescope.setup {
     defaults = {
       dynamic_preview_title = true,
@@ -130,16 +138,16 @@ local configs = function()
     },
     pickers = {
       find_files = {
-        cwd = vim.fn.systemlist('git rev-parse --show-toplevel')[1],
+        cwd = get_git_root(),
         find_command = ff_base_cmd,
       },
       grep_string = {
-        cwd = vim.fn.systemlist('git rev-parse --show-toplevel')[1],
+        cwd = get_git_root(),
         vimgrep_arguments = gs_base_cmd,
         disable_coordinates = true,
       },
       live_grep = {
-        cwd = vim.fn.systemlist('git rev-parse --show-toplevel')[1],
+        cwd = get_git_root(),
         disable_coordinates = true,
       },
       buffers = {

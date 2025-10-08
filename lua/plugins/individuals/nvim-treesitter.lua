@@ -24,6 +24,10 @@ local configs = function()
       'markdown',
       'bash',
       'vimdoc',
+      'graphql',
+      'terraform',
+      'json',
+      'yaml',
     },
     highlight = {
       enable = true,

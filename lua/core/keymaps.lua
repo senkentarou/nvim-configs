@@ -118,9 +118,6 @@ s('n', '<C-d>', ':<C-u>lua require("globals").pagedown()<CR>')
 s('n', '<C-y>', ':<C-u>LinediffReset<CR>')
 s('v', '<C-y>', ':Linediff<CR>')
 
-r('n', '<C-a>', 'g<Plug>(dial-increment)')
-r('n', '<C-x>', 'g<Plug>(dial-decrement)')
-
 -- <C-f> functions
 r('n', '<C-f>', '<Nop>')
 s('n', '<C-f><C-f>', ':<C-u>lua require("telescope.builtin").find_files()<CR>')
@@ -133,8 +130,8 @@ s('n', '<C-f><C-k>', ':<C-u>lua require("telescope").extensions.psql_viewer.psql
 
 -- <C-c>
 r('n', '<C-c>', '<Nop>')
-s('n', '<C-c><C-j>', ':<C-u>lua require("telescope").extensions.convert_word_case.convert_word_case()<CR>')
-s('n', '<C-c><C-k>', ':<C-u>lua require("telescope").extensions.copy_path.copy_path()<CR>')
+s('n', '<C-c><C-j>', ':<C-u>lua require("telescope").extensions.convert_word_case.convert_word_case({ initial_mode = "normal" })<CR>')
+s('n', '<C-c><C-k>', ':<C-u>lua require("telescope").extensions.copy_path.copy_path({ initial_mode = "normal" })<CR>')
 
 -- <C-t>
 r('n', '<C-t>', '<Nop>')
