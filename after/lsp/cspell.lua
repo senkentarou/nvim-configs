@@ -1,0 +1,25 @@
+return {
+  cmd = { 'cspell-lsp', '--stdio' },
+  filetypes = {
+    'javascript',
+    'typescript',
+    'javascriptreact',
+    'typescriptreact',
+    'lua',
+    'markdown',
+    'text',
+    'html',
+    'css',
+    'json',
+    'yaml',
+    'sh',
+    'bash',
+    'tf',
+  },
+  root_markers = {
+    'cspell.json',
+    '.cspell.json',
+    'cspell.config.js',
+    '.git',
+  },
+}

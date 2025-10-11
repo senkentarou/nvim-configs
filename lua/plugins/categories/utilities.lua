@@ -73,4 +73,9 @@ return {
       vim.g.startuptime_tries = 100
     end,
   },
+  {
+    'senkentarou/csv-tools.nvim',
+    ft = 'csv',
+    dependencies = { 'nvim-telescope/telescope.nvim' },
+  },
 }

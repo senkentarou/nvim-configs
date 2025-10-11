@@ -34,6 +34,8 @@ local filetype_mappings = {
   { pattern = '.tmux.conf', filetype = 'tmux' },
   { pattern = '*.gql', filetype = 'graphql' },
   { pattern = '*.graphql', filetype = 'graphql' },
+  { pattern = '*.csv', filetype = 'csv' },
+  -- { pattern = '*.md', filetype = 'markdown' },
 }
 
 for _, mapping in ipairs(filetype_mappings) do

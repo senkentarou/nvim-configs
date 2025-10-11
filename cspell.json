@@ -130,7 +130,9 @@
     "winsaveview",
     "writting",
     "yamlls",
-    "yutkat"
+    "yutkat",
+    "luarc",
+    "luacheckrc"
   ],
   "ignorePaths": [
     "node_modules",

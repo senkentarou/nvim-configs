@@ -221,13 +221,6 @@ return {
   -- {
   --   dir = '~/path/to/your/local/extension',
   --   name = 'telescope-my-extension',
-  --   dependencies = { 'nvim-telescope/telescope.nvim' },
-  -- },
-  -- NOTE: under construction
-  -- {
-  --   dir = '~/work/my/telescope-git-status.nvim',
-  --   name = 'git_status',
-  --   dependencies = { 'nvim-telescope/telescope.nvim' },
   -- },
   {
     'nvim-telescope/telescope.nvim',
