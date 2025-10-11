@@ -16,6 +16,6 @@ end
 local plugins_path = vim.fn.stdpath('config') .. '/lua/plugins'
 
 return {
-  load_plugins(plugins_path .. '/individuals'),
-  load_plugins(plugins_path .. '/categories'),
+  load_plugins(plugins_path .. '/production'),
+  load_plugins(plugins_path .. '/development'),
 }
