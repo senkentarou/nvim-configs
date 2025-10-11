@@ -211,7 +211,6 @@ local configs = function()
   telescope.load_extension('file_browser')
   telescope.load_extension('git_log')
   telescope.load_extension('git_status')
-  telescope.load_extension('convert_word_case')
   telescope.load_extension('copy_path')
   telescope.load_extension('psql_viewer')
 end
@@ -229,7 +228,6 @@ return {
       'nvim-telescope/telescope-file-browser.nvim',
       'senkentarou/telescope-git-log.nvim',
       'senkentarou/telescope-git-status.nvim',
-      'senkentarou/telescope-convert-word-case.nvim',
       'senkentarou/telescope-copy-path.nvim',
       'senkentarou/telescope-psql-viewer.nvim',
     },

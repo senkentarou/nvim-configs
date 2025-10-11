@@ -130,7 +130,7 @@ s('n', '<C-f><C-k>', ':<C-u>lua require("telescope").extensions.psql_viewer.psql
 
 -- <C-c>
 r('n', '<C-c>', '<Nop>')
-s('n', '<C-c><C-j>', ':<C-u>lua require("telescope").extensions.convert_word_case.convert_word_case({ initial_mode = "normal" })<CR>')
+s('n', '<C-c><C-j>', ':<C-u>lua require("csv-tools").copy_column_with_picker()<CR>')
 s('n', '<C-c><C-k>', ':<C-u>lua require("telescope").extensions.copy_path.copy_path({ initial_mode = "normal" })<CR>')
 
 -- <C-t>

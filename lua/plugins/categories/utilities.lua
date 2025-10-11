@@ -75,7 +75,7 @@ return {
   },
   {
     'senkentarou/csv-tools.nvim',
-    ft = 'csv',
+    ft = { 'csv', 'tsv', 'text', 'markdown' },
     dependencies = { 'nvim-telescope/telescope.nvim' },
   },
 }
