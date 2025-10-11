@@ -216,11 +216,6 @@ local configs = function()
 end
 
 return {
-  -- NOTE: use for development setting.
-  -- {
-  --   dir = '~/path/to/your/local/extension',
-  --   name = 'telescope-my-extension',
-  -- },
   {
     'nvim-telescope/telescope.nvim',
     dependencies = {
