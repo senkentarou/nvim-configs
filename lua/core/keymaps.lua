@@ -68,13 +68,13 @@ s({ 'n', 'v' }, 'sj', '<Plug>(edgemotion-j)')
 s({ 'n', 'v' }, 'sk', '<Plug>(edgemotion-k)')
 s({ 'n', 'v' }, 'sh', '^')
 s({ 'n', 'v' }, 'sl', '$')
-s({ 'n', 'v' }, 'f', '<CMD>lua require("globals").hop_with_char({ direction = "after_cursor", current_line_only = true })<CR>')
-s({ 'n', 'v' }, 'F', '<CMD>lua require("globals").hop_with_char({ direction = "before_cursor", current_line_only = true })<CR>')
+s({ 'n', 'v' }, 'f', '<CMD>lua require("core.globals").hop_with_char({ direction = "after_cursor", current_line_only = true })<CR>')
+s({ 'n', 'v' }, 'F', '<CMD>lua require("core.globals").hop_with_char({ direction = "before_cursor", current_line_only = true })<CR>')
 
 -- leader family
 vim.g.mapleader = ' '
 r('n', '<Space>', '<Nop>')
-s('n', '<Leader><Space>', ':<C-u>lua require("globals").toggle_memo()<CR>')
+s('n', '<Leader><Space>', ':<C-u>lua require("core.globals").toggle_memo()<CR>')
 
 s({ 'n', 'v' }, '<Leader>o', '<CMD>Gobf<CR>')
 s({ 'n', 'v' }, '<Leader>O', '<CMD>Gobfop<CR>')
@@ -87,15 +87,15 @@ s('n', '<Leader>h', ':<C-u>lua vim.lsp.buf.rename()<CR>')
 s('n', '<Leader>l', ':<C-u>lua vim.lsp.buf.code_action()<CR>')
 s('n', '<Leader>w', ':<C-u>w<CR>')
 s('n', '<Leader>W', ':<C-u>lua vim.lsp.buf.format({ async = true })<CR>')
-s('n', '=', ':<C-u>lua require("globals").toggle_lsp_lines_text()<CR>')
+s('n', '=', ':<C-u>lua require("core.globals").toggle_lsp_lines_text()<CR>')
 
-s('n', '<Leader>,', ':<C-u>lua require("telescope.builtin").grep_string({ search = require("globals").histadd_string(vim.fn.expand("<cword>")) })<CR>')
-s('n', '<Leader>m', ':<C-u>lua require("telescope.builtin").grep_string({ search = require("globals").histadd_string(vim.fn.input("[GrepString] ")) })<CR>')
+s('n', '<Leader>,', ':<C-u>lua require("telescope.builtin").grep_string({ search = require("core.globals").histadd_string(vim.fn.expand("<cword>")) })<CR>')
+s('n', '<Leader>m', ':<C-u>lua require("telescope.builtin").grep_string({ search = require("core.globals").histadd_string(vim.fn.input("[GrepString] ")) })<CR>')
 s('n', '<Leader>M', ':<C-u>lua require("telescope.builtin").grep_string({ search = vim.fn.histget("@", -1) })<CR>')
 
 s('n', '<Leader>z', ':<C-u>ConfirmQuitAll<CR>')
 s('n', '<Leader>q', ':<C-u>ConfirmQuit<CR>')
-s('n', '<Leader>b', ':<C-u>lua require("globals").open_in_vscode()<CR>')
+s('n', '<Leader>b', ':<C-u>lua require("core.globals").open_in_vscode()<CR>')
 
 s('n', '<Leader>c', '<Plug>(comment_toggle_linewise_current)')
 s('v', '<Leader>c', '<Plug>(comment_toggle_linewise_visual)')
@@ -108,12 +108,12 @@ r('n', 'N', '<Plug>(quickhl-manual-go-to-prev)')
 
 -- utilities
 r('i', 'jj', '<ESC>')
-s('n', '<ESC><ESC>', ':<C-u>lua require("globals").toggle_hlsearch()<CR>')
+s('n', '<ESC><ESC>', ':<C-u>lua require("core.globals").toggle_hlsearch()<CR>')
 s('n', ';', ':<C-u>lua require("telescope.builtin").buffers({ sort_lastused = true, sort_mru = true, ignore_current_buffer = true })<CR>')
-s('n', '<C-q>', ':<C-u>lua require("globals").close_buffer()<CR>')
+s('n', '<C-q>', ':<C-u>lua require("core.globals").close_buffer()<CR>')
 
-s('n', '<C-u>', ':<C-u>lua require("globals").pageup()<CR>')
-s('n', '<C-d>', ':<C-u>lua require("globals").pagedown()<CR>')
+s('n', '<C-u>', ':<C-u>lua require("core.globals").pageup()<CR>')
+s('n', '<C-d>', ':<C-u>lua require("core.globals").pagedown()<CR>')
 
 s('n', '<C-y>', ':<C-u>LinediffReset<CR>')
 s('v', '<C-y>', ':Linediff<CR>')
