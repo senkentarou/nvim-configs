@@ -216,6 +216,13 @@ local configs = function()
 end
 
 return {
+  -- {
+  --   dir = '~/work/my/telescope-copy-path.nvim',
+  --   name = 'telescope-copy-path-dev',
+  --   dependencies = {
+  --     'nvim-telescope/telescope.nvim',
+  --   },
+  -- },
   {
     'nvim-telescope/telescope.nvim',
     dependencies = {

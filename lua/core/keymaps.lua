@@ -128,14 +128,13 @@ s(
 )
 s('n', '<C-f><C-k>', ':<C-u>lua require("telescope").extensions.psql_viewer.psql_viewer()<CR>')
 
--- <C-c>
+-- <C-c> trouble clearing
 r('n', '<C-c>', '<Nop>')
-s('n', '<C-c><C-j>', ':<C-u>lua require("csv-tools").copy_column_with_picker()<CR>')
-s('n', '<C-c><C-k>', ':<C-u>lua require("telescope").extensions.copy_path.copy_path({ initial_mode = "normal" })<CR>')
 
--- <C-t>
+-- <C-t> copy info for terminal
 r('n', '<C-t>', '<Nop>')
-s('n', '<C-t><C-t>', ':copen<CR>')
+s('n', '<C-t><C-j>', ':<C-u>lua require("csv-tools").copy_column_with_picker()<CR>')
+s({ 'n', 'v' }, '<C-t><C-k>', '<CMD>lua require("telescope").extensions.copy_path.copy_path({ initial_mode = "normal" })<CR>')
 
 -- <C-g> git
 r('n', '<C-g>', '<Nop>')
